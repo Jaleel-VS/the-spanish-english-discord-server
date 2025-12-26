@@ -1,20 +1,12 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# The Spanish-English Discord Server
 
-# Run and deploy your AI Studio app
+Landing page for a Spanish-English language exchange community. Bilingual (EN/ES) with real-time language switching.
 
-This contains everything you need to run your app locally.
+## Setup
 
-View your app in AI Studio: https://ai.studio/apps/drive/1p9Xtwl9xbtTJeFeYYzgjIPby5f3Irky8
+```bash
+pnpm install
+pnpm run dev
+```
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Optional:** Set `GEMINI_API_KEY` in `.env.local` for AI features.
