@@ -1,9 +1,22 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
 import './i18n';
 import { LanguageProvider } from './contexts/LanguageContext';
+
+// Import the generated route tree
+import { routeTree } from './routeTree.gen';
+
+// Create a new router instance
+const router = createRouter({ routeTree });
+
+// Register the router instance for type safety
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router;
+  }
+}
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -14,7 +27,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <LanguageProvider>
-      <App />
+      <RouterProvider router={router} />
     </LanguageProvider>
   </React.StrictMode>
 );
