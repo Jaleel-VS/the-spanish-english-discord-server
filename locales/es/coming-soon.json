@@ -1,0 +1,14 @@
+{
+  "badge": {
+    "text": "En Construcción"
+  },
+  "hero": {
+    "title": "Próximamente",
+    "titleHighlight": "",
+    "description": "Estamos trabajando en algo especial. Mientras tanto, únete a nuestra comunidad y comienza a conectar con estudiantes de idiomas de todo el mundo."
+  },
+  "cta": {
+    "join": "Únete al Servidor",
+    "backToHome": "Volver al Inicio"
+  }
+}

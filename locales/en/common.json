@@ -1,0 +1,19 @@
+{
+  "header": {
+    "title": "THE SPANISH-ENGLISH",
+    "titleDot": ".",
+    "titleSuffix": "LANGUAGE SERVER"
+  },
+  "status": {
+    "members": "150k members"
+  },
+  "footer": {
+    "copyright": "© {{year}} The Spanish-English Discord Server."
+  },
+  "links": {
+    "newToDiscord": "New to Discord?",
+    "guidelines": "Guidelines",
+    "resources": "Resources",
+    "support": "Support"
+  }
+}
