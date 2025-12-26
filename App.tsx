@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StatusBadge } from './components/StatusBadge';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
