@@ -5,7 +5,10 @@
     "titleSuffix": "LANGUAGE SERVER"
   },
   "status": {
-    "members": "150k members"
+    "online": "{{count}}k online",
+    "total": "{{count}}k members",
+    "combined": "{{online}}k online · {{total}}k members",
+    "loading": "Loading..."
   },
   "footer": {
     "copyright": "© {{year}} The Spanish-English Discord Server."

@@ -5,7 +5,10 @@
     "titleSuffix": "LANGUAGE SERVER"
   },
   "status": {
-    "members": "150k miembros"
+    "online": "{{count}}k en línea",
+    "total": "{{count}}k miembros",
+    "combined": "{{online}}k en línea · {{total}}k miembros",
+    "loading": "Cargando..."
   },
   "footer": {
     "copyright": "© {{year}} El Servidor de Discord Español-Inglés."
