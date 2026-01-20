@@ -4,21 +4,25 @@ import { initReactI18next } from 'react-i18next';
 import commonEN from './locales/en/common.json';
 import homeEN from './locales/en/home.json';
 import comingSoonEN from './locales/en/coming-soon.json';
+import resourcesEN from './locales/en/resources.json';
 
 import commonES from './locales/es/common.json';
 import homeES from './locales/es/home.json';
 import comingSoonES from './locales/es/coming-soon.json';
+import resourcesES from './locales/es/resources.json';
 
 const resources = {
   en: {
     common: commonEN,
     home: homeEN,
     comingSoon: comingSoonEN,
+    resources: resourcesEN,
   },
   es: {
     common: commonES,
     home: homeES,
     comingSoon: comingSoonES,
+    resources: resourcesES,
   },
 };
 

@@ -11,7 +11,7 @@ function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="space-y-8 max-w-2xl">
+    <section className="space-y-8 max-w-2xl mx-auto text-center flex flex-col items-center justify-center min-h-[60vh] py-4">
       <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter">
         {t('home:hero.title')} <br />
         <span className="italic text-[#fb923c]">{t('home:hero.titleHighlight')}</span>
@@ -50,7 +50,7 @@ function HomePage() {
             {t('common:links.guidelines')}
           </Link>
           <span className="text-slate-700">•</span>
-          <Link to="/coming-soon" className="hover:text-[#fb923c] transition-colors duration-200">
+          <Link to="/resources" className="hover:text-[#fb923c] transition-colors duration-200">
             {t('common:links.resources')}
           </Link>
           <span className="text-slate-700">•</span>

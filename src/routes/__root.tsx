@@ -1,11 +1,15 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import React from 'react';
+import type { QueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { StatusBadge } from '../components/StatusBadge';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 
-export const Route = createRootRoute({
+export interface RouterContext {
+  queryClient: QueryClient;
+}
+
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
 });
 
@@ -28,7 +32,7 @@ function RootComponent() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 w-full max-w-4xl px-6 flex flex-col items-center justify-center py-12 text-center">
+      <main className="flex-1 w-full max-w-7xl px-6 py-8">
         <Outlet />
       </main>
 

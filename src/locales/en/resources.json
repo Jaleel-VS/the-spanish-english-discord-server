@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "backToResources": "Back to Resources"
+  },
+  "index": {
+    "title": "Resources",
+    "description": "Curated resources to help you learn Spanish and English.",
+    "tiles": {
+      "podcasts": "Podcasts",
+      "videos": "Videos",
+      "books": "Books",
+      "courses": "Courses",
+      "conversation": "Conversation",
+      "music": "Music"
+    }
+  },
+  "podcasts": {
+    "title": "Podcasts",
+    "description": "Curated podcasts to help you learn Spanish and English.",
+    "loading": "Loading podcasts...",
+    "error": "Failed to load podcasts",
+    "empty": "No podcasts available yet."
+  }
+}

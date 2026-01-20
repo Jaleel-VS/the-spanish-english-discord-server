@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@google/genai": "^1.34.0",
+    "@tanstack/react-query": "^5.64.0",
+    "@tanstack/react-query-devtools": "^5.64.0",
     "@tanstack/react-router": "^1.143.11",
     "@tanstack/react-router-devtools": "^1.143.11",
     "i18next": "^25.7.3",
+    "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-i18next": "^16.5.0"

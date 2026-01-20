@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "backToResources": "Volver a Recursos"
+  },
+  "index": {
+    "title": "Recursos",
+    "description": "Recursos seleccionados para ayudarte a aprender español e inglés.",
+    "tiles": {
+      "podcasts": "Podcasts",
+      "videos": "Videos",
+      "books": "Libros",
+      "courses": "Cursos",
+      "conversation": "Conversación",
+      "music": "Música"
+    }
+  },
+  "podcasts": {
+    "title": "Podcasts",
+    "description": "Podcasts seleccionados para ayudarte a aprender español e inglés.",
+    "loading": "Cargando podcasts...",
+    "error": "Error al cargar podcasts",
+    "empty": "No hay podcasts disponibles todavía."
+  }
+}
