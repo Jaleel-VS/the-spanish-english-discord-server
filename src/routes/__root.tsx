@@ -1,4 +1,4 @@
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet, Link } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import type { QueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -21,9 +21,9 @@ function RootComponent() {
       {/* Navigation / Header */}
       <header className="w-full max-w-5xl px-6 py-6 md:py-8">
         <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
-          <div className="text-base sm:text-lg md:text-xl font-bold tracking-tight">
+          <Link to="/" className="text-base sm:text-lg md:text-xl font-bold tracking-tight hover:opacity-80 transition-opacity">
             {t('header.title')}<span className="text-[#fb923c]">{t('header.titleDot')}</span>{t('header.titleSuffix')}
-          </div>
+          </Link>
           <div className="flex items-center gap-3 md:gap-4">
             <LanguageSwitcher />
             <StatusBadge />
