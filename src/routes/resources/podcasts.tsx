@@ -2,8 +2,8 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { useState, useMemo } from 'react';
-import { ExternalLink } from 'lucide-react';
-import { podcastsQueryOptions, type Podcast } from '../../api/podcasts';
+import { ExternalLink, Flag } from 'lucide-react';
+import { podcastsQueryOptions, reportDeadLink, type Podcast } from '../../api/podcasts';
 import { FilterBar, type FilterConfig } from '../../components/FilterBar';
 
 export const Route = createFileRoute('/resources/podcasts')({
@@ -39,6 +39,24 @@ function PodcastsPage() {
   const { t } = useTranslation('resources');
   const { data: podcasts } = useSuspenseQuery(podcastsQueryOptions);
   const [selected, setSelected] = useState<Record<string, string[]>>({});
+  const [reportedIds, setReportedIds] = useState<Set<string>>(new Set());
+  const [reportingId, setReportingId] = useState<string | null>(null);
+
+  const handleReport = async (podcastId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (reportedIds.has(podcastId) || reportingId === podcastId) return;
+
+    setReportingId(podcastId);
+    try {
+      await reportDeadLink(podcastId);
+      setReportedIds((prev) => new Set(prev).add(podcastId));
+    } catch (error) {
+      console.error('Failed to report dead link:', error);
+    } finally {
+      setReportingId(null);
+    }
+  };
 
   const filteredPodcasts = useMemo(() => {
     return podcasts.filter((podcast) => {
@@ -93,8 +111,22 @@ function PodcastsPage() {
             {filteredPodcasts.map((podcast) => (
               <div
                 key={podcast.id}
-                className="group flex flex-col p-4 rounded-xl border border-slate-800 hover:border-[#fb923c]/50 hover:bg-slate-800/30 transition-all"
+                className="group relative flex flex-col p-4 rounded-xl border border-slate-800 hover:border-[#fb923c]/50 hover:bg-slate-800/30 transition-all"
               >
+                <button
+                  onClick={(e) => handleReport(podcast.id, e)}
+                  disabled={reportedIds.has(podcast.id) || reportingId === podcast.id}
+                  className={`absolute top-2 right-2 p-1.5 rounded-lg transition-all z-10 ${
+                    reportedIds.has(podcast.id)
+                      ? 'bg-green-500/20 text-green-400 opacity-100'
+                      : reportingId === podcast.id
+                        ? 'bg-slate-700 text-slate-400 opacity-100'
+                        : 'bg-slate-800/80 text-slate-400 hover:bg-red-500/20 hover:text-red-400 opacity-0 group-hover:opacity-100'
+                  }`}
+                  title={reportedIds.has(podcast.id) ? 'Reported' : 'Report dead link'}
+                >
+                  <Flag className={`w-3.5 h-3.5 ${reportingId === podcast.id ? 'animate-pulse' : ''}`} />
+                </button>
                 <a
                   href={podcast.url}
                   target="_blank"

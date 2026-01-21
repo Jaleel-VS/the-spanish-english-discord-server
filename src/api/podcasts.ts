@@ -43,3 +43,12 @@ export const podcastQueryOptions = (id: string) =>
     queryKey: ['podcasts', id],
     queryFn: () => fetchPodcastById(id),
   });
+
+export async function reportDeadLink(podcastId: string): Promise<void> {
+  const response = await fetch(`${API_BASE_URL}/podcasts/${podcastId}/report`, {
+    method: 'POST',
+  });
+  if (!response.ok) {
+    throw new Error('Failed to report dead link');
+  }
+}
