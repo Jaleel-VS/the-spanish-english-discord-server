@@ -1,22 +1,22 @@
 {
-  "header": {
-    "title": "THE SPANISH-ENGLISH",
-    "titleDot": ".",
-    "titleSuffix": "LANGUAGE SERVER"
-  },
-  "status": {
-    "online": "{{count}}k en línea",
-    "total": "{{count}}k miembros",
-    "combined": "{{online}}k en línea · {{total}}k miembros",
-    "loading": "Cargando..."
-  },
-  "footer": {
-    "copyright": "© {{year}} El Servidor de Discord Español-Inglés."
-  },
-  "links": {
-    "newToDiscord": "¿Nuevo en Discord?",
-    "guidelines": "Normas",
-    "resources": "Recursos",
-    "support": "Soporte"
-  }
+	"header": {
+		"title": "THE SPANISH-ENGLISH",
+		"titleDot": ".",
+		"titleSuffix": "LANGUAGE SERVER"
+	},
+	"status": {
+		"online": "{{count}}k en línea",
+		"total": "{{count}}k miembros",
+		"combined": "{{online}}k en línea · {{total}}k miembros",
+		"loading": "Cargando..."
+	},
+	"footer": {
+		"copyright": "© {{year}} El Servidor de Discord Español-Inglés."
+	},
+	"links": {
+		"newToDiscord": "¿Nuevo en Discord?",
+		"guidelines": "Normas",
+		"resources": "Recursos",
+		"support": "Soporte"
+	}
 }

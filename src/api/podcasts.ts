@@ -1,55 +1,57 @@
-import { queryOptions } from '@tanstack/react-query';
+import { queryOptions } from "@tanstack/react-query";
 
 export interface Podcast {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  language: 'en' | 'es' | 'both';
-  level: 'beginner' | 'intermediate' | 'advanced';
-  country: string;
-  topic: string;
-  url: string;
-  archived: boolean;
-  createdAt: string;
-  updatedAt: string;
+	id: string;
+	title: string;
+	description: string;
+	imageUrl: string;
+	language: "en" | "es" | "both";
+	level: "beginner" | "intermediate" | "advanced";
+	country: string;
+	topic: string;
+	url: string;
+	archived: boolean;
+	createdAt: string;
+	updatedAt: string;
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://spa-eng-discord-website-backend-production.up.railway.app/api';
+const API_BASE_URL =
+	import.meta.env.VITE_API_BASE_URL ||
+	"https://spa-eng-discord-website-backend-production.up.railway.app/api";
 
 async function fetchPodcasts(): Promise<Podcast[]> {
-  const response = await fetch(`${API_BASE_URL}/podcasts`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch podcasts');
-  }
-  const data = await response.json();
-  return data.items ?? data;
+	const response = await fetch(`${API_BASE_URL}/podcasts`);
+	if (!response.ok) {
+		throw new Error("Failed to fetch podcasts");
+	}
+	const data = await response.json();
+	return data.items ?? data;
 }
 
 async function fetchPodcastById(id: string): Promise<Podcast> {
-  const response = await fetch(`${API_BASE_URL}/podcasts/${id}`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch podcast');
-  }
-  return response.json();
+	const response = await fetch(`${API_BASE_URL}/podcasts/${id}`);
+	if (!response.ok) {
+		throw new Error("Failed to fetch podcast");
+	}
+	return response.json();
 }
 
 export const podcastsQueryOptions = queryOptions({
-  queryKey: ['podcasts'],
-  queryFn: fetchPodcasts,
+	queryKey: ["podcasts"],
+	queryFn: fetchPodcasts,
 });
 
 export const podcastQueryOptions = (id: string) =>
-  queryOptions({
-    queryKey: ['podcasts', id],
-    queryFn: () => fetchPodcastById(id),
-  });
+	queryOptions({
+		queryKey: ["podcasts", id],
+		queryFn: () => fetchPodcastById(id),
+	});
 
 export async function reportDeadLink(podcastId: string): Promise<void> {
-  const response = await fetch(`${API_BASE_URL}/podcasts/${podcastId}/report`, {
-    method: 'POST',
-  });
-  if (!response.ok) {
-    throw new Error('Failed to report dead link');
-  }
+	const response = await fetch(`${API_BASE_URL}/podcasts/${podcastId}/report`, {
+		method: "POST",
+	});
+	if (!response.ok) {
+		throw new Error("Failed to report dead link");
+	}
 }
