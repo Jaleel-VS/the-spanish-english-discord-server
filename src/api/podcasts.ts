@@ -22,7 +22,8 @@ async function fetchPodcasts(): Promise<Podcast[]> {
   if (!response.ok) {
     throw new Error('Failed to fetch podcasts');
   }
-  return response.json();
+  const data = await response.json();
+  return data.items ?? data;
 }
 
 async function fetchPodcastById(id: string): Promise<Podcast> {
