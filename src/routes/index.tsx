@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BackgroundLines } from '../components/ui/background-lines';
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -11,7 +12,8 @@ function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="space-y-8 max-w-2xl mx-auto text-center flex flex-col items-center justify-center min-h-[60vh] py-4">
+    <BackgroundLines className="min-h-[60vh] py-4" svgOptions={{ duration: 8 }}>
+      <section className="space-y-8 max-w-2xl mx-auto text-center flex flex-col items-center justify-center">
       <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter">
         {t('home:hero.title')} <br />
         <span className="italic text-[#fb923c]">{t('home:hero.titleHighlight')}</span>
@@ -60,5 +62,6 @@ function HomePage() {
         </div>
       </div>
     </section>
+    </BackgroundLines>
   );
 }
