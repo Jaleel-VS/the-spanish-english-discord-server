@@ -28,7 +28,7 @@ interface AnimatedBorderButtonProps extends HTMLAttributes<HTMLDivElement> {
  * and the duration prop controls how long it takes for the border to complete one full loop around the button.
  */
 export function AnimatedBorderButton({
-  borderRadius,
+  borderRadius = "1.75rem",
   children,
   as: Component = "AnimatedBorderButton",
   containerClassName,
@@ -97,7 +97,9 @@ export const MovingBorder = ({
   useAnimationFrame((time) => {
     const length = pathRef.current?.getTotalLength();
     if (length) {
-      const pxPerMillisecond = length / duration;
+      // Minimum duration of 1 second
+      const finalDuration = Math.max(duration, 1000);
+      const pxPerMillisecond = length / finalDuration;
       progress.set((time * pxPerMillisecond) % length);
     }
   });

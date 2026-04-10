@@ -53,7 +53,7 @@
 	--radius-3xl: calc(var(--radius) * 2.2);
 	--radius-4xl: calc(var(--radius) * 2.6);
 
-	--animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+	--animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, normal) linear infinite;
  
    @keyframes scroll {
     to {

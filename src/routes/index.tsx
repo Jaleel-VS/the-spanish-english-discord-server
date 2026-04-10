@@ -86,7 +86,6 @@ function HomePage() {
         <div className="pt-6 flex flex-col items-center justify-center gap-6">
           <AnimatedBorderButton
             borderRadius="10rem"
-			
             onClick={handleClick}
             role="link"
             className="group cursor-pointer relative px-10 py-5 bg-[#fb923c] text-slate-950 font-bold 

@@ -149,14 +149,14 @@ function PodcastsPage() {
 									<img
 										src={podcast.imageUrl}
 										alt={podcast.title}
-										className="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+										className="w-14 h-14 rounded-lg object-cover shrink-0"
 									/>
 									<div className="flex-1 min-w-0">
 										<div className="flex items-start justify-between gap-2">
 											<h2 className="font-semibold text-sm group-hover:text-[#fb923c] transition-colors leading-tight">
 												{podcast.title}
 											</h2>
-											<ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#fb923c] flex-shrink-0 transition-colors" />
+											<ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#fb923c] shrink-0 transition-colors" />
 										</div>
 										<p className="text-xs text-slate-500 mt-1">
 											{podcast.country}
