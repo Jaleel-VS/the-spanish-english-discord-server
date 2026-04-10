@@ -39,6 +39,7 @@
     "@biomejs/biome": "^2.4.10",
     "@tanstack/router-plugin": "^1.143.11",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.14",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
