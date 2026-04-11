@@ -3,20 +3,32 @@ import { useCallback, useEffect, useState } from "react";
 type Theme = "light" | "dark";
 
 export const useTheme = () => {
-  const [theme, setThemeState] = useState<Theme>("light");
+  const getInitialTheme = useCallback(() => {
+
+    if(typeof window === "undefined") return "light";
+
+    const saved = localStorage.getItem("theme") as Theme;
+    if (saved) return saved;
+
+    const userPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+
+    return userPrefersDark ? "dark" : "light";
+  }, []);
+
+  const [theme, setThemeState] = useState<Theme>(() => getInitialTheme());
 
   const setTheme = useCallback((theme: Theme) => {
     setThemeState(theme);
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
   }, []);
 
-  const userPrefersDark = window.matchMedia(
-    "(prefers-color-scheme: dark)",
-  ).matches;
-
   useEffect(() => {
-    setTheme(userPrefersDark ? "dark" : "light");
-  }, [setTheme, userPrefersDark]);
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    }
+  }, [theme]);
 
   return { theme, setTheme };
 };
