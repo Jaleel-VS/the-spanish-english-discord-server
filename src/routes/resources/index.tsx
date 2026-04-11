@@ -31,10 +31,10 @@ function ResourcesIndex() {
 
 	return (
 		<div className="w-full">
-			<h1 className="text-3xl md:text-4xl font-bold mb-3">
+			<h1 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">
 				{t("index.title")}
 			</h1>
-			<p className="text-slate-400 mb-10">{t("index.description")}</p>
+			<p className="text-muted-foreground mb-10">{t("index.description")}</p>
 
 			<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 				{resources.map(({ key, to, icon: Icon }, index) => (
@@ -45,31 +45,31 @@ function ResourcesIndex() {
 						onMouseEnter={() => setHovered(index)}
 						onMouseLeave={() => setHovered(null)}
 						className={cn(
-							"group relative flex flex-col items-center justify-center gap-3 p-8 rounded-xl border border-slate-800 bg-slate-900/50 cursor-pointer transition-all duration-300 ease-out",
+							"group relative flex flex-col items-center justify-center gap-3 p-8 rounded-xl border border-border bg-card/50 cursor-pointer transition-all duration-300 ease-out",
 							hovered !== null &&
 								hovered !== index &&
 								"blur-sm scale-[0.98] opacity-60",
 							hovered === index &&
-								"border-[#fb923c]/50 bg-slate-800/50 scale-[1.02]",
+								"border-[#fb923c]/50 bg-muted/50 scale-[1.02]",
 						)}
 					>
 						<div
 							className={cn(
-								"p-3 rounded-lg bg-slate-800 transition-colors duration-300",
+								"p-3 rounded-lg bg-muted transition-colors duration-300",
 								hovered === index && "bg-[#fb923c]/10",
 							)}
 						>
 							<Icon
 								className={cn(
-									"w-8 h-8 text-slate-400 transition-colors duration-300",
+									"w-8 h-8 text-muted-foreground transition-colors duration-300",
 									hovered === index && "text-[#fb923c]",
 								)}
 							/>
 						</div>
 						<span
 							className={cn(
-								"text-sm font-medium text-slate-300 transition-colors duration-300",
-								hovered === index && "text-white",
+								"text-sm font-medium text-muted-foreground transition-colors duration-300",
+								hovered === index && "text-foreground",
 							)}
 						>
 							{t(`index.tiles.${key}`)}

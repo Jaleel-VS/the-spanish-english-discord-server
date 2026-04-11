@@ -44,14 +44,14 @@ function HomePage() {
 				speed={0.3}
 			/>
 			<section className="relative z-10 space-y-8 max-w-2xl mx-auto text-center flex flex-col items-center justify-center">
-				<h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter">
+				<h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter text-foreground">
 					{t("home:hero.title")} <br />
 					<span className="italic text-[#fb923c]">
 						{t("home:hero.titleHighlight")}
 					</span>
 				</h1>
 
-				<p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
+				<p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
 					{t("home:hero.descriptionStart")}
 					<FlipWords words={cities} className="text-[#fb923c] font-medium" />
 					{t("home:hero.descriptionEnd")}
@@ -82,28 +82,34 @@ function HomePage() {
 						</svg>
 					</a>
 
-					<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400">
+					<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
 						<Link
 							to="/coming-soon"
 							className="hover:text-[#fb923c] transition-colors duration-200"
 						>
 							{t("common:links.newToDiscord")}
 						</Link>
-						<span className="text-slate-700">•</span>
+						<span className="text-muted-foreground/40" aria-hidden>
+							•
+						</span>
 						<Link
 							to="/coming-soon"
 							className="hover:text-[#fb923c] transition-colors duration-200"
 						>
 							{t("common:links.guidelines")}
 						</Link>
-						<span className="text-slate-700">•</span>
+						<span className="text-muted-foreground/40" aria-hidden>
+							•
+						</span>
 						<Link
 							to="/resources"
 							className="hover:text-[#fb923c] transition-colors duration-200"
 						>
 							{t("common:links.resources")}
 						</Link>
-						<span className="text-slate-700">•</span>
+						<span className="text-muted-foreground/40" aria-hidden>
+							•
+						</span>
 						<Link
 							to="/coming-soon"
 							className="hover:text-[#fb923c] transition-colors duration-200"

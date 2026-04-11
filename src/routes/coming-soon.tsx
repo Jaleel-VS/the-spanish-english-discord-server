@@ -11,13 +11,13 @@ function ComingSoonPage() {
 	return (
 		<section className="space-y-8 max-w-2xl">
 			{/* Coming Soon Badge */}
-			<div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-full text-sm text-slate-400">
+			<div className="inline-flex items-center gap-2 px-4 py-2 bg-muted/50 border border-border rounded-full text-sm text-muted-foreground">
 				<div className="w-2 h-2 bg-[#fb923c] rounded-full animate-pulse"></div>
 				{t("comingSoon:badge.text")}
 			</div>
 
 			{/* Main Heading */}
-			<h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter">
+			<h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter text-foreground">
 				{t("comingSoon:hero.title")}{" "}
 				<span className="italic text-[#fb923c]">
 					{t("comingSoon:hero.titleHighlight")}
@@ -25,7 +25,7 @@ function ComingSoonPage() {
 			</h1>
 
 			{/* Description */}
-			<p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
+			<p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
 				{t("comingSoon:hero.description")}
 			</p>
 
@@ -56,7 +56,7 @@ function ComingSoonPage() {
 				{/* Back to Home Link */}
 				<Link
 					to="/"
-					className="text-sm text-slate-400 hover:text-[#fb923c] transition-colors duration-200 flex items-center gap-2"
+					className="text-sm text-muted-foreground hover:text-[#fb923c] transition-colors duration-200 flex items-center gap-2"
 				>
 					<svg
 						aria-hidden="true"

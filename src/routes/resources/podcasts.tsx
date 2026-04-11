@@ -96,8 +96,8 @@ function PodcastsPage() {
 
 	return (
 		<div>
-			<h1 className="text-3xl font-bold mb-3">{t("podcasts.title")}</h1>
-			<p className="text-slate-400 mb-6">{t("podcasts.description")}</p>
+			<h1 className="text-3xl font-bold mb-3 text-foreground">{t("podcasts.title")}</h1>
+			<p className="text-muted-foreground mb-6">{t("podcasts.description")}</p>
 
 			<FilterBar
 				filters={filterConfigs}
@@ -109,13 +109,13 @@ function PodcastsPage() {
 
 			<div className="mt-6">
 				{filteredPodcasts.length === 0 ? (
-					<p className="text-slate-500 py-8">{t("podcasts.empty")}</p>
+					<p className="text-muted-foreground py-8">{t("podcasts.empty")}</p>
 				) : (
 					<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 						{filteredPodcasts.map((podcast) => (
 							<div
 								key={podcast.id}
-								className="group relative flex flex-col p-4 rounded-xl border border-slate-800 hover:border-[#fb923c]/50 hover:bg-slate-800/30 transition-all"
+								className="group relative flex flex-col p-4 rounded-xl border border-border hover:border-[#fb923c]/50 hover:bg-muted/40 transition-all"
 							>
 								<button
 									type="button"
@@ -127,8 +127,8 @@ function PodcastsPage() {
 										reportedIds.has(podcast.id)
 											? "bg-green-500/20 text-green-400 opacity-100"
 											: reportingId === podcast.id
-												? "bg-slate-700 text-slate-400 opacity-100"
-												: "bg-slate-800/80 text-slate-400 hover:bg-red-500/20 hover:text-red-400 opacity-0 group-hover:opacity-100"
+												? "bg-muted text-muted-foreground opacity-100"
+												: "bg-muted/80 text-muted-foreground hover:bg-red-500/20 hover:text-red-400 opacity-0 group-hover:opacity-100"
 									}`}
 									title={
 										reportedIds.has(podcast.id)
@@ -149,16 +149,16 @@ function PodcastsPage() {
 									<img
 										src={podcast.imageUrl}
 										alt={podcast.title}
-										className="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+										className="w-14 h-14 rounded-lg object-cover shrink-0"
 									/>
 									<div className="flex-1 min-w-0">
 										<div className="flex items-start justify-between gap-2">
-											<h2 className="font-semibold text-sm group-hover:text-[#fb923c] transition-colors leading-tight">
+											<h2 className="font-semibold text-sm text-foreground group-hover:text-[#fb923c] transition-colors leading-tight">
 												{podcast.title}
 											</h2>
-											<ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#fb923c] flex-shrink-0 transition-colors" />
+											<ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-[#fb923c] shrink-0 transition-colors" />
 										</div>
-										<p className="text-xs text-slate-500 mt-1">
+										<p className="text-xs text-muted-foreground mt-1">
 											{podcast.country}
 										</p>
 									</div>
@@ -167,7 +167,7 @@ function PodcastsPage() {
 									href={podcast.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-sm text-slate-400 line-clamp-2 mb-3 flex-1"
+									className="text-sm text-muted-foreground line-clamp-2 mb-3 flex-1"
 								>
 									{podcast.description}
 								</a>
@@ -178,7 +178,7 @@ function PodcastsPage() {
 										className={`px-2 py-0.5 rounded transition-colors ${
 											isFilterActive("language", podcast.language)
 												? "bg-[#fb923c]/20 text-[#fb923c]"
-												: "bg-slate-800 text-slate-300 hover:bg-slate-700"
+												: "bg-muted text-muted-foreground hover:bg-muted/80"
 										}`}
 									>
 										{podcast.language === "both"
@@ -191,12 +191,12 @@ function PodcastsPage() {
 										className={`px-2 py-0.5 rounded capitalize transition-colors ${
 											isFilterActive("level", podcast.level)
 												? "bg-[#fb923c]/20 text-[#fb923c]"
-												: "bg-slate-800 text-slate-300 hover:bg-slate-700"
+												: "bg-muted text-muted-foreground hover:bg-muted/80"
 										}`}
 									>
 										{podcast.level}
 									</button>
-									<span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+									<span className="px-2 py-0.5 rounded bg-muted text-muted-foreground">
 										{podcast.topic}
 									</span>
 								</div>
@@ -215,7 +215,7 @@ function PodcastsLoading() {
 	return (
 		<div className="flex flex-col items-center justify-center py-12">
 			<div className="w-6 h-6 border-2 border-[#fb923c] border-t-transparent rounded-full animate-spin mb-4" />
-			<p className="text-slate-400">{t("podcasts.loading")}</p>
+			<p className="text-muted-foreground">{t("podcasts.loading")}</p>
 		</div>
 	);
 }
@@ -226,7 +226,7 @@ function PodcastsError({ error }: { error: Error }) {
 	return (
 		<div className="text-center py-12">
 			<p className="text-red-400 mb-2">{t("podcasts.error")}</p>
-			<p className="text-sm text-slate-500">{error.message}</p>
+			<p className="text-sm text-muted-foreground">{error.message}</p>
 		</div>
 	);
 }

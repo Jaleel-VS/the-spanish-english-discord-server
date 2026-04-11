@@ -8,17 +8,17 @@ export const LanguageSwitcher: React.FC = () => {
 		<button
 			type="button"
 			onClick={toggleLanguage}
-			className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-full hover:bg-slate-700/50 transition-all duration-200 text-sm font-medium"
+			className="flex items-center gap-2 px-4 py-2 bg-muted/50 border border-border rounded-full hover:bg-muted transition-all duration-200 text-sm font-medium"
 			aria-label="Toggle language"
 		>
 			<span
-				className={`transition-colors duration-200 ${language === "en" ? "text-slate-50" : "text-slate-500"}`}
+				className={`transition-colors duration-200 ${language === "en" ? "text-foreground" : "text-muted-foreground"}`}
 			>
 				EN
 			</span>
-			<div className="w-px h-4 bg-slate-600"></div>
+			<div className="w-px h-4 bg-border" />
 			<span
-				className={`transition-colors duration-200 ${language === "es" ? "text-slate-50" : "text-slate-500"}`}
+				className={`transition-colors duration-200 ${language === "es" ? "text-foreground" : "text-muted-foreground"}`}
 			>
 				ES
 			</span>

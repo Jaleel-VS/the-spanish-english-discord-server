@@ -8,18 +8,19 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { StatusBadge } from "../components/StatusBadge";
+import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 export interface RouterContext {
 	queryClient: QueryClient;
 }
 
 export const Route = createRootRouteWithContext<RouterContext>()({
-	component: RootComponent,
-});
+		component: RootComponent,
+	});
 
 function RootComponent() {
 	const { t } = useTranslation("common");
-
+	
 	return (
 		<div className="min-h-screen flex flex-col items-center selection:bg-[#fb923c] selection:text-white">
 			{/* Navigation / Header */}
@@ -27,7 +28,7 @@ function RootComponent() {
 				<div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
 					<Link
 						to="/"
-						className="text-base sm:text-lg md:text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
+						className="text-base sm:text-lg md:text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity"
 					>
 						{t("header.title")}
 						<span className="text-[#fb923c]">{t("header.titleDot")}</span>
@@ -36,6 +37,7 @@ function RootComponent() {
 					<div className="flex items-center gap-3 md:gap-4">
 						<LanguageSwitcher />
 						<StatusBadge />
+						<ThemeSwitcher />
 					</div>
 				</div>
 			</header>
@@ -46,7 +48,7 @@ function RootComponent() {
 			</main>
 
 			{/* Footer */}
-			<footer className="w-full max-w-5xl px-6 py-12 border-t border-slate-800 flex justify-center items-center text-slate-500 text-sm">
+			<footer className="w-full max-w-5xl px-6 py-12 border-t border-border flex justify-center items-center text-muted-foreground text-sm">
 				<p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
 			</footer>
 

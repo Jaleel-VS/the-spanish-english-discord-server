@@ -53,7 +53,7 @@ function FilterDropdown({
 				className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm border transition-colors ${
 					selected.length > 0
 						? "border-[#fb923c]/50 bg-[#fb923c]/10 text-[#fb923c]"
-						: "border-slate-700 text-slate-300 hover:border-slate-600"
+						: "border-input text-muted-foreground hover:border-border"
 				}`}
 			>
 				<span>{filter.label}</span>
@@ -68,7 +68,7 @@ function FilterDropdown({
 			</button>
 
 			{isOpen && (
-				<div className="absolute top-full left-0 mt-2 w-48 bg-slate-900 border border-slate-700 rounded-lg shadow-xl z-20 py-1">
+				<div className="absolute top-full left-0 mt-2 w-48 bg-popover text-popover-foreground border border-border rounded-lg shadow-xl z-20 py-1">
 					{filter.options.map((option) => {
 						const isSelected = selected.includes(option.value);
 						return (
@@ -81,7 +81,7 @@ function FilterDropdown({
 								className={`w-full text-left px-3 py-2 text-sm transition-colors ${
 									isSelected
 										? "bg-[#fb923c]/20 text-[#fb923c]"
-										: "text-slate-300 hover:bg-slate-800"
+										: "text-foreground hover:bg-muted"
 								}`}
 							>
 								{option.label}
@@ -127,7 +127,7 @@ export function FilterBar({
 					<button
 						type="button"
 						onClick={onClear}
-						className="text-sm text-slate-500 hover:text-slate-300 transition-colors ml-2"
+						className="text-sm text-muted-foreground hover:text-foreground transition-colors ml-2"
 					>
 						Clear all
 					</button>
@@ -139,7 +139,7 @@ export function FilterBar({
 					{activeFilters.map(({ key, value, label }) => (
 						<span
 							key={`${key}-${value}`}
-							className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-sm text-slate-300"
+							className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted text-sm text-muted-foreground"
 						>
 							{label}
 							<button
