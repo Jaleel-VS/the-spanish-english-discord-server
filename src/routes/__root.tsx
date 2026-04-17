@@ -1,8 +1,8 @@
 import type { QueryClient } from "@tanstack/react-query";
 import {
-	createRootRouteWithContext,
-	Link,
-	Outlet,
+  createRootRouteWithContext,
+  Link,
+  Outlet,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { useTranslation } from "react-i18next";
@@ -11,7 +11,7 @@ import { StatusBadge } from "../components/StatusBadge";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 export interface RouterContext {
-	queryClient: QueryClient;
+  queryClient: QueryClient;
 }
 
 export const Route = createRootRouteWithContext<RouterContext>()({
@@ -42,18 +42,18 @@ function RootComponent() {
 				</div>
 			</header>
 
-			{/* Main Content */}
-			<main className="flex-1 w-full max-w-7xl px-6 py-8">
-				<Outlet />
-			</main>
+      {/* Main Content */}
+      <main className="flex-1 px-6 py-8">
+        <Outlet />
+      </main>
 
 			{/* Footer */}
 			<footer className="w-full max-w-5xl px-6 py-12 border-t border-border flex justify-center items-center text-muted-foreground text-sm">
 				<p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
 			</footer>
 
-			{/* DevTools - only in development */}
-			{import.meta.env.DEV && <TanStackRouterDevtools />}
-		</div>
-	);
+      {/* DevTools - only in development */}
+      {import.meta.env.DEV && <TanStackRouterDevtools />}
+    </div>
+  );
 }

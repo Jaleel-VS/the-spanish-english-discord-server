@@ -1,35 +1,39 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FlipWords } from "@/components/ui/flip-words";
 import { SparklesCore } from "@/components/ui/sparkles";
+import { AnimatedBorderButton } from "@/components/ui/moving-border";
+import {
+  InfiniteMovingCards,
+  type testimonialsItem,
+} from "@/components/ui/infinite-moving-cards";
+import image from "@/assets/user-placeholder.png";
 
 const cities = [
-	"Madrid",
-	"London",
-	"Buenos Aires",
-	"New York",
-	"Bogotá",
-	"Los Angeles",
-	"Barcelona",
-	"Toronto",
-	"Lima",
-	"Sydney",
-	"Ciudad de México",
-	"Dublin",
-	"Santiago",
-	"Miami",
-	"Sevilla",
-	"Manchester",
+  "Madrid",
+  "London",
+  "Buenos Aires",
+  "New York",
+  "Bogotá",
+  "Los Angeles",
+  "Barcelona",
+  "Toronto",
+  "Lima",
+  "Sydney",
+  "Ciudad de México",
+  "Dublin",
+  "Santiago",
+  "Miami",
+  "Sevilla",
+  "Manchester",
 ];
 
 export const Route = createFileRoute("/")({
-	component: HomePage,
+  component: HomePage,
 });
 
 function HomePage() {
-	const { t } = useTranslation(["home", "common"]);
-	const [isHovered, setIsHovered] = useState(false);
+  const { t } = useTranslation(["home", "common"]);
 
 	return (
 		<div className="relative min-h-[60vh] py-4 flex items-center justify-center">
@@ -57,30 +61,25 @@ function HomePage() {
 					{t("home:hero.descriptionEnd")}
 				</p>
 
-				<div className="pt-6 flex flex-col items-center justify-center gap-6">
-					<a
-						href="https://discord.gg/spanish-english"
-						target="_blank"
-						rel="noopener noreferrer"
-						onMouseEnter={() => setIsHovered(true)}
-						onMouseLeave={() => setIsHovered(false)}
-						className="group relative px-10 py-5 bg-[#fb923c] text-slate-950 font-bold text-lg rounded-full transition-all duration-300 hover:bg-[#f97316] hover:scale-105 active:scale-95 flex items-center gap-3"
-					>
-						{t("home:cta.join")}
-						<svg
-							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							className={`w-6 h-6 transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`}
-						>
-							<path
-								fillRule="evenodd"
-								d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-								clipRule="evenodd"
-							/>
-						</svg>
-					</a>
+  return (
+    <div className="relative flex-col gap-10 min-h-[60vh] py-4 flex items-center justify-center">
+      <SparklesCore
+        id="hero-sparkles"
+        background="transparent"
+        minSize={0.4}
+        maxSize={1.4}
+        particleDensity={40}
+        className="absolute inset-0"
+        particleColor="#fb923c"
+        speed={0.3}
+      />
+      <section className="relative z-10 space-y-8 max-w-2xl mx-auto text-center flex flex-col items-center justify-center">
+        <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter">
+          {t("home:hero.title")} <br />
+          <span className="italic text-[#fb923c]">
+            {t("home:hero.titleHighlight")}
+          </span>
+        </h1>
 
 					<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
 						<Link
