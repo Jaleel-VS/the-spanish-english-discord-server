@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { StatusBadge } from "../components/StatusBadge";
 import { FloatingNav } from "@/components/ui/floating-navbar";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export interface RouterContext {
   queryClient: QueryClient;
@@ -37,6 +38,7 @@ function RootComponent() {
           <div className="flex items-center gap-3 md:gap-4">
             <LanguageSwitcher />
             <StatusBadge />
+            <ThemeSwitcher />
           </div>
         </FloatingNav>
       </header>
