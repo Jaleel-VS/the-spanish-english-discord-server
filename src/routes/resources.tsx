@@ -25,7 +25,7 @@ function ResourcesLayout() {
 			{isSubPage && (
 				<Link
 					to="/resources"
-					className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-6"
+					className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
 				>
 					<ArrowLeft className="w-4 h-4" />
 					{t("nav.backToResources")}

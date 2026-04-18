@@ -57,6 +57,7 @@ function HomePage() {
     },
   ];
 
+
   return (
     <div className="relative flex-col gap-10 min-h-[60vh] py-4 flex items-center justify-center">
       <SparklesCore
@@ -148,4 +149,5 @@ function HomePage() {
       </section>
     </div>
   );
+
 }

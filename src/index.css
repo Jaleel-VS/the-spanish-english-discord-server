@@ -137,8 +137,8 @@
 	}
 	body {
 		font-family: "Inter", sans-serif;
-		background-color: #0f172a;
-		color: #f8fafc;
+		background-color: var(--background);
+		color: var(--foreground);
 	}
 	h1,
 	h2,
@@ -148,4 +148,6 @@
 	html {
 		@apply font-sans;
 	}
+
+	
 }
