@@ -11,7 +11,34 @@
 			"books": "Books",
 			"courses": "Courses",
 			"conversation": "Conversation",
-			"music": "Music"
+			"music": "Music",
+			"movies": "Movies"
+		}
+	},
+	"movies": {
+		"title": "Movies",
+		"description": "Films and shows to practice Spanish and English listening.",
+		"loading": "Loading movies...",
+		"error": "Failed to load movies",
+		"empty": "No movies match your filters.",
+		"badge": {
+			"bilingual": "EN/ES"
+		},
+		"filter": {
+			"audioLanguage": "Audio language",
+			"audio": {
+				"en": "English",
+				"es": "Spanish",
+				"both": "Bilingual"
+			},
+			"genre": "Genre",
+			"country": "Country",
+			"search": "Search",
+			"archived": {
+				"label": "Archive status",
+				"true": "Archived",
+				"false": "Active"
+			}
 		}
 	},
 	"podcasts": {
@@ -19,6 +46,27 @@
 		"description": "Curated podcasts to help you learn Spanish and English.",
 		"loading": "Loading podcasts...",
 		"error": "Failed to load podcasts",
-		"empty": "No podcasts available yet."
+		"empty": "No podcasts available yet.",
+		"report": {
+			"deadLink": "Report dead link",
+			"reported": "Reported"
+		},
+		"badge": {
+			"bilingual": "EN/ES"
+		},
+		"filter": {
+			"level": "Level",
+			"language": "Language",
+			"levelOption": {
+				"beginner": "Beginner",
+				"intermediate": "Intermediate",
+				"advanced": "Advanced"
+			},
+			"languageOption": {
+				"es": "Spanish",
+				"en": "English",
+				"both": "Bilingual"
+			}
+		}
 	}
 }

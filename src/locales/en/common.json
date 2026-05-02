@@ -18,5 +18,24 @@
 		"guidelines": "Guidelines",
 		"resources": "Resources",
 		"support": "Support"
+	},
+	"filter": {
+		"clearAll": "Clear all"
+	},
+	"pagination": {
+		"navAriaLabel": "Pagination",
+		"previous": "Previous",
+		"next": "Next",
+		"previousAria": "Go to previous page",
+		"nextAria": "Go to next page",
+		"morePages": "More pages",
+		"rowsPerPage": "Rows per page",
+		"selectPageSize": "Page size",
+		"pageSize": {
+			"10": "10 per page",
+			"20": "20 per page",
+			"25": "25 per page",
+			"50": "50 per page"
+		}
 	}
 }

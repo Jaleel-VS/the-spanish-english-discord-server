@@ -78,11 +78,11 @@ function HomePage() {
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
+        <div className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
           {t("home:hero.descriptionStart")}
           <FlipWords words={cities} className="text-[#fb923c] font-medium" />
           {t("home:hero.descriptionEnd")}
-        </p>
+        </div>
 
         <div className="pt-6 flex flex-col items-center justify-center gap-6">
           <AnimatedBorderButton
