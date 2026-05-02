@@ -11,7 +11,6 @@ import {
 import { FilterBar, type FilterConfig } from "../../components/FilterBar";
 import { SpinnerLoader } from "@/components/ui/spinner-loader";
 import { useGenericInMemoryFilter } from "@/hooks/useGenericInMemoryFilter";
-import { useSuspenseQuery } from "@tanstack/react-query";
 
 export const Route = createFileRoute("/resources/podcasts")({
   loader: ({ context }) =>
@@ -21,29 +20,33 @@ export const Route = createFileRoute("/resources/podcasts")({
   errorComponent: PodcastsError,
 });
 
-const filterConfigs: FilterConfig[] = [
-  {
-    key: "level",
-    label: "Level",
-    options: [
-      { value: "beginner", label: "Beginner" },
-      { value: "intermediate", label: "Intermediate" },
-      { value: "advanced", label: "Advanced" },
-    ],
-  },
-  {
-    key: "language",
-    label: "Language",
-    options: [
-      { value: "es", label: "Spanish" },
-      { value: "en", label: "English" },
-      { value: "both", label: "Bilingual" },
-    ],
-  },
-];
-
 function PodcastsPage() {
   const { t } = useTranslation("resources");
+  const filterConfigs = useMemo((): FilterConfig[] => {
+    return [
+      {
+        key: "level",
+        label: t("podcasts.filter.level"),
+        options: [
+          { value: "beginner", label: t("podcasts.filter.levelOption.beginner") },
+          {
+            value: "intermediate",
+            label: t("podcasts.filter.levelOption.intermediate"),
+          },
+          { value: "advanced", label: t("podcasts.filter.levelOption.advanced") },
+        ],
+      },
+      {
+        key: "language",
+        label: t("podcasts.filter.language"),
+        options: [
+          { value: "es", label: t("podcasts.filter.languageOption.es") },
+          { value: "en", label: t("podcasts.filter.languageOption.en") },
+          { value: "both", label: t("podcasts.filter.languageOption.both") },
+        ],
+      },
+    ];
+  }, [t]);
   const podcasts = Route.useLoaderData() as Podcast[];
   const { selected, toggleFilter, removeFilter, clearFilters, isFilterActive } =
     useGenericInMemoryFilter<Record<string, string[]>>({});

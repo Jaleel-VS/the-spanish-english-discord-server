@@ -82,6 +82,7 @@ function Pagination({
             label={t("pagination.previous")}
             ariaLabel={t("pagination.previousAria")}
             aria-disabled={currentPage <= 1}
+            tabIndex={currentPage <= 1 ? -1 : undefined}
             className={cn(
               currentPage <= 1 && "pointer-events-none opacity-40",
             )}
@@ -105,6 +106,7 @@ function Pagination({
             label={t("pagination.next")}
             ariaLabel={t("pagination.nextAria")}
             aria-disabled={currentPage >= totalPages}
+            tabIndex={currentPage >= totalPages ? -1 : undefined}
             className={cn(
               currentPage >= totalPages && "pointer-events-none opacity-40",
             )}

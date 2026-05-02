@@ -1,9 +1,9 @@
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface SpinnerLoaderProps extends React.HTMLAttributes<HTMLDivElement> {
   message?: string;
   size?: "small" | "medium" | "large";
-  className?: string;
 }
 
 /**
