@@ -18,5 +18,24 @@
 		"guidelines": "Normas",
 		"resources": "Recursos",
 		"support": "Soporte"
+	},
+	"filter": {
+		"clearAll": "Limpiar todo"
+	},
+	"pagination": {
+		"navAriaLabel": "Paginación",
+		"previous": "Anterior",
+		"next": "Siguiente",
+		"previousAria": "Ir a la página anterior",
+		"nextAria": "Ir a la página siguiente",
+		"morePages": "Más páginas",
+		"rowsPerPage": "Filas por página",
+		"selectPageSize": "Tamaño de página",
+		"pageSize": {
+			"10": "10 por página",
+			"20": "20 por página",
+			"25": "25 por página",
+			"50": "50 por página"
+		}
 	}
 }

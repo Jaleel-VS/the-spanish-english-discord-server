@@ -1,5 +1,6 @@
 import { ChevronDown, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export interface FilterOption {
 	value: string;
@@ -9,15 +10,17 @@ export interface FilterOption {
 export interface FilterConfig {
 	key: string;
 	label: string;
-	options: FilterOption[];
+	options?: FilterOption[];
+	/** Don't show these option values as removable chips (e.g. default `archived=false`). */
+	excludeChipValues?: string[];
 }
 
 interface FilterBarProps {
-	filters: FilterConfig[];
-	selected: Record<string, string[]>;
-	onChange: (key: string, value: string) => void;
-	onRemove: (key: string, value: string) => void;
-	onClear: () => void;
+	filters?: FilterConfig[];
+	selected?: Record<string, string[]>;
+	onChange?: (key: string, value: string) => void;
+	onRemove?: (key: string, value: string) => void;
+	onClear?: () => void;
 }
 
 function FilterDropdown({
@@ -69,7 +72,7 @@ function FilterDropdown({
 
 			{isOpen && (
 				<div className="absolute top-full left-0 mt-2 w-48 bg-popover text-popover-foreground border border-border rounded-lg shadow-xl z-20 py-1">
-					{filter.options.map((option) => {
+					{(filter.options ?? []).map((option) => {
 						const isSelected = selected.includes(option.value);
 						return (
 							<button
@@ -95,18 +98,24 @@ function FilterDropdown({
 }
 
 export function FilterBar({
-	filters,
-	selected,
+	filters = [],
+	selected = {},
 	onChange,
 	onRemove,
 	onClear,
 }: FilterBarProps) {
+	const { t } = useTranslation("common");
 	const activeFilters = Object.entries(selected).flatMap(([key, values]) =>
-		values.map((value) => {
-			const filter = filters.find((f) => f.key === key);
-			const option = filter?.options.find((o) => o.value === value);
-			return { key, value, label: option?.label || value };
-		}),
+		values
+			.filter((value) => {
+				const filter = filters.find((f) => f.key === key);
+				return !filter?.excludeChipValues?.includes(value);
+			})
+			.map((value) => {
+				const filter = filters.find((f) => f.key === key);
+				const option = filter?.options?.find((o) => o.value === value);
+				return { key, value, label: option?.label || value };
+			}),
 	);
 
 	const hasActiveFilters = activeFilters.length > 0;
@@ -119,17 +128,17 @@ export function FilterBar({
 						key={filter.key}
 						filter={filter}
 						selected={selected[filter.key] || []}
-						onSelect={(value) => onChange(filter.key, value)}
+						onSelect={(value) => onChange?.(filter.key, value)}
 					/>
 				))}
 
-				{hasActiveFilters && (
+				{hasActiveFilters && onClear && (
 					<button
 						type="button"
 						onClick={onClear}
 						className="text-sm text-muted-foreground hover:text-foreground transition-colors ml-2"
 					>
-						Clear all
+						{t("filter.clearAll")}
 					</button>
 				)}
 			</div>
@@ -144,7 +153,7 @@ export function FilterBar({
 							{label}
 							<button
 								type="button"
-								onClick={() => onRemove(key, value)}
+								onClick={() => onRemove?.(key, value)}
 								className="hover:text-[#fb923c] transition-colors"
 							>
 								<X className="w-3.5 h-3.5" />

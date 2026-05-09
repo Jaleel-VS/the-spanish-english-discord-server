@@ -11,7 +11,34 @@
 			"books": "Libros",
 			"courses": "Cursos",
 			"conversation": "Conversación",
-			"music": "Música"
+			"music": "Música",
+			"movies": "Películas"
+		}
+	},
+	"movies": {
+		"title": "Películas",
+		"description": "Películas y series para practicar la escucha en español e inglés.",
+		"loading": "Cargando películas...",
+		"error": "Error al cargar películas",
+		"empty": "Ninguna película coincide con tus filtros.",
+		"badge": {
+			"bilingual": "EN/ES"
+		},
+		"filter": {
+			"audioLanguage": "Idioma del audio",
+			"audio": {
+				"en": "Inglés",
+				"es": "Español",
+				"both": "Bilingüe"
+			},
+			"genre": "Género",
+			"country": "País",
+			"search": "Buscar",
+			"archived": {
+				"label": "Estado de archivo",
+				"true": "Archivadas",
+				"false": "Activas"
+			}
 		}
 	},
 	"podcasts": {
@@ -19,6 +46,27 @@
 		"description": "Podcasts seleccionados para ayudarte a aprender español e inglés.",
 		"loading": "Cargando podcasts...",
 		"error": "Error al cargar podcasts",
-		"empty": "No hay podcasts disponibles todavía."
+		"empty": "No hay podcasts disponibles todavía.",
+		"report": {
+			"deadLink": "Reportar enlace roto",
+			"reported": "Reportado"
+		},
+		"badge": {
+			"bilingual": "EN/ES"
+		},
+		"filter": {
+			"level": "Nivel",
+			"language": "Idioma",
+			"levelOption": {
+				"beginner": "Principiante",
+				"intermediate": "Intermedio",
+				"advanced": "Avanzado"
+			},
+			"languageOption": {
+				"es": "Español",
+				"en": "Inglés",
+				"both": "Bilingüe"
+			}
+		}
 	}
 }

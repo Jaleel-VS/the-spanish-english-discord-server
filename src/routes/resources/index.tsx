@@ -1,10 +1,11 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
 	BookOpen,
 	GraduationCap,
 	Headphones,
 	MessageCircle,
 	Music,
+	Megaphone,
 	Video,
 } from "lucide-react";
 import { useState } from "react";
@@ -16,17 +17,17 @@ export const Route = createFileRoute("/resources/")({
 });
 
 const resources = [
-	{ key: "podcasts", to: "/resources/podcasts", icon: Headphones },
-	{ key: "videos", to: "/resources/videos", icon: Video },
-	{ key: "books", to: "/resources/books", icon: BookOpen },
-	{ key: "courses", to: "/resources/courses", icon: GraduationCap },
-	{ key: "conversation", to: "/resources/conversation", icon: MessageCircle },
-	{ key: "music", to: "/resources/music", icon: Music },
+	{ key: "podcasts", to: "/resources/podcasts" as const, icon: Headphones },
+	{ key: "videos", to: "/coming-soon" as const, icon: Video },
+	{ key: "books", to: "/coming-soon" as const, icon: BookOpen },
+	{ key: "courses", to: "/coming-soon" as const, icon: GraduationCap },
+	{ key: "conversation", to: "/coming-soon" as const, icon: MessageCircle },
+	{ key: "music", to: "/coming-soon" as const, icon: Music },
+	{ key: "movies", to: "/resources/movies" as const, icon: Megaphone },
 ] as const;
 
 function ResourcesIndex() {
 	const { t } = useTranslation("resources");
-	const navigate = useNavigate();
 	const [hovered, setHovered] = useState<number | null>(null);
 
 	return (
@@ -38,14 +39,13 @@ function ResourcesIndex() {
 
 			<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 				{resources.map(({ key, to, icon: Icon }, index) => (
-					<button
-						type="button"
+					<Link
 						key={key}
-						onClick={() => navigate({ to })}
+						to={to}
 						onMouseEnter={() => setHovered(index)}
 						onMouseLeave={() => setHovered(null)}
 						className={cn(
-							"group relative flex flex-col items-center justify-center gap-3 p-8 rounded-xl border border-border bg-card/50 cursor-pointer transition-all duration-300 ease-out",
+							"group relative flex flex-col items-center justify-center gap-3 p-8 rounded-xl border border-border bg-card/50 cursor-pointer transition-all duration-300 ease-out no-underline text-inherit",
 							hovered !== null &&
 								hovered !== index &&
 								"blur-sm scale-[0.98] opacity-60",
@@ -74,7 +74,7 @@ function ResourcesIndex() {
 						>
 							{t(`index.tiles.${key}`)}
 						</span>
-					</button>
+					</Link>
 				))}
 			</div>
 		</div>

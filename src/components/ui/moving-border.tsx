@@ -30,7 +30,7 @@ interface AnimatedBorderButtonProps extends HTMLAttributes<HTMLDivElement> {
 export function AnimatedBorderButton({
   borderRadius = "1.75rem",
   children,
-  as: Component = "AnimatedBorderButton",
+  as: Component = "button",
   containerClassName,
   borderClassName,
   duration,
