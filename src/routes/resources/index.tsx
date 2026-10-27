@@ -47,7 +47,7 @@ function ResourcesIndex() {
 				</div>
 			</div>
 
-			<ul className="mt-20 md:mt-28">
+			<ul className="frame mt-16 gap-y-gutter md:mt-20">
 				{resourceKinds.map((kind, index) => {
 					const credit = photoCredits.find(
 						(photo) => photo.slug === kind.image,
@@ -55,48 +55,41 @@ function ResourcesIndex() {
 					return (
 						<li
 							key={kind.id}
-							className={index % 2 === 0 ? "bg-surface" : "bg-ground"}
+							className="col-span-12 md:col-span-6"
+							style={stagger(index)}
+							data-reveal
 						>
 							<Link
 								to={kind.to}
-								className="group frame items-end gap-y-6 py-12 md:py-16"
+								className="group flex h-full items-center gap-5 bg-surface p-4 transition-colors duration-200 hover:bg-[color-mix(in_oklab,var(--surface)_85%,var(--ink))] md:gap-6 md:p-5"
 							>
-								<span
-									className="col-span-12 aspect-[4/3] overflow-clip sm:col-span-8 md:col-span-5 lg:col-span-4"
-									data-reveal
-								>
+								<span className="aspect-[4/3] w-28 shrink-0 overflow-clip md:w-40">
 									<img
 										src={`/images/${kind.image}.jpg`}
 										alt={t(`kinds.${kind.id}.imageAlt`)}
 										width={credit?.width}
 										height={credit?.height}
-										loading={index < 2 ? undefined : "lazy"}
-										className="h-full w-full object-cover grayscale contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+										loading={index < 4 ? undefined : "lazy"}
+										className="h-full w-full object-cover grayscale contrast-[1.05]"
 									/>
 								</span>
-								<span
-									className="col-span-12 md:col-start-7 md:col-span-6 lg:col-start-6 lg:col-span-5"
-									style={stagger(1)}
-									data-reveal
-								>
-									<span className="block text-head group-hover:underline">
-										{t(`kinds.${kind.id}.title`)}
+								<span className="flex min-w-0 flex-1 flex-col gap-1">
+									<span className="flex flex-wrap items-baseline justify-between gap-x-4">
+										<span className="text-lead font-semibold tracking-[-0.02em] group-hover:underline">
+											{t(`kinds.${kind.id}.title`)}
+										</span>
+										<span className="flex items-baseline gap-2 whitespace-nowrap font-medium">
+											{t(`kinds.${kind.id}.count`, { count: counts[kind.id] })}
+											<span
+												aria-hidden="true"
+												className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+											>
+												→
+											</span>
+										</span>
 									</span>
-									<span className="mt-4 block max-w-[44ch]">
+									<span className="text-muted">
 										{t(`kinds.${kind.id}.body`)}
-									</span>
-								</span>
-								<span
-									className="col-span-12 flex items-baseline gap-2 font-medium lg:col-span-2 lg:justify-end"
-									style={stagger(2)}
-									data-reveal
-								>
-									{t(`kinds.${kind.id}.count`, { count: counts[kind.id] })}
-									<span
-										aria-hidden="true"
-										className="inline-block transition-transform duration-300 group-hover:translate-x-1.5"
-									>
-										→
 									</span>
 								</span>
 							</Link>
