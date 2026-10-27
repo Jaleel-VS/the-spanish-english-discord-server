@@ -1,72 +1,61 @@
 {
-	"nav": {
-		"backToResources": "Back to Resources"
+	"meta": {
+		"podcasts": "Podcasts · The Spanish-English Discord Server",
+		"movies": "Movies · The Spanish-English Discord Server"
 	},
-	"index": {
-		"title": "Resources",
-		"description": "Curated resources to help you learn Spanish and English.",
-		"tiles": {
-			"podcasts": "Podcasts",
-			"videos": "Videos",
-			"books": "Books",
-			"courses": "Courses",
-			"conversation": "Conversation",
-			"music": "Music",
-			"movies": "Movies"
+	"filter": {
+		"language": "Language",
+		"level": "Level",
+		"genre": "Genre",
+		"all": "All",
+		"clear": "Clear filters",
+		"showing_one": "Showing {{count}} of {{total}}",
+		"showing_other": "Showing {{count}} of {{total}}"
+	},
+	"language": {
+		"es": "Spanish",
+		"en": "English",
+		"both": "Both"
+	},
+	"genre": {
+		"drama": "Drama",
+		"fantasy": "Fantasy",
+		"sci-fi": "Science fiction",
+		"thriller": "Thriller"
+	},
+	"variousCountries": "Several countries",
+	"level": {
+		"beginner": "Beginner",
+		"intermediate": "Intermediate",
+		"advanced": "Advanced"
+	},
+	"podcasts": {
+		"title": "Podcasts",
+		"imageAlt": "A radio announcer reading a script at a studio desk with a gooseneck microphone, 1930s",
+		"lead": "Shows to learn Spanish and English by ear. Open one and it plays on the show's own site.",
+		"empty": "No podcasts match these filters.",
+		"columns": {
+			"show": "Show",
+			"language": "Language",
+			"level": "Level",
+			"from": "From"
 		}
 	},
 	"movies": {
 		"title": "Movies",
-		"description": "Films and shows to practice Spanish and English listening.",
-		"loading": "Loading movies...",
-		"error": "Failed to load movies",
-		"empty": "No movies match your filters.",
-		"badge": {
-			"bilingual": "EN/ES"
-		},
-		"filter": {
-			"audioLanguage": "Audio language",
-			"audio": {
-				"en": "English",
-				"es": "Spanish",
-				"both": "Bilingual"
-			},
+		"imageAlt": "The facade of Cine Cataluña on Avenida Corrientes in Buenos Aires, with film posters above the entrance, 1929",
+		"lead": "Films to practise listening. Each opens on IMDb, where you can see where to watch it.",
+		"empty": "No films match these filters.",
+		"columns": {
+			"film": "Film",
+			"audio": "Audio",
 			"genre": "Genre",
-			"country": "Country",
-			"search": "Search",
-			"archived": {
-				"label": "Archive status",
-				"true": "Archived",
-				"false": "Active"
-			}
-		}
+			"year": "Year"
+		},
+		"previous": "Previous page",
+		"next": "Next page",
+		"page": "Page {{page}} of {{total}}"
 	},
-	"podcasts": {
-		"title": "Podcasts",
-		"description": "Curated podcasts to help you learn Spanish and English.",
-		"loading": "Loading podcasts...",
-		"error": "Failed to load podcasts",
-		"empty": "No podcasts available yet.",
-		"report": {
-			"deadLink": "Report dead link",
-			"reported": "Reported"
-		},
-		"badge": {
-			"bilingual": "EN/ES"
-		},
-		"filter": {
-			"level": "Level",
-			"language": "Language",
-			"levelOption": {
-				"beginner": "Beginner",
-				"intermediate": "Intermediate",
-				"advanced": "Advanced"
-			},
-			"languageOption": {
-				"es": "Spanish",
-				"en": "English",
-				"both": "Bilingual"
-			}
-		}
-	}
+	"opens": "opens in a new tab",
+	"back": "All resources"
 }

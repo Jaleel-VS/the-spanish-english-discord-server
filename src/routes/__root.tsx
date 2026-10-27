@@ -1,61 +1,168 @@
-import type { QueryClient } from "@tanstack/react-query";
 import {
-  createRootRouteWithContext,
-  Link,
-  Outlet,
+	createRootRoute,
+	HeadContent,
+	Link,
+	Outlet,
+	Scripts,
+	useRouter,
 } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { useTranslation } from "react-i18next";
-import { LanguageSwitcher } from "../components/LanguageSwitcher";
-import { StatusBadge } from "../components/StatusBadge";
-import { FloatingNav } from "@/components/ui/floating-navbar";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { type ReactNode, useEffect, useMemo } from "react";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { createI18n, resources } from "@/i18n";
+import { resolveLanguage } from "@/i18n/language";
+import { getCommunity } from "@/server/community.functions";
+import appCss from "@/styles.css?url";
 
-export interface RouterContext {
-  queryClient: QueryClient;
-}
+const SITE_URL = "https://the-spanish-english-discord-server.vercel.app";
 
-export const Route = createRootRouteWithContext<RouterContext>()({
-  component: RootComponent,
+export const Route = createRootRoute({
+	beforeLoad: () => ({ language: resolveLanguage() }),
+	loader: () => getCommunity(),
+	staleTime: 5 * 60 * 1000,
+	head: ({ match, loaderData }) => {
+		const copy = resources[match.context.language].common.meta;
+		const members = loaderData?.members.toLocaleString(match.context.language);
+		const description = copy.description.replace("{{members}}", members ?? "");
+		return {
+			meta: [
+				{ charSet: "utf-8" },
+				{ name: "viewport", content: "width=device-width, initial-scale=1" },
+				{ title: copy.title },
+				{ name: "description", content: description },
+				{ name: "theme-color", content: "#0f1e3d" },
+				{ property: "og:type", content: "website" },
+				{ property: "og:url", content: `${SITE_URL}/` },
+				{ property: "og:title", content: copy.title },
+				{ property: "og:description", content: description },
+				{ property: "og:image", content: `${SITE_URL}/images/splash.jpg` },
+				{ name: "twitter:card", content: "summary_large_image" },
+			],
+			links: [
+				{ rel: "stylesheet", href: appCss },
+				{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+			],
+		};
+	},
+	shellComponent: RootDocument,
+	component: RootLayout,
+	notFoundComponent: NotFound,
+	errorComponent: RootError,
 });
 
-function RootComponent() {
-  const { t } = useTranslation("common");
+function RootDocument({ children }: { children: ReactNode }) {
+	const { language } = Route.useRouteContext();
+	const i18n = useMemo(() => createI18n(language), [language]);
 
-  return (
-    <div className="min-h-screen overflow-hidden flex flex-col items-center selection:bg-[#fb923c] selection:text-white">
-      {/* Navigation / Header */}
-      <header className="w-full max-w-5xl px-6 py-6 md:py-8">
-        <FloatingNav className="justify-between" navItems={[]}>
-          <Link
-            to="/"
-            className="text-base sm:text-lg md:text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
-          >
-            {t("header.title")}
-            <span className="text-[#fb923c]">{t("header.titleDot")}</span>
-            {t("header.titleSuffix")}
-          </Link>
-          <div className="flex items-center gap-3 md:gap-4">
-            <LanguageSwitcher />
-            <StatusBadge />
-            <ThemeSwitcher />
-          </div>
-        </FloatingNav>
-      </header>
+	return (
+		<html lang={language} suppressHydrationWarning>
+			<head>
+				{/* Gates entrance animations, so content stays visible without JavaScript. */}
+				<script>document.documentElement.classList.add("js")</script>
+				<HeadContent />
+			</head>
+			<body>
+				<I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+				<Scripts />
+			</body>
+		</html>
+	);
+}
 
+function RootLayout() {
+	const { t } = useTranslation();
+	useRevealOnScroll();
 
-      {/* Main Content */}
-      <main className="flex-1 px-6 py-8">
-        <Outlet />
-      </main>
+	return (
+		<>
+			<a
+				href="#main"
+				className="sr-only focus:not-sr-only focus:fixed focus:left-margin focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-3 focus:text-accent-ink"
+			>
+				{t("nav.skip")}
+			</a>
+			<SiteHeader />
+			<main id="main">
+				<Outlet />
+			</main>
+			<SiteFooter />
+		</>
+	);
+}
 
-			{/* Footer */}
-			<footer className="w-full max-w-5xl px-6 py-12 border-t border-border flex justify-center items-center text-muted-foreground text-sm">
-				<p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
-			</footer>
+/** Adds `is-in` once to each `[data-reveal]` element as it scrolls into view. */
+function useRevealOnScroll() {
+	const router = useRouter();
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (!entry.isIntersecting) continue;
+					entry.target.classList.add("is-in");
+					observer.unobserve(entry.target);
+				}
+			},
+			{ rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+		);
+		const observeNew = () => {
+			for (const element of document.querySelectorAll(
+				"[data-reveal]:not(.is-in)",
+			)) {
+				observer.observe(element);
+			}
+		};
+		observeNew();
+		const unsubscribe = router.subscribe("onRendered", observeNew);
+		return () => {
+			unsubscribe();
+			observer.disconnect();
+		};
+	}, [router]);
+}
 
-      {/* DevTools - only in development */}
-      {import.meta.env.DEV && <TanStackRouterDevtools />}
-    </div>
-  );
+function NotFound() {
+	const { t } = useTranslation();
+	return (
+		<section className="frame pt-[28vh] pb-section">
+			<h1 className="col-span-12 text-head lg:col-start-6 lg:col-span-7">
+				{t("notFound.title")}
+			</h1>
+			<p className="col-span-12 mt-8 lg:col-start-6 lg:col-span-5">
+				{t("notFound.body")}
+			</p>
+			<p className="col-span-12 mt-6 lg:col-start-6 lg:col-span-5">
+				<Link to="/" className="link">
+					{t("notFound.home")}
+				</Link>
+			</p>
+		</section>
+	);
+}
+
+function RootError({ reset }: { reset: () => void }) {
+	const { t } = useTranslation();
+	const router = useRouter();
+	return (
+		<section className="frame pt-[28vh] pb-section">
+			<h1 className="col-span-12 text-head lg:col-start-6 lg:col-span-7">
+				{t("error.title")}
+			</h1>
+			<p className="col-span-12 mt-8 lg:col-start-6 lg:col-span-5">
+				{t("error.body")}
+			</p>
+			<p className="col-span-12 mt-6 lg:col-start-6 lg:col-span-5">
+				<button
+					type="button"
+					className="button"
+					onClick={() => {
+						reset();
+						router.invalidate();
+					}}
+				>
+					{t("error.retry")}
+				</button>
+			</p>
+		</section>
+	);
 }

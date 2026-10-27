@@ -1,41 +1,48 @@
 {
-	"header": {
-		"title": "THE SPANISH-ENGLISH",
-		"titleDot": ".",
-		"titleSuffix": "LANGUAGE SERVER"
+	"meta": {
+		"title": "El servidor de Discord Español-Inglés",
+		"description": "Un servidor de Discord gratuito donde hablantes de español e inglés se ayudan a aprender. Únete a {{members}} miembros que practican por texto y voz."
+	},
+	"nav": {
+		"home": "Inicio",
+		"resources": "Recursos",
+		"questions": "Preguntas",
+		"join": "Únete en Discord",
+		"language": "Idioma",
+		"skip": "Saltar al contenido",
+		"main": "Principal",
+		"menu": "Menú",
+		"close": "Cerrar",
+		"podcasts": "Pódcasts",
+		"movies": "Películas"
 	},
 	"status": {
-		"online": "{{count}}k en línea",
-		"total": "{{count}}k miembros",
-		"combined": "{{online}}k en línea · {{total}}k miembros",
-		"loading": "Cargando..."
+		"online": "{{online}} conectados ahora",
+		"members": "{{members}} miembros"
 	},
 	"footer": {
-		"copyright": "© {{year}} El Servidor de Discord Español-Inglés."
+		"server": "Servidor",
+		"since": "En Discord desde {{year}}",
+		"pages": "Páginas",
+		"language": "Idioma",
+		"credits": "Créditos",
+		"source": "Código fuente",
+		"illustration": "Ilustración de Belle, para el servidor",
+		"legal": "© {{year}} El servidor de Discord Español-Inglés. Sin relación con Discord Inc.",
+		"wordmark": "Español-Inglés"
 	},
-	"links": {
-		"newToDiscord": "¿Nuevo en Discord?",
-		"guidelines": "Normas",
-		"resources": "Recursos",
-		"support": "Soporte"
+	"languages": {
+		"en": "English",
+		"es": "Español"
 	},
-	"filter": {
-		"clearAll": "Limpiar todo"
+	"notFound": {
+		"title": "Página no encontrada",
+		"body": "Esta página no existe o cambió de sitio.",
+		"home": "Volver al inicio"
 	},
-	"pagination": {
-		"navAriaLabel": "Paginación",
-		"previous": "Anterior",
-		"next": "Siguiente",
-		"previousAria": "Ir a la página anterior",
-		"nextAria": "Ir a la página siguiente",
-		"morePages": "Más páginas",
-		"rowsPerPage": "Filas por página",
-		"selectPageSize": "Tamaño de página",
-		"pageSize": {
-			"10": "10 por página",
-			"20": "20 por página",
-			"25": "25 por página",
-			"50": "50 por página"
-		}
+	"error": {
+		"title": "Algo salió mal",
+		"body": "La página no cargó. Inténtalo de nuevo en un momento.",
+		"retry": "Reintentar"
 	}
 }

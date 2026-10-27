@@ -26,3 +26,11 @@ src/routeTree.gen.ts
 *.sln
 *.sw?
 .tanstack/
+
+# Build output
+.output
+.nitro
+.vercel
+
+# taste-skill working files (direction sheet, inspector screenshots)
+.taste-skill

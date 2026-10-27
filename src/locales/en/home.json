@@ -1,15 +1,122 @@
 {
 	"hero": {
-		"title": "Where Languages",
-		"titleHighlight": "Become Bridges.",
-		"descriptionStart": "The largest Spanish-English exchange on Discord. Connect with native speakers from",
-		"descriptionEnd": "and beyond.",
-		"description": "The largest Spanish-English exchange on Discord. Connect with native speakers, practice your fluency, and discover cultures from Madrid to Mexico City, London to Los Angeles."
+		"line1": "Learn Spanish.",
+		"line2": "Teach English.",
+		"imageAlt": "Illustrated shopfront under a Spanish and British flag sign, with a Welcome banner and a group of members holding flags from many countries",
+		"sentence": "A free Discord server where Spanish and English speakers help each other learn, every day since {{year}}.",
+		"members": "{{members}} members",
+		"online": "{{online}} online now"
+	},
+	"intro": {
+		"title": "One server, two languages",
+		"lead": "Everyone here is learning Spanish or English, and many speak the other one natively. So every conversation is an exchange: you get help in the language you want and give it in the one you know.",
+		"who": {
+			"title": "Who.",
+			"body": "Learners and native speakers from Spain, Latin America, the United States, the United Kingdom and everywhere between. Every level is welcome, from first words to fluent."
+		},
+		"what": {
+			"title": "What.",
+			"body": "Ask how something is said, get advice on grammar and vocabulary, talk in the voice channels, or just chat. Language exchange and casual conversation, in both languages."
+		},
+		"where": {
+			"title": "Where.",
+			"body": "On Discord, since November 2016, as a Discord Partner server. With members in every time zone, someone is always around to answer."
+		},
+		"how": {
+			"title": "How.",
+			"body": "It's free. You need a Discord account, in the app or the browser. Open discord.gg/spanish-english, accept the rules, and you're in."
+		}
+	},
+	"steps": {
+		"title": "How joining works",
+		"one": {
+			"line": "First, open the invite.",
+			"body": "It works in the Discord app or straight in your browser."
+		},
+		"two": {
+			"line": "Then accept the rules.",
+			"body": "New members wait ten minutes before their first message."
+		},
+		"three": {
+			"line": "Say what you speak.",
+			"body": "A few questions tell others your language and your level."
+		},
+		"four": {
+			"line": "Then start talking.",
+			"body": "Write in the language you're learning. Someone who speaks it will answer."
+		}
+	},
+	"clock": {
+		"title": "Someone is awake right now",
+		"label": "Local time",
+		"spanish": "Spanish",
+		"english": "English",
+		"online": "{{online}} members are online at this moment.",
+		"onlineUnknown": "Members in every time zone, all day.",
+		"imageAlt": "The Casa de Correos on the Puerta del Sol in Madrid, with trams and crowds, on an early twentieth-century postcard",
+		"cities": {
+			"madrid": "Madrid",
+			"mexicoCity": "Mexico City",
+			"bogota": "Bogotá",
+			"buenosAires": "Buenos Aires",
+			"london": "London",
+			"newYork": "New York",
+			"losAngeles": "Los Angeles",
+			"sydney": "Sydney"
+		}
+	},
+	"resources": {
+		"title": "Between conversations",
+		"body": "Podcasts and films the community recommends, sorted by language and level.",
+		"podcasts": "Podcasts",
+		"podcastsCount_one": "{{count}} show",
+		"podcastsCount_other": "{{count}} shows",
+		"movies": "Movies",
+		"moviesCount_one": "{{count}} film",
+		"moviesCount_other": "{{count}} films",
+		"suggest": "Know something that belongs here? Suggest it in the server."
+	},
+	"faq": {
+		"title": "Questions",
+		"items": {
+			"free": {
+				"q": "Is it free?",
+				"a": "Yes. Joining the server costs nothing, and neither does a Discord account."
+			},
+			"level": {
+				"q": "Do I need to speak already?",
+				"a": "No. Members range from complete beginners to native speakers. Say your level when you join and people will meet you there."
+			},
+			"variety": {
+				"q": "Which Spanish? Which English?",
+				"a": "All of them. Members come from Spain and across Latin America, the United States, the United Kingdom and beyond, so you'll hear different accents and different words for the same thing."
+			},
+			"wait": {
+				"q": "Why can't I post straight away?",
+				"a": "The server uses Discord's high verification level: your account needs a verified email and must be at least five minutes old, and you need to have been in the server for ten minutes. It keeps spam out."
+			},
+			"voice": {
+				"q": "Do I have to use voice?",
+				"a": "No. You can stay in text the whole time. The voice channels are there when you want to practise speaking."
+			},
+			"age": {
+				"q": "How old do I have to be?",
+				"a": "Discord's own minimum: 13 in most countries, older in some. The server follows Discord's terms."
+			}
+		}
 	},
 	"cta": {
-		"join": "Join the Server"
-	},
-	"testimonials": {
-		"title": "A few testimonials from our members:"
+		"title": "Your turn to talk",
+		"before": "{{members}} people are already practising. ",
+		"beforeNoCount": "Thousands of people are already practising. ",
+		"link": "Join them on Discord",
+		"after": ".",
+		"small": "discord.gg/spanish-english · Free · Takes a minute",
+		"iconAlt": "The server's current icon",
+		"photos": {
+			"one": "The Paseo de la Reforma in Mexico City, with the equestrian statue of Charles IV, 1909",
+			"two": "Piccadilly Circus in London with horse-drawn omnibuses, around 1900",
+			"three": "Avenida de Mayo in Buenos Aires with trams and carriages, early twentieth century"
+		}
 	}
 }

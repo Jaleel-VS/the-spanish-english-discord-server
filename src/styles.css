@@ -1,0 +1,233 @@
+@import "tailwindcss";
+@import "@fontsource-variable/bricolage-grotesque/opsz.css";
+
+/*
+ * Two-colour print: paper, one ink and one accent. The ink is the deep blue of
+ * the Union flag, the accent the yellow of the Spanish one; both are the
+ * server's own colours (its icon, its sign, its splash art).
+ */
+:root {
+	color-scheme: light dark;
+
+	--ground: #f5f5f3;
+	--surface: #e8e8e4;
+	--ink: #0f1e3d;
+	--muted: #4e586c;
+	--accent: #f1bf00;
+	--accent-ink: #0f1e3d;
+	--inverse: #0f1e3d;
+	--inverse-ink: #f5f5f3;
+	--inverse-muted: #b4bccc;
+
+	--margin: clamp(20px, 3.4vw, 48px);
+	--gutter: 24px;
+	--section: clamp(120px, 14vw, 200px);
+	--band: clamp(72px, 8vw, 120px);
+
+	--step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+	--step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+	--step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+	--step-head: clamp(2.25rem, 1.3rem + 3.6vw, 4.5rem);
+	--step-display: clamp(3.5rem, 1rem + 7vw, 6.75rem);
+
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+	--t-press: 140ms;
+	--t-hover: 180ms;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--ground: #0d1730;
+		--surface: #16234a;
+		--ink: #f2f2f0;
+		--muted: #b4bccc;
+		--inverse: #f2f2f0;
+		--inverse-ink: #0d1730;
+		--inverse-muted: #4e586c;
+	}
+}
+
+@theme inline {
+	--font-sans:
+		"Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+
+	--color-ground: var(--ground);
+	--color-surface: var(--surface);
+	--color-ink: var(--ink);
+	--color-muted: var(--muted);
+	--color-accent: var(--accent);
+	--color-accent-ink: var(--accent-ink);
+	--color-inverse: var(--inverse);
+	--color-inverse-ink: var(--inverse-ink);
+	--color-inverse-muted: var(--inverse-muted);
+
+	--text-small: var(--step-small);
+	--text-body: var(--step-body);
+	--text-lead: var(--step-lead);
+	--text-head: var(--step-head);
+	--text-display: var(--step-display);
+
+	--spacing-margin: var(--margin);
+	--spacing-gutter: var(--gutter);
+	--spacing-section: var(--section);
+	--spacing-band: var(--band);
+}
+
+@layer base {
+	html {
+		background: var(--ground);
+		color: var(--ink);
+		font-family: var(--font-sans);
+		font-size: 100%;
+		-webkit-text-size-adjust: 100%;
+		scroll-padding-top: 96px;
+	}
+
+	body {
+		font-size: var(--step-body);
+		line-height: 1.5;
+		font-optical-sizing: auto;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	h1,
+	h2,
+	h3 {
+		font-weight: 600;
+		letter-spacing: -0.04em;
+		line-height: 0.95;
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	::selection {
+		background: var(--accent);
+		color: var(--accent-ink);
+	}
+
+	:focus-visible {
+		outline: 3px solid var(--accent);
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+}
+
+@layer components {
+	/* One 12-column grid with equal outer margins, used by every section. */
+	.frame {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		column-gap: var(--gutter);
+		padding-inline: var(--margin);
+	}
+
+	/* The one button shape on the site: flat, square, one fill. */
+	.button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6em;
+		min-height: 48px;
+		padding: 0 1.25rem;
+		background: var(--accent);
+		color: var(--accent-ink);
+		font-weight: 600;
+		font-size: var(--step-body);
+		transition:
+			transform var(--t-press) var(--ease-out),
+			background-color var(--t-hover) var(--ease-out);
+	}
+	.button:hover {
+		background: color-mix(in oklab, var(--accent) 86%, var(--ink));
+	}
+	.button:active {
+		transform: translateY(1px) scale(0.98);
+	}
+	.button .arrow {
+		transition: transform 240ms var(--ease-out);
+	}
+	.button:hover .arrow {
+		transform: translateX(4px);
+	}
+
+	/* Text links: underline that thickens on hover. */
+	.link {
+		text-decoration: underline;
+		text-decoration-thickness: 1.5px;
+		text-underline-offset: 0.2em;
+		transition: text-decoration-thickness var(--t-hover) var(--ease-out);
+	}
+	.link:hover {
+		text-decoration-thickness: 3px;
+	}
+
+	/* Masked line reveal: each authored headline line rises from its baseline. */
+	.lines .line {
+		display: block;
+		overflow: clip;
+		padding-bottom: 0.1em;
+		margin-bottom: -0.1em;
+	}
+	.lines [data-line] {
+		display: block;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.js .lines [data-line] {
+		transform: translateY(105%);
+		animation: line-up 900ms var(--ease-expo) forwards;
+		animation-delay: calc(var(--i, 0) * 110ms + 150ms);
+	}
+	.js [data-load] {
+		opacity: 0;
+		transform: translateY(12px);
+		animation: rise 500ms var(--ease-out) forwards;
+		animation-delay: var(--d, 420ms);
+	}
+	.js [data-reveal] {
+		opacity: 0;
+		transform: translateY(24px);
+		transition:
+			opacity 700ms var(--ease-out),
+			transform 900ms var(--ease-out);
+		transition-delay: calc(var(--i, 0) * 75ms);
+	}
+	.js [data-reveal].is-in {
+		opacity: 1;
+		transform: none;
+	}
+	.drift {
+		animation: drift 24s var(--ease-in-out) infinite alternate;
+	}
+}
+
+@keyframes line-up {
+	to {
+		transform: none;
+	}
+}
+@keyframes rise {
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes drift {
+	from {
+		transform: scale(1.06) translate3d(-1.5%, 0, 0);
+	}
+	to {
+		transform: scale(1.06) translate3d(1.5%, -1%, 0);
+	}
+}

@@ -1,72 +1,61 @@
 {
-	"nav": {
-		"backToResources": "Volver a Recursos"
+	"meta": {
+		"podcasts": "Pódcasts · El servidor de Discord Español-Inglés",
+		"movies": "Películas · El servidor de Discord Español-Inglés"
 	},
-	"index": {
-		"title": "Recursos",
-		"description": "Recursos seleccionados para ayudarte a aprender español e inglés.",
-		"tiles": {
-			"podcasts": "Podcasts",
-			"videos": "Videos",
-			"books": "Libros",
-			"courses": "Cursos",
-			"conversation": "Conversación",
-			"music": "Música",
-			"movies": "Películas"
+	"filter": {
+		"language": "Idioma",
+		"level": "Nivel",
+		"genre": "Género",
+		"all": "Todos",
+		"clear": "Quitar filtros",
+		"showing_one": "Mostrando {{count}} de {{total}}",
+		"showing_other": "Mostrando {{count}} de {{total}}"
+	},
+	"language": {
+		"es": "Español",
+		"en": "Inglés",
+		"both": "Los dos"
+	},
+	"genre": {
+		"drama": "Drama",
+		"fantasy": "Fantasía",
+		"sci-fi": "Ciencia ficción",
+		"thriller": "Suspense"
+	},
+	"variousCountries": "Varios países",
+	"level": {
+		"beginner": "Principiante",
+		"intermediate": "Intermedio",
+		"advanced": "Avanzado"
+	},
+	"podcasts": {
+		"title": "Pódcasts",
+		"imageAlt": "Un locutor de radio lee un guion en la mesa de un estudio con un micrófono de cuello flexible, años treinta",
+		"lead": "Programas para aprender español e inglés de oído. Abre uno y se reproduce en su propia web.",
+		"empty": "Ningún pódcast coincide con estos filtros.",
+		"columns": {
+			"show": "Programa",
+			"language": "Idioma",
+			"level": "Nivel",
+			"from": "Origen"
 		}
 	},
 	"movies": {
 		"title": "Películas",
-		"description": "Películas y series para practicar la escucha en español e inglés.",
-		"loading": "Cargando películas...",
-		"error": "Error al cargar películas",
-		"empty": "Ninguna película coincide con tus filtros.",
-		"badge": {
-			"bilingual": "EN/ES"
-		},
-		"filter": {
-			"audioLanguage": "Idioma del audio",
-			"audio": {
-				"en": "Inglés",
-				"es": "Español",
-				"both": "Bilingüe"
-			},
+		"imageAlt": "La fachada del Cine Cataluña en la avenida Corrientes de Buenos Aires, con carteles de películas sobre la entrada, 1929",
+		"lead": "Películas para practicar la escucha. Cada una se abre en IMDb, donde puedes ver dónde verla.",
+		"empty": "Ninguna película coincide con estos filtros.",
+		"columns": {
+			"film": "Película",
+			"audio": "Audio",
 			"genre": "Género",
-			"country": "País",
-			"search": "Buscar",
-			"archived": {
-				"label": "Estado de archivo",
-				"true": "Archivadas",
-				"false": "Activas"
-			}
-		}
+			"year": "Año"
+		},
+		"previous": "Página anterior",
+		"next": "Página siguiente",
+		"page": "Página {{page}} de {{total}}"
 	},
-	"podcasts": {
-		"title": "Podcasts",
-		"description": "Podcasts seleccionados para ayudarte a aprender español e inglés.",
-		"loading": "Cargando podcasts...",
-		"error": "Error al cargar podcasts",
-		"empty": "No hay podcasts disponibles todavía.",
-		"report": {
-			"deadLink": "Reportar enlace roto",
-			"reported": "Reportado"
-		},
-		"badge": {
-			"bilingual": "EN/ES"
-		},
-		"filter": {
-			"level": "Nivel",
-			"language": "Idioma",
-			"levelOption": {
-				"beginner": "Principiante",
-				"intermediate": "Intermedio",
-				"advanced": "Avanzado"
-			},
-			"languageOption": {
-				"es": "Español",
-				"en": "Inglés",
-				"both": "Bilingüe"
-			}
-		}
-	}
+	"opens": "se abre en una pestaña nueva",
+	"back": "Todos los recursos"
 }

@@ -1,15 +1,122 @@
 {
 	"hero": {
-		"title": "Donde los Idiomas",
-		"titleHighlight": "Se Vuelven Puentes.",
-		"descriptionStart": "El mayor intercambio de Español-Inglés en Discord. Conéctate con hablantes nativos de",
-		"descriptionEnd": "y más allá.",
-		"description": "El mayor intercambio de Español-Inglés en Discord. Conéctate con hablantes nativos, practica tu fluidez y descubre culturas desde Madrid hasta Ciudad de México, Londres hasta Los Ángeles."
+		"line1": "Aprende inglés.",
+		"line2": "Enseña español.",
+		"imageAlt": "Ilustración de una tienda bajo un letrero con las banderas de España y del Reino Unido, con un cartel de bienvenida y un grupo de miembros con banderas de muchos países",
+		"sentence": "Un servidor de Discord gratuito donde hablantes de español e inglés se ayudan a aprender, todos los días desde {{year}}.",
+		"members": "{{members}} miembros",
+		"online": "{{online}} conectados ahora"
+	},
+	"intro": {
+		"title": "Un servidor, dos idiomas",
+		"lead": "Aquí todos aprenden español o inglés, y muchos hablan el otro como lengua materna. Así cada conversación es un intercambio: recibes ayuda en el idioma que quieres y la das en el que ya sabes.",
+		"who": {
+			"title": "Quién.",
+			"body": "Estudiantes y hablantes nativos de España, Latinoamérica, Estados Unidos, el Reino Unido y todo lo que hay en medio. Todos los niveles son bienvenidos, desde las primeras palabras hasta la fluidez."
+		},
+		"what": {
+			"title": "Qué.",
+			"body": "Pregunta cómo se dice algo, pide consejo sobre gramática y vocabulario, habla en los canales de voz o simplemente charla. Intercambio de idiomas y conversación, en los dos idiomas."
+		},
+		"where": {
+			"title": "Dónde.",
+			"body": "En Discord, desde noviembre de 2016, como servidor Partner de Discord. Con miembros en todas las zonas horarias, siempre hay alguien para responder."
+		},
+		"how": {
+			"title": "Cómo.",
+			"body": "Es gratis. Necesitas una cuenta de Discord, en la aplicación o en el navegador. Abre discord.gg/spanish-english, acepta las reglas y ya estás dentro."
+		}
+	},
+	"steps": {
+		"title": "Cómo unirte",
+		"one": {
+			"line": "Primero, abre la invitación.",
+			"body": "Funciona en la aplicación de Discord o directamente en el navegador."
+		},
+		"two": {
+			"line": "Luego acepta las reglas.",
+			"body": "Los miembros nuevos esperan diez minutos antes de su primer mensaje."
+		},
+		"three": {
+			"line": "Di qué idioma hablas.",
+			"body": "Unas preguntas cuentan a los demás tu idioma y tu nivel."
+		},
+		"four": {
+			"line": "Y empieza a hablar.",
+			"body": "Escribe en el idioma que aprendes. Alguien que lo habla te responderá."
+		}
+	},
+	"clock": {
+		"title": "Siempre hay alguien despierto",
+		"label": "Hora local",
+		"spanish": "Español",
+		"english": "Inglés",
+		"online": "{{online}} miembros están conectados en este momento.",
+		"onlineUnknown": "Miembros en todas las zonas horarias, a todas horas.",
+		"imageAlt": "La Casa de Correos en la Puerta del Sol de Madrid, con tranvías y gente, en una postal de principios del siglo veinte",
+		"cities": {
+			"madrid": "Madrid",
+			"mexicoCity": "Ciudad de México",
+			"bogota": "Bogotá",
+			"buenosAires": "Buenos Aires",
+			"london": "Londres",
+			"newYork": "Nueva York",
+			"losAngeles": "Los Ángeles",
+			"sydney": "Sídney"
+		}
+	},
+	"resources": {
+		"title": "Entre conversaciones",
+		"body": "Pódcasts y películas que recomienda la comunidad, ordenados por idioma y nivel.",
+		"podcasts": "Pódcasts",
+		"podcastsCount_one": "{{count}} programa",
+		"podcastsCount_other": "{{count}} programas",
+		"movies": "Películas",
+		"moviesCount_one": "{{count}} película",
+		"moviesCount_other": "{{count}} películas",
+		"suggest": "¿Conoces algo que debería estar aquí? Propónlo en el servidor."
+	},
+	"faq": {
+		"title": "Preguntas",
+		"items": {
+			"free": {
+				"q": "¿Es gratis?",
+				"a": "Sí. Unirte al servidor no cuesta nada, y una cuenta de Discord tampoco."
+			},
+			"level": {
+				"q": "¿Necesito hablar ya el idioma?",
+				"a": "No. Hay desde principiantes absolutos hasta hablantes nativos. Indica tu nivel al entrar y la gente se adaptará a ti."
+			},
+			"variety": {
+				"q": "¿Qué español? ¿Qué inglés?",
+				"a": "Todos. Hay miembros de España y de toda Latinoamérica, de Estados Unidos, del Reino Unido y de más lugares, así que oirás acentos distintos y palabras distintas para lo mismo."
+			},
+			"wait": {
+				"q": "¿Por qué no puedo escribir enseguida?",
+				"a": "El servidor usa el nivel de verificación alto de Discord: tu cuenta necesita un correo verificado y al menos cinco minutos de antigüedad, y debes llevar diez minutos en el servidor. Así se evita el spam."
+			},
+			"voice": {
+				"q": "¿Tengo que usar la voz?",
+				"a": "No. Puedes quedarte en el texto todo el tiempo. Los canales de voz están ahí cuando quieras practicar la conversación."
+			},
+			"age": {
+				"q": "¿Qué edad necesito?",
+				"a": "La mínima de Discord: 13 años en la mayoría de los países, más en algunos. El servidor sigue las condiciones de Discord."
+			}
+		}
 	},
 	"cta": {
-		"join": "Únete al Servidor"
-	},
-	"testimonials": {
-		"title": "Algunos testimonios de nuestros miembros:"
+		"title": "Te toca hablar",
+		"before": "{{members}} personas ya están practicando. ",
+		"beforeNoCount": "Miles de personas ya están practicando. ",
+		"link": "Únete en Discord",
+		"after": ".",
+		"small": "discord.gg/spanish-english · Gratis · Te lleva un minuto",
+		"iconAlt": "El icono actual del servidor",
+		"photos": {
+			"one": "El Paseo de la Reforma en Ciudad de México, con la estatua ecuestre de Carlos IV, 1909",
+			"two": "Piccadilly Circus en Londres con ómnibus de caballos, hacia 1900",
+			"three": "La Avenida de Mayo en Buenos Aires con tranvías y carruajes, principios del siglo veinte"
+		}
 	}
 }
