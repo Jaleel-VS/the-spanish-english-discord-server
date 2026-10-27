@@ -34,3 +34,6 @@ src/routeTree.gen.ts
 
 # taste-skill working files (direction sheet, inspector screenshots)
 .taste-skill
+
+# Secrets pulled by `vercel env pull`
+.env*
