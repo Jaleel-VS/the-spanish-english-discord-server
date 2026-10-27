@@ -1,7 +1,8 @@
 {
 	"meta": {
 		"title": "El servidor de Discord Español-Inglés",
-		"description": "Un servidor de Discord gratuito donde hablantes de español e inglés se ayudan a aprender. Únete a {{members}} miembros que practican por texto y voz."
+		"description": "Un servidor de Discord gratuito donde hablantes de español e inglés se ayudan a aprender. Únete a {{members}} miembros que practican por texto y voz.",
+		"descriptionNoCount": "Un servidor de Discord gratuito donde hablantes de español e inglés se ayudan a aprender, practicando por texto y voz."
 	},
 	"nav": {
 		"home": "Inicio",

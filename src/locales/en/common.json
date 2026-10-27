@@ -1,7 +1,8 @@
 {
 	"meta": {
 		"title": "The Spanish-English Discord Server",
-		"description": "A free Discord server where Spanish and English speakers help each other learn. Join {{members}} members practising in text and voice."
+		"description": "A free Discord server where Spanish and English speakers help each other learn. Join {{members}} members practising in text and voice.",
+		"descriptionNoCount": "A free Discord server where Spanish and English speakers help each other learn, practising in text and voice."
 	},
 	"nav": {
 		"home": "Home",

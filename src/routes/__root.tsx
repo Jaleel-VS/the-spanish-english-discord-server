@@ -23,8 +23,12 @@ export const Route = createRootRoute({
 	staleTime: 5 * 60 * 1000,
 	head: ({ match, loaderData }) => {
 		const copy = resources[match.context.language].common.meta;
-		const members = loaderData?.members.toLocaleString(match.context.language);
-		const description = copy.description.replace("{{members}}", members ?? "");
+		const description = loaderData
+			? copy.description.replace(
+					"{{members}}",
+					loaderData.members.toLocaleString(match.context.language),
+				)
+			: copy.descriptionNoCount;
 		return {
 			meta: [
 				{ charSet: "utf-8" },
