@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
+import { ResourceKindTile } from "@/components/resources/ResourceKindTile";
 import { resources } from "@/i18n";
-import { photoCredits } from "@/lib/credits";
 import { stagger } from "@/lib/motion";
 import { resourceKinds } from "@/lib/resource-kinds";
 import { INVITE_URL } from "@/lib/site";
@@ -48,55 +48,20 @@ function ResourcesIndex() {
 			</div>
 
 			<ul className="frame mt-16 gap-y-gutter md:mt-20">
-				{resourceKinds.map((kind, index) => {
-					const credit = photoCredits.find(
-						(photo) => photo.slug === kind.image,
-					);
-					return (
-						<li
-							key={kind.id}
-							className="col-span-12 md:col-span-6"
-							style={stagger(index)}
-							data-reveal
-						>
-							<Link
-								className="group flex h-full items-center gap-5 bg-surface p-4 transition-colors duration-200 hover:bg-[color-mix(in_oklab,var(--surface)_85%,var(--ink))] md:gap-6 md:p-5"
-								to="/resources/$kind"
-								params={{ kind: kind.id }}
-							>
-								<span className="aspect-[4/3] w-28 shrink-0 overflow-clip md:w-40">
-									<img
-										src={`/images/${kind.image}.jpg`}
-										alt={t(`kinds.${kind.id}.imageAlt`)}
-										width={credit?.width}
-										height={credit?.height}
-										loading={index < 4 ? undefined : "lazy"}
-										className="h-full w-full object-cover grayscale contrast-[1.05]"
-									/>
-								</span>
-								<span className="flex min-w-0 flex-1 flex-col gap-1">
-									<span className="flex flex-wrap items-baseline justify-between gap-x-4">
-										<span className="text-lead font-semibold tracking-[-0.02em] group-hover:underline">
-											{t(`kinds.${kind.id}.title`)}
-										</span>
-										<span className="flex items-baseline gap-2 whitespace-nowrap font-medium">
-											{t(`kinds.${kind.id}.count`, { count: counts[kind.id] })}
-											<span
-												aria-hidden="true"
-												className="inline-block transition-transform duration-300 group-hover:translate-x-1"
-											>
-												→
-											</span>
-										</span>
-									</span>
-									<span className="text-muted">
-										{t(`kinds.${kind.id}.body`)}
-									</span>
-								</span>
-							</Link>
-						</li>
-					);
-				})}
+				{resourceKinds.map((kind, index) => (
+					<li
+						key={kind.id}
+						className="col-span-12 md:col-span-6"
+						style={stagger(index)}
+						data-reveal
+					>
+						<ResourceKindTile
+							kind={kind}
+							count={counts[kind.id]}
+							eager={index < 4}
+						/>
+					</li>
+				))}
 			</ul>
 		</article>
 	);

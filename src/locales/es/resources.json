@@ -47,8 +47,8 @@
 			"title": "Gramáticas y libros de ejercicios",
 			"body": "Manuales, gramáticas de consulta y cuadernos de ejercicios con soluciones.",
 			"lead": "Libros para estudiar: gramáticas, cuadernos de ejercicios y libros de curso, ordenados por nivel.",
-			"count_one": "{{count}} libro",
-			"count_other": "{{count}} libros",
+			"count_one": "{{count}} cuaderno",
+			"count_other": "{{count}} cuadernos",
 			"imageAlt": "Escolares escribiendo en pupitres de madera en un aula, principios del siglo veinte"
 		},
 		"musicians": {
@@ -93,6 +93,7 @@
 		"next": "Página siguiente",
 		"label": "Página {{page}} de {{total}}"
 	},
+	"noneYet": "Aún nada",
 	"opens": "se abre en una pestaña nueva",
 	"back": "Todos los recursos"
 }

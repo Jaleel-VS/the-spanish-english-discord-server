@@ -47,8 +47,8 @@
 			"title": "Grammar and exercise books",
 			"body": "Textbooks, grammar references and workbooks with exercises and answer keys.",
 			"lead": "Books to study with: grammars, exercise books and course books, sorted by level.",
-			"count_one": "{{count}} book",
-			"count_other": "{{count}} books",
+			"count_one": "{{count}} workbook",
+			"count_other": "{{count}} workbooks",
 			"imageAlt": "Schoolchildren writing at wooden desks in a classroom, early twentieth century"
 		},
 		"musicians": {
@@ -93,6 +93,7 @@
 		"next": "Next page",
 		"label": "Page {{page}} of {{total}}"
 	},
+	"noneYet": "None yet",
 	"opens": "opens in a new tab",
 	"back": "All resources"
 }
