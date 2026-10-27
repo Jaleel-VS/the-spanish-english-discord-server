@@ -181,6 +181,88 @@
 	.lines [data-line] {
 		display: block;
 	}
+
+	/* Rendered Markdown (guides, bot pages): one reading measure, the site's type steps. */
+	.prose {
+		max-width: 64ch;
+	}
+	.prose > * + * {
+		margin-top: 1.1em;
+	}
+	.prose h2 {
+		margin-top: 2.2em;
+		font-size: var(--step-lead);
+		letter-spacing: -0.02em;
+		line-height: 1.15;
+	}
+	.prose h3 {
+		margin-top: 1.8em;
+		font-size: var(--step-body);
+		letter-spacing: 0;
+		line-height: 1.3;
+	}
+	.prose a {
+		text-decoration: underline;
+		text-decoration-thickness: 1.5px;
+		text-underline-offset: 0.2em;
+	}
+	.prose a:hover {
+		text-decoration-thickness: 3px;
+	}
+	.prose ul,
+	.prose ol {
+		padding-left: 1.4em;
+	}
+	.prose ul {
+		list-style: disc;
+	}
+	.prose ol {
+		list-style: decimal;
+	}
+	.prose li + li {
+		margin-top: 0.4em;
+	}
+	.prose code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.9em;
+		background: var(--surface);
+		padding: 0.1em 0.35em;
+	}
+	.prose pre {
+		background: var(--surface);
+		padding: 1rem 1.25rem;
+		overflow-x: auto;
+	}
+	.prose pre code {
+		background: none;
+		padding: 0;
+	}
+	.prose table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: var(--step-body);
+	}
+	.prose th,
+	.prose td {
+		padding: 0.6em 1em 0.6em 0;
+		text-align: left;
+		vertical-align: top;
+	}
+	.prose th {
+		font-weight: 600;
+	}
+	.prose tbody tr:nth-child(odd) td {
+		background: color-mix(in oklab, var(--surface) 55%, transparent);
+	}
+	.prose blockquote {
+		padding-left: 1.25em;
+		border-left: 4px solid var(--accent);
+		color: var(--muted);
+	}
+	.prose img {
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 @media (prefers-reduced-motion: no-preference) {

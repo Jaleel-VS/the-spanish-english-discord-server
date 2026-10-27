@@ -1,0 +1,21 @@
+{
+	"meta": {
+		"index": "Bots · The Spanish-English Discord Server",
+		"suffix": "Bots · The Spanish-English Discord Server"
+	},
+	"index": {
+		"title": "Bots",
+		"lead": "The bots that run in the server: what each one does and the commands members use most.",
+		"summary_one": "{{count}} bot.",
+		"summary_other": "{{count}} bots.",
+		"suggest": "A command you can't work out? Ask in the server.",
+		"empty": "Nothing written up yet."
+	},
+	"facts": {
+		"prefix": "Command prefix:",
+		"repository": "Source code",
+		"updated": "Updated {{date}}"
+	},
+	"onlyIn": "This page is only available in {{language}} for now.",
+	"back": "All bots"
+}

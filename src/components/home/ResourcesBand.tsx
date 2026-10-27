@@ -38,7 +38,11 @@ export function ResourcesBand({ counts }: { counts: CatalogueCounts }) {
 						);
 						return (
 							<li key={kind.id} data-reveal style={stagger(index + 2)}>
-								<Link to={kind.to} className="group block">
+								<Link
+									to="/resources/$kind"
+									params={{ kind: kind.id }}
+									className="group block"
+								>
 									<span className="block aspect-[4/3] overflow-clip">
 										<img
 											src={`/images/${kind.image}.jpg`}

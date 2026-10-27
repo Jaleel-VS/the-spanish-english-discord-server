@@ -8,6 +8,7 @@ export type ResourceLanguage = (typeof resourceLanguages)[number];
 export const levels = ["beginner", "intermediate", "advanced"] as const;
 export type Level = (typeof levels)[number];
 
+/** Film genres (the `genre` filter on the movies page). */
 export const genres = ["drama", "fantasy", "sci-fi", "thriller"] as const;
 export type Genre = (typeof genres)[number];
 
@@ -17,26 +18,23 @@ export interface Localized {
 	es: string;
 }
 
-export interface Podcast {
+/**
+ * One entry of any kind. Fields that only some kinds use (level, genre,
+ * release year, creator) are null for the others.
+ */
+export interface Resource {
 	id: string;
+	kind: ResourceKind;
 	title: string;
+	/** Author, artist, host or channel owner, where it adds something to the title. */
+	creator: string | null;
 	description: Localized;
 	language: ResourceLanguage;
-	level: Level;
-	/** ISO 3166-1 alpha-2 code, named in the visitor's language; null when hosts are from several countries. */
+	level: Level | null;
+	/** ISO 3166-1 alpha-2 code, named in the visitor's language; null for several countries. */
 	country: string | null;
-	url: string;
-}
-
-export interface Movie {
-	id: string;
-	title: string;
-	description: Localized;
-	audioLanguage: ResourceLanguage;
-	/** ISO 3166-1 alpha-2 code. */
-	country: string;
-	genre: Genre;
-	releaseYear: number;
+	genre: Genre | null;
+	releaseYear: number | null;
 	url: string;
 }
 
@@ -51,18 +49,14 @@ export interface Page<T> {
 export type CatalogueCounts = Record<ResourceKind, number>;
 
 /**
- * URL search params of the podcasts page. Parsed leniently (`catch`) because
- * they come from hand-edited URLs: a bad value is dropped, not a 500.
+ * URL search params of a resource kind's page. Parsed leniently (`catch`)
+ * because they come from hand-edited URLs: a bad value is dropped, not a 500.
+ * A kind ignores the filters it does not offer.
  */
-export const podcastSearchSchema = z.object({
+export const resourceSearchSchema = z.object({
 	language: z.enum(resourceLanguages).optional().catch(undefined),
 	level: z.enum(levels).optional().catch(undefined),
-});
-export type PodcastSearch = z.output<typeof podcastSearchSchema>;
-
-export const movieSearchSchema = z.object({
-	language: z.enum(resourceLanguages).optional().catch(undefined),
 	genre: z.enum(genres).optional().catch(undefined),
 	page: z.coerce.number().int().min(1).max(10_000).optional().catch(undefined),
 });
-export type MovieSearch = z.output<typeof movieSearchSchema>;
+export type ResourceSearch = z.output<typeof resourceSearchSchema>;

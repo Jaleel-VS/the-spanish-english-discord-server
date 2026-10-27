@@ -1,0 +1,21 @@
+{
+	"meta": {
+		"index": "Guides · The Spanish-English Discord Server",
+		"suffix": "Guides · The Spanish-English Discord Server"
+	},
+	"index": {
+		"title": "Guides",
+		"lead": "How things work in the server: joining, roles, the voice channels, asking for corrections, and what the moderators expect.",
+		"summary_one": "{{count}} guide so far.",
+		"summary_other": "{{count}} guides so far.",
+		"suggest": "Something confusing that a guide would fix? Say so in the server.",
+		"empty": "No guides yet. They are being written."
+	},
+	"facts": {
+		"prefix": "Command prefix:",
+		"repository": "Source code",
+		"updated": "Updated {{date}}"
+	},
+	"onlyIn": "This guide is only available in {{language}} for now.",
+	"back": "All guides"
+}

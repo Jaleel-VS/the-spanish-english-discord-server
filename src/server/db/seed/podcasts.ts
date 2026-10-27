@@ -1,6 +1,6 @@
-import type { Podcast } from "@/lib/catalog";
+import type { SeedEntry } from "./entry";
 
-export const podcasts: Podcast[] = [
+export const podcasts: SeedEntry[] = [
 	{
 		id: "spanishpod101",
 		title: "SpanishPod101",

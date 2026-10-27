@@ -27,10 +27,21 @@ export function SiteFooter() {
 						{t("nav.resources")}
 					</Link>
 					{resourceKinds.map((kind) => (
-						<Link key={kind.id} to={kind.to} className="link">
+						<Link
+							key={kind.id}
+							to="/resources/$kind"
+							params={{ kind: kind.id }}
+							className="link"
+						>
 							{t(`resources:kinds.${kind.id}.title`)}
 						</Link>
 					))}
+					<Link to="/guides" className="link">
+						{t("nav.guides")}
+					</Link>
+					<Link to="/bots" className="link">
+						{t("nav.bots")}
+					</Link>
 				</FooterColumn>
 				<FooterColumn title={t("footer.language")}>
 					<LanguageSwitch className="self-start" />

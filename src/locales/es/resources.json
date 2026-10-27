@@ -1,12 +1,11 @@
 {
 	"meta": {
 		"index": "Recursos · El servidor de Discord Español-Inglés",
-		"podcasts": "Pódcasts · El servidor de Discord Español-Inglés",
-		"movies": "Películas · El servidor de Discord Español-Inglés"
+		"suffix": "El servidor de Discord Español-Inglés"
 	},
 	"index": {
 		"title": "Recursos",
-		"lead": "Cosas que escuchar y ver entre conversaciones, elegidas por la comunidad. Cada una indica su idioma y su nivel.",
+		"lead": "Cosas que escuchar, ver y leer entre conversaciones, elegidas por la comunidad. Cada una indica su idioma y su nivel.",
 		"summary_one": "{{count}} entrada por ahora, en español, en inglés o en los dos.",
 		"summary_other": "{{count}} entradas por ahora, en español, en inglés o en los dos.",
 		"suggest": "¿Conoces algo que debería estar aquí? Propónlo en el servidor."
@@ -15,16 +14,50 @@
 		"podcasts": {
 			"title": "Pódcasts",
 			"body": "Lecciones, conversaciones e historias largas, desde programas para principiantes hasta Radio Ambulante.",
+			"lead": "Programas para aprender español e inglés de oído. Abre uno y se reproduce en su propia web.",
 			"count_one": "{{count}} programa",
 			"count_other": "{{count}} programas",
 			"imageAlt": "Un locutor de radio lee un guion en la mesa de un estudio con un micrófono de cuello flexible, años treinta"
 		},
+		"youtube": {
+			"title": "Canales de YouTube",
+			"body": "Canales que enseñan el idioma y canales que simplemente da gusto escuchar.",
+			"lead": "Canales para ver en español y en inglés, desde lecciones hasta vlogs cotidianos. Cada uno se abre en YouTube.",
+			"count_one": "{{count}} canal",
+			"count_other": "{{count}} canales",
+			"imageAlt": "Una familia reunida alrededor de un primer televisor, años cincuenta"
+		},
 		"movies": {
 			"title": "Películas",
 			"body": "Películas en español y en inglés, para practicar la escucha con subtítulos o sin ellos.",
+			"lead": "Películas para practicar la escucha. Cada una se abre en IMDb, donde puedes ver dónde verla.",
 			"count_one": "{{count}} película",
 			"count_other": "{{count}} películas",
 			"imageAlt": "La fachada del Cine Cataluña en la avenida Corrientes de Buenos Aires, con carteles de películas sobre la entrada, 1929"
+		},
+		"books": {
+			"title": "Libros",
+			"body": "Lecturas graduadas, cuentos y novelas que merecen el esfuerzo, por nivel.",
+			"lead": "Libros para leer en español y en inglés, desde lecturas graduadas hasta novelas. Cada uno se abre en la página de la editorial o de una librería.",
+			"count_one": "{{count}} libro",
+			"count_other": "{{count}} libros",
+			"imageAlt": "Lectores en largas mesas en la sala de lectura de una biblioteca, principios del siglo veinte"
+		},
+		"workbooks": {
+			"title": "Gramáticas y libros de ejercicios",
+			"body": "Manuales, gramáticas de consulta y cuadernos de ejercicios con soluciones.",
+			"lead": "Libros para estudiar: gramáticas, cuadernos de ejercicios y libros de curso, ordenados por nivel.",
+			"count_one": "{{count}} libro",
+			"count_other": "{{count}} libros",
+			"imageAlt": "Escolares escribiendo en pupitres de madera en un aula, principios del siglo veinte"
+		},
+		"musicians": {
+			"title": "Músicos",
+			"body": "Artistas con letras lo bastante claras para aprender de ellas, en todos los géneros.",
+			"lead": "Artistas para escuchar en español y en inglés. Busca las letras y canta con ellos; funciona.",
+			"count_one": "{{count}} artista",
+			"count_other": "{{count}} artistas",
+			"imageAlt": "Un grupo de músicos con guitarras y un contrabajo tocando, mediados del siglo veinte"
 		}
 	},
 	"filter": {
@@ -45,28 +78,20 @@
 		"sci-fi": "Ciencia ficción",
 		"thriller": "Suspense"
 	},
-	"variousCountries": "Varios países",
 	"level": {
 		"beginner": "Principiante",
 		"intermediate": "Intermedio",
 		"advanced": "Avanzado"
 	},
-	"podcasts": {
-		"lead": "Programas para aprender español e inglés de oído. Abre uno y se reproduce en su propia web.",
-		"empty": "Ningún pódcast coincide con estos filtros.",
-		"columns": {
-			"show": "Programa",
-			"language": "Idioma",
-			"level": "Nivel",
-			"from": "Origen"
-		}
+	"empty": {
+		"filtered": "Nada coincide con estos filtros.",
+		"none": "Aún no hay nada aquí. La comunidad sigue eligiendo.",
+		"suggest": "Propón el primero en el servidor."
 	},
-	"movies": {
-		"lead": "Películas para practicar la escucha. Cada una se abre en IMDb, donde puedes ver dónde verla.",
-		"empty": "Ninguna película coincide con estos filtros.",
+	"pagination": {
 		"previous": "Página anterior",
 		"next": "Página siguiente",
-		"page": "Página {{page}} de {{total}}"
+		"label": "Página {{page}} de {{total}}"
 	},
 	"opens": "se abre en una pestaña nueva",
 	"back": "Todos los recursos"

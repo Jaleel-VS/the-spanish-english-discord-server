@@ -38,25 +38,31 @@ The pages that read the catalogue need `DATABASE_URL`. Everything else works wit
 ## How it is put together
 
 ```
+content/
+  guides/            one Markdown file per guide and language: <slug>.en.md, <slug>.es.md
+  bots/              one Markdown file per bot and language
 src/
-  routes/            file routes: /, /resources (every kind), /resources/podcasts, /resources/movies;
+  routes/            /, /resources, /resources/$kind, /guides, /guides/$slug, /bots, /bots/$slug;
                      __root.tsx is the HTML shell
-  components/        site header and footer, home sections, resource-page parts
+  components/        site header and footer, home sections, resource and document page parts
   server/
     *.functions.ts   server functions (the backend's public surface, called from loaders)
     *.server.ts      server-only logic behind them
     db/              Drizzle schema, pooled client, seed script and seed data
-  lib/               client-safe types, Zod schemas, constants, image credits
+  lib/               client-safe types, Zod schemas, the resource-kind registry, image credits
   i18n/              i18next setup and language detection
   locales/{en,es}/   copy, one JSON file per namespace
 ```
 
 **Backend.** Everything that used to live in the separate Rust API now runs inside this app as [server functions](https://tanstack.com/start/latest/docs/framework/react/guide/server-functions):
 
-- `listPodcasts` and `listMovies` filter (and, for films, paginate) the catalogue. Their inputs are the same Zod schemas the routes use to validate URL search params.
+- `listResources` returns one page of a resource kind, with that kind's filters applied. Its input is the same Zod schema the route uses to validate URL search params.
+- `listCollection` and `readDocument` serve the guides and bot pages.
 - `getCommunity` reads the live member and online counts from Discord's public invite endpoint. It caches them for five minutes per server instance, so visitors never reach Discord's rate limit. If Discord has never answered, it returns `null` and the page leaves the numbers out.
 
-The catalogue lives in Neon Postgres: one database, connected to the Vercel project for production, preview and development. `src/server/db/client.server.ts` creates one connection pool per server instance on first use; `attachDatabasePool` from `@vercel/functions` lets Vercel Fluid compute close idle connections before an instance suspends, which is the connection pattern [Neon recommends for Vercel](https://neon.com/docs/guides/vercel-connection-methods). `src/server/catalog.server.ts` holds the queries.
+The catalogue lives in Neon Postgres, in one `resources` table with a `kind` column; columns only some kinds use (level, genre, release year, creator) are nullable. The database is connected to the Vercel project for production, preview and development. `src/server/db/client.server.ts` creates one connection pool per server instance on first use; `attachDatabasePool` from `@vercel/functions` lets Vercel Fluid compute close idle connections before an instance suspends, which is the connection pattern [Neon recommends for Vercel](https://neon.com/docs/guides/vercel-connection-methods). `src/server/catalog.server.ts` holds the queries.
+
+**Guides and bot pages** are Markdown with YAML front matter (`title`, `summary`, `order`, and optionally `updated`, plus `prefix` and `repository` for bots). Vite bundles them into the server build, so they need no database and deploy with the code. A page shows the visitor's language when that file exists and otherwise the other one, with a note saying so.
 
 **Schema changes.** Edit `src/server/db/schema.ts`, run `pnpm db:generate`, review the SQL it writes into `drizzle/`, commit it, then run `pnpm db:migrate`. The enum types come from the constants in `src/lib/catalog.ts`, so a new language, level or genre is added in one place, and then migrated.
 
@@ -66,19 +72,32 @@ The catalogue lives in Neon Postgres: one database, connected to the Vercel proj
 
 ## Adding a resource
 
-Add an entry to `src/server/db/seed/podcasts.ts` or `src/server/db/seed/movies.ts`, then run `pnpm db:seed`. TypeScript checks the shape. Write descriptions in both languages and use ISO country codes. The seed matches rows by id, so running it again updates entries instead of duplicating them, and it never deletes anything. A new film genre goes in `genres` in `src/lib/catalog.ts`, with its label in `locales/*/resources.json`, followed by `pnpm db:generate` and `pnpm db:migrate`.
+Add an entry to the seed file for its kind in `src/server/db/seed/` (create `<kind>.ts` and add it to `seeds` in `src/server/db/seed.ts` if the kind has none yet), then run `pnpm db:seed`. TypeScript checks the shape. Write descriptions in both languages and use ISO country codes. The seed matches rows by id, so running it again updates entries instead of duplicating them, and it never deletes anything. A new film genre goes in `genres` in `src/lib/catalog.ts`, with its label in `locales/*/resources.json`, followed by `pnpm db:generate` and `pnpm db:migrate`.
 
 ## Adding a kind of resource
 
-The resources page, the home page band and the footer are built from `resourceKinds` in `src/lib/resource-kinds.ts`. To add YouTube channels, books or anything else:
+The `resources` table's `kind` enum, the `/resources/$kind` pages, the resources page, the home page band and the footer are all built from `resourceKinds` in `src/lib/resource-kinds.ts`. To add a kind:
 
-1. Add a table to `src/server/db/schema.ts`, run `pnpm db:generate`, review the SQL and run `pnpm db:migrate`.
-2. Add its table to `kindTables` in `src/server/catalog.server.ts`, and a seed file and a query (`findPodcasts` is the model).
-3. Add a route, for example `src/routes/resources/youtube.tsx`, copying `podcasts.tsx` and its server function in `catalog.functions.ts`.
-4. Add an entry to `resourceKinds` with an archival picture listed in `src/lib/credits.ts`.
-5. Add its copy under `kinds.<id>` in `src/locales/{en,es}/resources.json`.
+1. Add an entry to `resourceKinds`: its id, an archival picture listed in `src/lib/credits.ts`, and which filters its page offers (`language`, `level`, `genre`).
+2. Add its copy under `kinds.<id>` in `src/locales/{en,es}/resources.json`. TypeScript reports anything missing.
+3. Run `pnpm db:generate` and `pnpm db:migrate`; the `kind` enum gains the new value.
 
-After step 4, TypeScript reports every remaining place that still needs the new kind.
+An empty kind shows a "nothing here yet" page until entries are seeded.
+
+## Adding a guide or a bot page
+
+Write `content/guides/<slug>.en.md` (and `.es.md` when it is translated), starting with front matter:
+
+```markdown
+---
+title: Asking for corrections
+summary: One sentence that appears on the guides page.
+order: 2
+updated: 2026-11-01
+---
+```
+
+The rest of the file is ordinary Markdown, tables included. Bot pages go in `content/bots/` and may also set `prefix` and `repository`. Slugs are lowercase letters, digits and hyphens.
 
 ## Deploying
 

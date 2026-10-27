@@ -1,0 +1,21 @@
+{
+	"meta": {
+		"index": "Bots · El servidor de Discord Español-Inglés",
+		"suffix": "Bots · El servidor de Discord Español-Inglés"
+	},
+	"index": {
+		"title": "Bots",
+		"lead": "Los bots que funcionan en el servidor: qué hace cada uno y los comandos que más usan los miembros.",
+		"summary_one": "{{count}} bot.",
+		"summary_other": "{{count}} bots.",
+		"suggest": "¿Un comando que no entiendes? Pregunta en el servidor.",
+		"empty": "Aún no hay nada escrito."
+	},
+	"facts": {
+		"prefix": "Prefijo de los comandos:",
+		"repository": "Código fuente",
+		"updated": "Actualizado el {{date}}"
+	},
+	"onlyIn": "Esta página solo está disponible en {{language}} por ahora.",
+	"back": "Todos los bots"
+}

@@ -1,0 +1,21 @@
+{
+	"meta": {
+		"index": "Guías · El servidor de Discord Español-Inglés",
+		"suffix": "Guías · El servidor de Discord Español-Inglés"
+	},
+	"index": {
+		"title": "Guías",
+		"lead": "Cómo funcionan las cosas en el servidor: entrar, los roles, los canales de voz, pedir correcciones y qué esperan los moderadores.",
+		"summary_one": "{{count}} guía por ahora.",
+		"summary_other": "{{count}} guías por ahora.",
+		"suggest": "¿Algo confuso que una guía resolvería? Dilo en el servidor.",
+		"empty": "Aún no hay guías. Se están escribiendo."
+	},
+	"facts": {
+		"prefix": "Prefijo de los comandos:",
+		"repository": "Código fuente",
+		"updated": "Actualizado el {{date}}"
+	},
+	"onlyIn": "Esta guía solo está disponible en {{language}} por ahora.",
+	"back": "Todas las guías"
+}

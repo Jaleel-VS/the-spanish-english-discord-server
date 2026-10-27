@@ -71,4 +71,55 @@ export const photoCredits = [
 		width: 908,
 		height: 682,
 	},
+	{
+		slug: "television",
+		place: "United States",
+		title: "Family watching television, c. 1958",
+		creator: "Evert F. Baumgardner",
+		licence: "public domain",
+		licenceUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Family_watching_television_1958.jpg",
+		width: 1400,
+		height: 1050,
+	},
+	{
+		slug: "library",
+		place: "New York",
+		title:
+			"Main Reading Room of the New York City Public Library on 5th Avenue, ca. 1910–1920",
+		creator: "Unknown photographer",
+		licence: "public domain",
+		licenceUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Main_Reading_Room_of_the_New_York_City_Public_Library_on_5th_Avenue_ca,_1910-1920.jpg",
+		width: 1400,
+		height: 1050,
+	},
+	{
+		slug: "classroom",
+		place: "Hungary",
+		title:
+			"Classroom, blackboard, education, tableau, math, girls, man, braid (Fortepan 2493), 1931",
+		creator: "Unknown photographer (Fortepan)",
+		licence: "public domain",
+		licenceUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Classroom,_blackboard,_education,_tableau,_math,_girls,_man,_braid_Fortepan_2493.jpg",
+		width: 1400,
+		height: 1050,
+	},
+	{
+		slug: "musicians",
+		place: "New York jazz club",
+		title:
+			"Django Reinhardt at the Aquarium jazz club, New York, ca. November 1946 (Gottlieb 07301)",
+		creator: "William P. Gottlieb",
+		licence: "public domain",
+		licenceUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Django_Reinhardt_(Gottlieb_07301).jpg",
+		width: 1400,
+		height: 1050,
+	},
 ] as const;

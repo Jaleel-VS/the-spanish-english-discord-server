@@ -1,83 +1,81 @@
-import { and, asc, count, desc, eq, type SQL } from "drizzle-orm";
-import type { PgTable } from "drizzle-orm/pg-core";
+import { and, asc, count, eq, type SQL, sql } from "drizzle-orm";
 import type {
 	CatalogueCounts,
 	Genre,
-	Movie,
-	MovieSearch,
 	Page,
-	Podcast,
-	PodcastSearch,
+	Resource,
+	ResourceSearch,
 } from "@/lib/catalog";
-import type { ResourceKind } from "@/lib/resource-kinds";
+import {
+	type ResourceKind,
+	resourceKindIds,
+	resourceKinds,
+} from "@/lib/resource-kinds";
 import { db } from "./db/client.server";
-import { movies, podcasts } from "./db/schema";
+import { resources } from "./db/schema";
 
 /** Catalogue reads. The server functions in catalog.functions.ts are the only callers. */
 
-export const MOVIES_PAGE_SIZE = 24;
+export const PAGE_SIZE = 24;
 
-/** Podcasts matching the filters, easiest first (enum order), then by title. */
-export async function findPodcasts(search: PodcastSearch): Promise<Podcast[]> {
-	const filters: SQL[] = [];
-	if (search.language) filters.push(eq(podcasts.language, search.language));
-	if (search.level) filters.push(eq(podcasts.level, search.level));
-
-	const rows = await db()
-		.select()
-		.from(podcasts)
-		.where(and(...filters))
-		.orderBy(asc(podcasts.level), asc(podcasts.title));
-
-	return rows.map((row) => ({
-		id: row.id,
-		title: row.title,
-		description: { en: row.descriptionEn, es: row.descriptionEs },
-		language: row.language,
-		level: row.level,
-		country: row.country,
-		url: row.url,
-	}));
+export interface ResourceListing extends Page<Resource> {
+	/** Genres used by this kind's entries, for its genre filter. */
+	genres: Genre[];
 }
 
 /**
- * One page of films matching the filters, newest first, plus the genres that
- * at least one film has (so the filter never offers an empty result).
- * A page past the end is clamped to the last page.
+ * One page of a kind's entries. Only the filters the kind offers apply.
+ * Order: easiest level first, then newest, then title, so leveled kinds read
+ * beginner→advanced and films newest first. A page past the end is clamped.
  */
-export async function findMovies(
-	search: MovieSearch,
-): Promise<Page<Movie> & { genres: Genre[] }> {
-	const filters: SQL[] = [];
-	if (search.language) filters.push(eq(movies.audioLanguage, search.language));
-	if (search.genre) filters.push(eq(movies.genre, search.genre));
+export async function findResources(
+	kind: ResourceKind,
+	search: ResourceSearch,
+): Promise<ResourceListing> {
+	const offered: readonly string[] =
+		resourceKinds.find((entry) => entry.id === kind)?.filters ?? [];
+	const filters: SQL[] = [eq(resources.kind, kind)];
+	if (search.language && offered.includes("language"))
+		filters.push(eq(resources.language, search.language));
+	if (search.level && offered.includes("level"))
+		filters.push(eq(resources.level, search.level));
+	if (search.genre && offered.includes("genre"))
+		filters.push(eq(resources.genre, search.genre));
 	const where = and(...filters);
 
 	const [[{ total }], genreRows] = await Promise.all([
-		db().select({ total: count() }).from(movies).where(where),
+		db().select({ total: count() }).from(resources).where(where),
 		db()
-			.selectDistinct({ genre: movies.genre })
-			.from(movies)
-			.orderBy(asc(movies.genre)),
+			.selectDistinct({ genre: resources.genre })
+			.from(resources)
+			.where(and(eq(resources.kind, kind), sql`${resources.genre} is not null`))
+			.orderBy(asc(resources.genre)),
 	]);
 
-	const totalPages = Math.max(1, Math.ceil(total / MOVIES_PAGE_SIZE));
+	const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 	const page = Math.min(search.page ?? 1, totalPages);
 
 	const rows = await db()
 		.select()
-		.from(movies)
+		.from(resources)
 		.where(where)
-		.orderBy(desc(movies.releaseYear), asc(movies.title))
-		.limit(MOVIES_PAGE_SIZE)
-		.offset((page - 1) * MOVIES_PAGE_SIZE);
+		.orderBy(
+			sql`${resources.level} asc nulls last`,
+			sql`${resources.releaseYear} desc nulls last`,
+			asc(resources.title),
+		)
+		.limit(PAGE_SIZE)
+		.offset((page - 1) * PAGE_SIZE);
 
 	return {
 		items: rows.map((row) => ({
 			id: row.id,
+			kind: row.kind,
 			title: row.title,
+			creator: row.creator,
 			description: { en: row.descriptionEn, es: row.descriptionEs },
-			audioLanguage: row.audioLanguage,
+			language: row.language,
+			level: row.level,
 			country: row.country,
 			genre: row.genre,
 			releaseYear: row.releaseYear,
@@ -86,19 +84,19 @@ export async function findMovies(
 		page,
 		totalPages,
 		totalCount: total,
-		genres: genreRows.map((row) => row.genre),
+		genres: genreRows.flatMap((row) => (row.genre ? [row.genre] : [])),
 	};
 }
 
-/** The table behind each resource kind; a new kind will not compile until it is listed here. */
-const kindTables = { podcasts, movies } satisfies Record<ResourceKind, PgTable>;
-
+/** Entries per kind; kinds with none are 0, so new kinds show as empty rather than missing. */
 export async function countCatalogue(): Promise<CatalogueCounts> {
-	const counts = await Promise.all(
-		Object.entries(kindTables).map(async ([kind, table]) => {
-			const [{ total }] = await db().select({ total: count() }).from(table);
-			return [kind, total] as const;
-		}),
-	);
-	return Object.fromEntries(counts) as CatalogueCounts;
+	const rows = await db()
+		.select({ kind: resources.kind, total: count() })
+		.from(resources)
+		.groupBy(resources.kind);
+	const counts = Object.fromEntries(
+		resourceKindIds.map((kind) => [kind, 0]),
+	) as CatalogueCounts;
+	for (const row of rows) counts[row.kind] = row.total;
+	return counts;
 }

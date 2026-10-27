@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { photoCredits } from "@/lib/credits";
-import { type ResourceKind, resourceKinds } from "@/lib/resource-kinds";
+import { findResourceKind, type ResourceKind } from "@/lib/resource-kinds";
 
 /**
  * Shared frame of each resource kind's page: its picture left of the axis,
@@ -20,7 +20,7 @@ export function ResourcePage({
 	children: ReactNode;
 }) {
 	const { t } = useTranslation("resources");
-	const image = resourceKinds.find((entry) => entry.id === kind)?.image;
+	const image = findResourceKind(kind)?.image;
 	const credit = photoCredits.find((photo) => photo.slug === image);
 
 	return (

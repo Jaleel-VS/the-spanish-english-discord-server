@@ -1,6 +1,6 @@
-import type { Movie } from "@/lib/catalog";
+import type { SeedEntry } from "./entry";
 
-export const movies: Movie[] = [
+export const movies: SeedEntry[] = [
 	{
 		id: "the-shawshank-redemption",
 		title: "The Shawshank Redemption",
@@ -8,7 +8,7 @@ export const movies: Movie[] = [
 			en: "A banker convicted of murder forms an unlikely friendship in prison while holding on to hope.",
 			es: "Un banquero condenado por asesinato entabla una amistad inesperada en la cárcel sin perder la esperanza.",
 		},
-		audioLanguage: "en",
+		language: "en",
 		country: "US",
 		genre: "drama",
 		releaseYear: 1994,
@@ -21,7 +21,7 @@ export const movies: Movie[] = [
 			en: "A thief who steals secrets through shared dreams is asked to plant an idea instead.",
 			es: "Un ladrón que roba secretos a través de sueños compartidos recibe el encargo de implantar una idea.",
 		},
-		audioLanguage: "en",
+		language: "en",
 		country: "US",
 		genre: "sci-fi",
 		releaseYear: 2010,
@@ -34,7 +34,7 @@ export const movies: Movie[] = [
 			en: "King George VI works with an unorthodox speech therapist to overcome his stammer.",
 			es: "El rey Jorge VI trabaja con un logopeda poco convencional para superar su tartamudez.",
 		},
-		audioLanguage: "en",
+		language: "en",
 		country: "GB",
 		genre: "drama",
 		releaseYear: 2010,
@@ -47,7 +47,7 @@ export const movies: Movie[] = [
 			en: "In Spain in 1944, a girl escapes into a fantasy world while her stepfather hunts the guerrillas.",
 			es: "En la España de 1944, una niña escapa a un mundo de fantasía mientras su padrastro persigue a los guerrilleros.",
 		},
-		audioLanguage: "es",
+		language: "es",
 		country: "ES",
 		genre: "fantasy",
 		releaseYear: 2006,
@@ -60,7 +60,7 @@ export const movies: Movie[] = [
 			en: "A domestic worker in 1970s Mexico City, between family life and political unrest.",
 			es: "Una trabajadora doméstica en la Ciudad de México de los años setenta, entre la vida familiar y la agitación política.",
 		},
-		audioLanguage: "es",
+		language: "es",
 		country: "MX",
 		genre: "drama",
 		releaseYear: 2018,
@@ -73,7 +73,7 @@ export const movies: Movie[] = [
 			en: "A retired court investigator writes a novel about an unsolved murder that has haunted him for twenty-five years.",
 			es: "Un oficial de justicia retirado escribe una novela sobre un asesinato sin resolver que lo persigue desde hace veinticinco años.",
 		},
-		audioLanguage: "es",
+		language: "es",
 		country: "AR",
 		genre: "thriller",
 		releaseYear: 2009,

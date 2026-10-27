@@ -20,8 +20,19 @@ export function SiteHeader() {
 			>
 				{t("nav.resources")}
 			</Link>
-			<Link to="/" hash="questions" className="link">
-				{t("nav.questions")}
+			<Link
+				to="/guides"
+				className="link"
+				activeProps={{ "aria-current": "page" }}
+			>
+				{t("nav.guides")}
+			</Link>
+			<Link
+				to="/bots"
+				className="link"
+				activeProps={{ "aria-current": "page" }}
+			>
+				{t("nav.bots")}
 			</Link>
 		</>
 	);
@@ -37,12 +48,12 @@ export function SiteHeader() {
 
 			<nav
 				aria-label={t("nav.main")}
-				className="hidden gap-8 lg:col-span-3 lg:col-start-6 lg:flex"
+				className="hidden gap-7 lg:col-span-4 lg:col-start-6 lg:flex"
 			>
 				{links}
 			</nav>
 
-			<div className="hidden items-center justify-end gap-6 lg:col-span-4 lg:col-start-9 lg:flex">
+			<div className="hidden items-center justify-end gap-6 lg:col-span-3 lg:col-start-10 lg:flex">
 				<LanguageSwitch />
 				<a href={INVITE_URL} className="button" rel="noopener">
 					{t("nav.join")}
@@ -56,7 +67,7 @@ export function SiteHeader() {
 				</summary>
 				<nav
 					aria-label={t("nav.main")}
-					className="absolute inset-x-0 z-40 mt-4 flex flex-col gap-5 bg-surface px-margin py-8 text-lead"
+					className="absolute inset-x-0 z-40 mt-4 hidden flex-col gap-5 bg-surface px-margin py-8 text-lead group-open:flex"
 				>
 					{links}
 					<LanguageSwitch className="self-start" />

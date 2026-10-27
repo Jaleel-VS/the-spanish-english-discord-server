@@ -1,9 +1,13 @@
 import i18next, { type i18n } from "i18next";
 import { initReactI18next } from "react-i18next";
+import botsEn from "@/locales/en/bots.json";
 import commonEn from "@/locales/en/common.json";
+import guidesEn from "@/locales/en/guides.json";
 import homeEn from "@/locales/en/home.json";
 import resourcesEn from "@/locales/en/resources.json";
+import botsEs from "@/locales/es/bots.json";
 import commonEs from "@/locales/es/common.json";
+import guidesEs from "@/locales/es/guides.json";
 import homeEs from "@/locales/es/home.json";
 import resourcesEs from "@/locales/es/resources.json";
 
@@ -12,8 +16,20 @@ export type Language = (typeof languages)[number];
 export const LANGUAGE_COOKIE = "language";
 
 export const resources = {
-	en: { common: commonEn, home: homeEn, resources: resourcesEn },
-	es: { common: commonEs, home: homeEs, resources: resourcesEs },
+	en: {
+		common: commonEn,
+		home: homeEn,
+		resources: resourcesEn,
+		guides: guidesEn,
+		bots: botsEn,
+	},
+	es: {
+		common: commonEs,
+		home: homeEs,
+		resources: resourcesEs,
+		guides: guidesEs,
+		bots: botsEs,
+	},
 } as const;
 
 declare module "i18next" {

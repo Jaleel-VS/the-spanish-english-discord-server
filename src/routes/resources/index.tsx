@@ -60,8 +60,9 @@ function ResourcesIndex() {
 							data-reveal
 						>
 							<Link
-								to={kind.to}
 								className="group flex h-full items-center gap-5 bg-surface p-4 transition-colors duration-200 hover:bg-[color-mix(in_oklab,var(--surface)_85%,var(--ink))] md:gap-6 md:p-5"
+								to="/resources/$kind"
+								params={{ kind: kind.id }}
 							>
 								<span className="aspect-[4/3] w-28 shrink-0 overflow-clip md:w-40">
 									<img

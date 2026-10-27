@@ -1,12 +1,11 @@
 {
 	"meta": {
 		"index": "Resources · The Spanish-English Discord Server",
-		"podcasts": "Podcasts · The Spanish-English Discord Server",
-		"movies": "Movies · The Spanish-English Discord Server"
+		"suffix": "The Spanish-English Discord Server"
 	},
 	"index": {
 		"title": "Resources",
-		"lead": "Things to listen to and watch between conversations, picked by the community. Each entry is marked with its language and level.",
+		"lead": "Things to listen to, watch and read between conversations, picked by the community. Each entry is marked with its language and level.",
 		"summary_one": "{{count}} entry so far, in Spanish, English or both.",
 		"summary_other": "{{count}} entries so far, in Spanish, English or both.",
 		"suggest": "Know something that belongs here? Suggest it in the server."
@@ -15,16 +14,50 @@
 		"podcasts": {
 			"title": "Podcasts",
 			"body": "Lessons, conversations and long-form stories, from beginner shows to Radio Ambulante.",
+			"lead": "Shows to learn Spanish and English by ear. Open one and it plays on the show's own site.",
 			"count_one": "{{count}} show",
 			"count_other": "{{count}} shows",
 			"imageAlt": "A radio announcer reading a script at a studio desk with a gooseneck microphone, 1930s"
 		},
+		"youtube": {
+			"title": "YouTube channels",
+			"body": "Channels that teach the language, and channels that are simply good to listen to.",
+			"lead": "Channels to watch in Spanish and English, from lessons to everyday vlogs. Each opens on YouTube.",
+			"count_one": "{{count}} channel",
+			"count_other": "{{count}} channels",
+			"imageAlt": "A family gathered around an early television set, 1950s"
+		},
 		"movies": {
 			"title": "Movies",
 			"body": "Films in Spanish and in English, for listening practice with subtitles or without.",
+			"lead": "Films to practise listening. Each opens on IMDb, where you can see where to watch it.",
 			"count_one": "{{count}} film",
 			"count_other": "{{count}} films",
 			"imageAlt": "The facade of Cine Cataluña on Avenida Corrientes in Buenos Aires, with film posters above the entrance, 1929"
+		},
+		"books": {
+			"title": "Books",
+			"body": "Graded readers, short stories and novels worth the effort, by level.",
+			"lead": "Books to read in Spanish and English, from graded readers to novels. Each opens on the publisher's or a bookshop's page.",
+			"count_one": "{{count}} book",
+			"count_other": "{{count}} books",
+			"imageAlt": "Readers at long tables in a library reading room, early twentieth century"
+		},
+		"workbooks": {
+			"title": "Grammar and exercise books",
+			"body": "Textbooks, grammar references and workbooks with exercises and answer keys.",
+			"lead": "Books to study with: grammars, exercise books and course books, sorted by level.",
+			"count_one": "{{count}} book",
+			"count_other": "{{count}} books",
+			"imageAlt": "Schoolchildren writing at wooden desks in a classroom, early twentieth century"
+		},
+		"musicians": {
+			"title": "Musicians",
+			"body": "Artists whose lyrics are clear enough to learn from, in every genre.",
+			"lead": "Artists to listen to in Spanish and English. Look up the lyrics and sing along; it works.",
+			"count_one": "{{count}} artist",
+			"count_other": "{{count}} artists",
+			"imageAlt": "A group of musicians with guitars and a double bass performing, mid-twentieth century"
 		}
 	},
 	"filter": {
@@ -45,28 +78,20 @@
 		"sci-fi": "Science fiction",
 		"thriller": "Thriller"
 	},
-	"variousCountries": "Several countries",
 	"level": {
 		"beginner": "Beginner",
 		"intermediate": "Intermediate",
 		"advanced": "Advanced"
 	},
-	"podcasts": {
-		"lead": "Shows to learn Spanish and English by ear. Open one and it plays on the show's own site.",
-		"empty": "No podcasts match these filters.",
-		"columns": {
-			"show": "Show",
-			"language": "Language",
-			"level": "Level",
-			"from": "From"
-		}
+	"empty": {
+		"filtered": "Nothing matches these filters.",
+		"none": "Nothing here yet. The community is still choosing.",
+		"suggest": "Suggest the first one in the server."
 	},
-	"movies": {
-		"lead": "Films to practise listening. Each opens on IMDb, where you can see where to watch it.",
-		"empty": "No films match these filters.",
+	"pagination": {
 		"previous": "Previous page",
 		"next": "Next page",
-		"page": "Page {{page}} of {{total}}"
+		"label": "Page {{page}} of {{total}}"
 	},
 	"opens": "opens in a new tab",
 	"back": "All resources"
