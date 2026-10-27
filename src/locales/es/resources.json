@@ -1,16 +1,38 @@
 {
 	"meta": {
+		"index": "Recursos · El servidor de Discord Español-Inglés",
 		"podcasts": "Pódcasts · El servidor de Discord Español-Inglés",
 		"movies": "Películas · El servidor de Discord Español-Inglés"
+	},
+	"index": {
+		"title": "Recursos",
+		"lead": "Cosas que escuchar y ver entre conversaciones, elegidas por la comunidad. Cada una indica su idioma y su nivel.",
+		"summary_one": "{{count}} entrada por ahora, en español, en inglés o en los dos.",
+		"summary_other": "{{count}} entradas por ahora, en español, en inglés o en los dos.",
+		"suggest": "¿Conoces algo que debería estar aquí? Propónlo en el servidor."
+	},
+	"kinds": {
+		"podcasts": {
+			"title": "Pódcasts",
+			"body": "Lecciones, conversaciones e historias largas, desde programas para principiantes hasta Radio Ambulante.",
+			"count_one": "{{count}} programa",
+			"count_other": "{{count}} programas",
+			"imageAlt": "Un locutor de radio lee un guion en la mesa de un estudio con un micrófono de cuello flexible, años treinta"
+		},
+		"movies": {
+			"title": "Películas",
+			"body": "Películas en español y en inglés, para practicar la escucha con subtítulos o sin ellos.",
+			"count_one": "{{count}} película",
+			"count_other": "{{count}} películas",
+			"imageAlt": "La fachada del Cine Cataluña en la avenida Corrientes de Buenos Aires, con carteles de películas sobre la entrada, 1929"
+		}
 	},
 	"filter": {
 		"language": "Idioma",
 		"level": "Nivel",
 		"genre": "Género",
 		"all": "Todos",
-		"clear": "Quitar filtros",
-		"showing_one": "Mostrando {{count}} de {{total}}",
-		"showing_other": "Mostrando {{count}} de {{total}}"
+		"clear": "Quitar filtros"
 	},
 	"language": {
 		"es": "Español",
@@ -30,8 +52,6 @@
 		"advanced": "Avanzado"
 	},
 	"podcasts": {
-		"title": "Pódcasts",
-		"imageAlt": "Un locutor de radio lee un guion en la mesa de un estudio con un micrófono de cuello flexible, años treinta",
 		"lead": "Programas para aprender español e inglés de oído. Abre uno y se reproduce en su propia web.",
 		"empty": "Ningún pódcast coincide con estos filtros.",
 		"columns": {
@@ -42,16 +62,8 @@
 		}
 	},
 	"movies": {
-		"title": "Películas",
-		"imageAlt": "La fachada del Cine Cataluña en la avenida Corrientes de Buenos Aires, con carteles de películas sobre la entrada, 1929",
 		"lead": "Películas para practicar la escucha. Cada una se abre en IMDb, donde puedes ver dónde verla.",
 		"empty": "Ninguna película coincide con estos filtros.",
-		"columns": {
-			"film": "Película",
-			"audio": "Audio",
-			"genre": "Género",
-			"year": "Año"
-		},
 		"previous": "Página anterior",
 		"next": "Página siguiente",
 		"page": "Página {{page}} de {{total}}"

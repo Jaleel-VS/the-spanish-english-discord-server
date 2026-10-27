@@ -1,12 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { photoCredits } from "@/lib/credits";
+import { resourceKinds } from "@/lib/resource-kinds";
 import { FOUNDED_YEAR, INVITE_URL, REPOSITORY_URL } from "@/lib/site";
 import { LanguageSwitch } from "./LanguageSwitch";
 
 /** Inverted close: four short columns on top, the name across the full width below. */
 export function SiteFooter() {
-	const { t } = useTranslation();
+	const { t } = useTranslation(["common", "resources"]);
 	const year = new Date().getFullYear();
 
 	return (
@@ -22,12 +23,14 @@ export function SiteFooter() {
 					<Link to="/" className="link">
 						{t("nav.home")}
 					</Link>
-					<Link to="/resources/podcasts" className="link">
-						{t("nav.podcasts")}
+					<Link to="/resources" className="link">
+						{t("nav.resources")}
 					</Link>
-					<Link to="/resources/movies" className="link">
-						{t("nav.movies")}
-					</Link>
+					{resourceKinds.map((kind) => (
+						<Link key={kind.id} to={kind.to} className="link">
+							{t(`resources:kinds.${kind.id}.title`)}
+						</Link>
+					))}
 				</FooterColumn>
 				<FooterColumn title={t("footer.language")}>
 					<LanguageSwitch className="self-start" />

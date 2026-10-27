@@ -13,13 +13,7 @@
 		"skip": "Saltar al contenido",
 		"main": "Principal",
 		"menu": "Menú",
-		"close": "Cerrar",
-		"podcasts": "Pódcasts",
-		"movies": "Películas"
-	},
-	"status": {
-		"online": "{{online}} conectados ahora",
-		"members": "{{members}} miembros"
+		"close": "Cerrar"
 	},
 	"footer": {
 		"server": "Servidor",

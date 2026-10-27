@@ -13,7 +13,11 @@ export function SiteHeader() {
 
 	const links = (
 		<>
-			<Link to="/" hash="resources" className="link">
+			<Link
+				to="/resources"
+				className="link"
+				activeProps={{ "aria-current": "page" }}
+			>
 				{t("nav.resources")}
 			</Link>
 			<Link to="/" hash="questions" className="link">

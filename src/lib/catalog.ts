@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { ResourceKind } from "./resource-kinds";
 
 /** Which language a resource is in. `both` means it mixes Spanish and English. */
 export const resourceLanguages = ["es", "en", "both"] as const;
@@ -46,10 +47,8 @@ export interface Page<T> {
 	totalCount: number;
 }
 
-export interface CatalogueCounts {
-	podcasts: number;
-	movies: number;
-}
+/** Number of entries per resource kind, for the resources page and the home page band. */
+export type CatalogueCounts = Record<ResourceKind, number>;
 
 /**
  * URL search params of the podcasts page. Parsed leniently (`catch`) because

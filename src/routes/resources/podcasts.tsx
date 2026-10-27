@@ -29,9 +29,8 @@ function PodcastsPage() {
 
 	return (
 		<ResourcePage
-			title={t("podcasts.title")}
+			kind="podcasts"
 			lead={t("podcasts.lead")}
-			image={{ slug: "radio", alt: t("podcasts.imageAlt") }}
 			filters={
 				<>
 					<FilterGroup

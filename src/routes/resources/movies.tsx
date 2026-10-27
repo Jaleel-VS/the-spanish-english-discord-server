@@ -27,9 +27,8 @@ function MoviesPage() {
 
 	return (
 		<ResourcePage
-			title={t("movies.title")}
+			kind="movies"
 			lead={t("movies.lead")}
-			image={{ slug: "cinema", alt: t("movies.imageAlt") }}
 			filters={
 				<>
 					<FilterGroup

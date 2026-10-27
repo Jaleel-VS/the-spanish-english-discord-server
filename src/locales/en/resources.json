@@ -1,16 +1,38 @@
 {
 	"meta": {
+		"index": "Resources · The Spanish-English Discord Server",
 		"podcasts": "Podcasts · The Spanish-English Discord Server",
 		"movies": "Movies · The Spanish-English Discord Server"
+	},
+	"index": {
+		"title": "Resources",
+		"lead": "Things to listen to and watch between conversations, picked by the community. Each entry is marked with its language and level.",
+		"summary_one": "{{count}} entry so far, in Spanish, English or both.",
+		"summary_other": "{{count}} entries so far, in Spanish, English or both.",
+		"suggest": "Know something that belongs here? Suggest it in the server."
+	},
+	"kinds": {
+		"podcasts": {
+			"title": "Podcasts",
+			"body": "Lessons, conversations and long-form stories, from beginner shows to Radio Ambulante.",
+			"count_one": "{{count}} show",
+			"count_other": "{{count}} shows",
+			"imageAlt": "A radio announcer reading a script at a studio desk with a gooseneck microphone, 1930s"
+		},
+		"movies": {
+			"title": "Movies",
+			"body": "Films in Spanish and in English, for listening practice with subtitles or without.",
+			"count_one": "{{count}} film",
+			"count_other": "{{count}} films",
+			"imageAlt": "The facade of Cine Cataluña on Avenida Corrientes in Buenos Aires, with film posters above the entrance, 1929"
+		}
 	},
 	"filter": {
 		"language": "Language",
 		"level": "Level",
 		"genre": "Genre",
 		"all": "All",
-		"clear": "Clear filters",
-		"showing_one": "Showing {{count}} of {{total}}",
-		"showing_other": "Showing {{count}} of {{total}}"
+		"clear": "Clear filters"
 	},
 	"language": {
 		"es": "Spanish",
@@ -30,8 +52,6 @@
 		"advanced": "Advanced"
 	},
 	"podcasts": {
-		"title": "Podcasts",
-		"imageAlt": "A radio announcer reading a script at a studio desk with a gooseneck microphone, 1930s",
 		"lead": "Shows to learn Spanish and English by ear. Open one and it plays on the show's own site.",
 		"empty": "No podcasts match these filters.",
 		"columns": {
@@ -42,16 +62,8 @@
 		}
 	},
 	"movies": {
-		"title": "Movies",
-		"imageAlt": "The facade of Cine Cataluña on Avenida Corrientes in Buenos Aires, with film posters above the entrance, 1929",
 		"lead": "Films to practise listening. Each opens on IMDb, where you can see where to watch it.",
 		"empty": "No films match these filters.",
-		"columns": {
-			"film": "Film",
-			"audio": "Audio",
-			"genre": "Genre",
-			"year": "Year"
-		},
 		"previous": "Previous page",
 		"next": "Next page",
 		"page": "Page {{page}} of {{total}}"

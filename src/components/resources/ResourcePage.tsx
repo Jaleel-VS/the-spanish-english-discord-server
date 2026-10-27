@@ -2,23 +2,26 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { photoCredits } from "@/lib/credits";
+import { type ResourceKind, resourceKinds } from "@/lib/resource-kinds";
 
-/** Shared frame of each catalogue page: picture left of the axis, title, lead and filters on it. */
+/**
+ * Shared frame of each resource kind's page: its picture left of the axis,
+ * then its title, lead and filters on the axis.
+ */
 export function ResourcePage({
-	title,
+	kind,
 	lead,
-	image,
 	filters,
 	children,
 }: {
-	title: string;
+	kind: ResourceKind;
 	lead: string;
-	image: { slug: (typeof photoCredits)[number]["slug"]; alt: string };
 	filters?: ReactNode;
 	children: ReactNode;
 }) {
 	const { t } = useTranslation("resources");
-	const credit = photoCredits.find((photo) => photo.slug === image.slug);
+	const image = resourceKinds.find((entry) => entry.id === kind)?.image;
+	const credit = photoCredits.find((photo) => photo.slug === image);
 
 	return (
 		<article className="pb-section">
@@ -26,8 +29,8 @@ export function ResourcePage({
 				<figure className="col-span-8 mb-12 lg:col-span-4 lg:row-span-3 lg:mb-0">
 					<div className="aspect-[4/3] overflow-clip bg-surface" data-load>
 						<img
-							src={`/images/${image.slug}.jpg`}
-							alt={image.alt}
+							src={`/images/${image}.jpg`}
+							alt={t(`kinds.${kind}.imageAlt`)}
 							width={credit?.width}
 							height={credit?.height}
 							fetchPriority="high"
@@ -37,7 +40,7 @@ export function ResourcePage({
 				</figure>
 				<h1 className="lines col-span-12 text-head lg:col-start-6 lg:col-span-7">
 					<span className="line">
-						<span data-line>{title}</span>
+						<span data-line>{t(`kinds.${kind}.title`)}</span>
 					</span>
 				</h1>
 				<p
@@ -58,8 +61,7 @@ export function ResourcePage({
 			<div className="frame mt-16 md:mt-20">{children}</div>
 			<p className="frame mt-20">
 				<Link
-					to="/"
-					hash="resources"
+					to="/resources"
 					className="link col-span-12 lg:col-start-6 lg:col-span-7"
 				>
 					{t("back")}

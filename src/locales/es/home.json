@@ -67,14 +67,8 @@
 	},
 	"resources": {
 		"title": "Entre conversaciones",
-		"body": "Pódcasts y películas que recomienda la comunidad, ordenados por idioma y nivel.",
-		"podcasts": "Pódcasts",
-		"podcastsCount_one": "{{count}} programa",
-		"podcastsCount_other": "{{count}} programas",
-		"movies": "Películas",
-		"moviesCount_one": "{{count}} película",
-		"moviesCount_other": "{{count}} películas",
-		"suggest": "¿Conoces algo que debería estar aquí? Propónlo en el servidor."
+		"body": "Cosas que escuchar y ver que recomienda la comunidad, cada una con su idioma y su nivel.",
+		"all": "Todos los recursos"
 	},
 	"faq": {
 		"title": "Preguntas",

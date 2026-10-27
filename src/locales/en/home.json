@@ -67,14 +67,8 @@
 	},
 	"resources": {
 		"title": "Between conversations",
-		"body": "Podcasts and films the community recommends, sorted by language and level.",
-		"podcasts": "Podcasts",
-		"podcastsCount_one": "{{count}} show",
-		"podcastsCount_other": "{{count}} shows",
-		"movies": "Movies",
-		"moviesCount_one": "{{count}} film",
-		"moviesCount_other": "{{count}} films",
-		"suggest": "Know something that belongs here? Suggest it in the server."
+		"body": "Things to listen to and watch that the community recommends, each marked with its language and level.",
+		"all": "All resources"
 	},
 	"faq": {
 		"title": "Questions",

@@ -1,4 +1,5 @@
 import { and, asc, count, desc, eq, type SQL } from "drizzle-orm";
+import type { PgTable } from "drizzle-orm/pg-core";
 import type {
 	CatalogueCounts,
 	Genre,
@@ -8,6 +9,7 @@ import type {
 	Podcast,
 	PodcastSearch,
 } from "@/lib/catalog";
+import type { ResourceKind } from "@/lib/resource-kinds";
 import { db } from "./db/client.server";
 import { movies, podcasts } from "./db/schema";
 
@@ -88,10 +90,15 @@ export async function findMovies(
 	};
 }
 
+/** The table behind each resource kind; a new kind will not compile until it is listed here. */
+const kindTables = { podcasts, movies } satisfies Record<ResourceKind, PgTable>;
+
 export async function countCatalogue(): Promise<CatalogueCounts> {
-	const [[podcastCount], [movieCount]] = await Promise.all([
-		db().select({ total: count() }).from(podcasts),
-		db().select({ total: count() }).from(movies),
-	]);
-	return { podcasts: podcastCount.total, movies: movieCount.total };
+	const counts = await Promise.all(
+		Object.entries(kindTables).map(async ([kind, table]) => {
+			const [{ total }] = await db().select({ total: count() }).from(table);
+			return [kind, total] as const;
+		}),
+	);
+	return Object.fromEntries(counts) as CatalogueCounts;
 }
