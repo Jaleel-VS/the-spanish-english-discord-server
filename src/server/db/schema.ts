@@ -48,32 +48,3 @@ export const resources = pgTable(
 	},
 	(table) => [index("resources_kind_idx").on(table.kind)],
 );
-
-// Superseded by `resources`; dropped by the next migration once no deployment reads them.
-
-export const podcasts = pgTable("podcasts", {
-	/** URL-safe slug, stable across environments so seeds and links can name it. */
-	id: text("id").primaryKey(),
-	title: text("title").notNull(),
-	descriptionEn: text("description_en").notNull(),
-	descriptionEs: text("description_es").notNull(),
-	language: resourceLanguage("language").notNull(),
-	level: level("level").notNull(),
-	/** ISO 3166-1 alpha-2; null when the hosts come from several countries. */
-	country: char("country", { length: 2 }),
-	url: text("url").notNull(),
-	...timestamps,
-});
-
-export const movies = pgTable("movies", {
-	id: text("id").primaryKey(),
-	title: text("title").notNull(),
-	descriptionEn: text("description_en").notNull(),
-	descriptionEs: text("description_es").notNull(),
-	audioLanguage: resourceLanguage("audio_language").notNull(),
-	country: char("country", { length: 2 }).notNull(),
-	genre: genre("genre").notNull(),
-	releaseYear: integer("release_year").notNull(),
-	url: text("url").notNull(),
-	...timestamps,
-});
