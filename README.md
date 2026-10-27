@@ -39,8 +39,8 @@ The pages that read the catalogue need `DATABASE_URL`. Everything else works wit
 
 ```
 src/
-  routes/            file routes: /, /resources/podcasts, /resources/movies (/resources redirects to the
-                     home page's resources section); __root.tsx is the HTML shell
+  routes/            file routes: /, /resources (every kind), /resources/podcasts, /resources/movies;
+                     __root.tsx is the HTML shell
   components/        site header and footer, home sections, resource-page parts
   server/
     *.functions.ts   server functions (the backend's public surface, called from loaders)
@@ -67,6 +67,18 @@ The catalogue lives in Neon Postgres: one database, connected to the Vercel proj
 ## Adding a resource
 
 Add an entry to `src/server/db/seed/podcasts.ts` or `src/server/db/seed/movies.ts`, then run `pnpm db:seed`. TypeScript checks the shape. Write descriptions in both languages and use ISO country codes. The seed matches rows by id, so running it again updates entries instead of duplicating them, and it never deletes anything. A new film genre goes in `genres` in `src/lib/catalog.ts`, with its label in `locales/*/resources.json`, followed by `pnpm db:generate` and `pnpm db:migrate`.
+
+## Adding a kind of resource
+
+The resources page, the home page band and the footer are built from `resourceKinds` in `src/lib/resource-kinds.ts`. To add YouTube channels, books or anything else:
+
+1. Add a table to `src/server/db/schema.ts`, run `pnpm db:generate`, review the SQL and run `pnpm db:migrate`.
+2. Add its table to `kindTables` in `src/server/catalog.server.ts`, and a seed file and a query (`findPodcasts` is the model).
+3. Add a route, for example `src/routes/resources/youtube.tsx`, copying `podcasts.tsx` and its server function in `catalog.functions.ts`.
+4. Add an entry to `resourceKinds` with an archival picture listed in `src/lib/credits.ts`.
+5. Add its copy under `kinds.<id>` in `src/locales/{en,es}/resources.json`.
+
+After step 4, TypeScript reports every remaining place that still needs the new kind.
 
 ## Deploying
 
