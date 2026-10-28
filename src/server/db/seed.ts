@@ -4,7 +4,7 @@
  * them. Rows that exist only in the database are left alone.
  */
 import { existsSync } from "node:fs";
-import { sql } from "drizzle-orm";
+import { getTableColumns, sql } from "drizzle-orm";
 import type { ResourceKind } from "@/lib/resource-kinds";
 import { closeDb, db } from "./client.server";
 import { resources } from "./schema";
@@ -31,32 +31,29 @@ const rows = Object.entries(seeds).flatMap(([kind, entries]) =>
 	})),
 );
 
-const updatable = [
-	"kind",
-	"title",
-	"creator",
-	"description_en",
-	"description_es",
-	"language",
-	"level",
-	"country",
-	"genre",
-	"release_year",
-	"url",
-];
+/**
+ * On conflict, overwrite every column with the incoming row's value except the
+ * key and the creation time. Drizzle's `set` is keyed by property name
+ * (`descriptionEn`), so derive it from the table rather than listing SQL names.
+ */
+const {
+	id: _id,
+	createdAt: _createdAt,
+	...columns
+} = getTableColumns(resources);
+const set = Object.fromEntries(
+	Object.entries(columns).map(([property, column]) => [
+		property,
+		property === "updatedAt"
+			? sql`now()`
+			: sql.raw(`excluded."${column.name}"`),
+	]),
+);
 
 await db()
 	.insert(resources)
 	.values(rows)
-	.onConflictDoUpdate({
-		target: resources.id,
-		set: {
-			...Object.fromEntries(
-				updatable.map((column) => [column, sql.raw(`excluded.${column}`)]),
-			),
-			updatedAt: sql`now()`,
-		},
-	});
+	.onConflictDoUpdate({ target: resources.id, set });
 
 console.log(`Seeded ${rows.length} resources.`);
 await closeDb();
