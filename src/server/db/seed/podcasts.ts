@@ -11,7 +11,7 @@ export const podcasts: SeedEntry[] = [
 		language: "es",
 		level: "beginner",
 		country: "MX",
-		url: "https://www.spanishpod101.com/",
+		url: "https://podcasts.apple.com/us/podcast/learn-spanish-spanishpod101-com/id270572701",
 	},
 	{
 		id: "coffee-break-spanish",
@@ -23,19 +23,20 @@ export const podcasts: SeedEntry[] = [
 		language: "es",
 		level: "beginner",
 		country: "ES",
-		url: "https://coffeebreaklanguages.com/coffeebreakspanish/",
+		url: "https://podcasts.apple.com/us/podcast/coffee-break-spanish/id201598403",
 	},
 	{
 		id: "notes-in-spanish",
-		title: "Notes in Spanish",
+		title: "Deep Spanish, by Notes in Spanish",
+		creator: "Ben Curtis and Marina Diez",
 		description: {
-			en: "Real conversation between a native speaker and an English-speaking learner.",
-			es: "Conversación real entre un hablante nativo y una estudiante de habla inglesa.",
+			en: "Colloquial words and phrases from Spain, explained by the couple behind Notes in Spanish; weekly.",
+			es: "Palabras y expresiones coloquiales de España, explicadas por la pareja de Notes in Spanish; cada semana.",
 		},
 		language: "both",
 		level: "intermediate",
 		country: "ES",
-		url: "https://www.notesinspanish.com/",
+		url: "https://podcasts.apple.com/us/podcast/deep-spanish-by-notes-in-spanish/id1691491112",
 	},
 	{
 		id: "espanolistos",
@@ -53,8 +54,8 @@ export const podcasts: SeedEntry[] = [
 		id: "duolingo-spanish-podcast",
 		title: "Duolingo Spanish Podcast",
 		description: {
-			en: "True stories told in clear Spanish, with English narration between scenes.",
-			es: "Historias reales contadas en un español claro, con narración en inglés entre escenas.",
+			en: "True stories told in clear Spanish, with English narration between scenes. The series ended in 2024; all its episodes are still online.",
+			es: "Historias reales contadas en un español claro, con narración en inglés entre escenas. La serie terminó en 2024; todos sus episodios siguen en línea.",
 		},
 		language: "both",
 		level: "intermediate",
@@ -86,7 +87,7 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "beginner",
 		country: "GB",
-		url: "https://www.bbc.co.uk/learningenglish/podcasts",
+		url: "https://podcasts.apple.com/us/podcast/learning-easy-english/id1742967932",
 	},
 	{
 		id: "ingles-pa-mi-gente",
@@ -99,7 +100,7 @@ export const podcasts: SeedEntry[] = [
 		language: "both",
 		level: "beginner",
 		country: "US",
-		url: "https://www.inglespamigente.com/",
+		url: "https://podcasts.apple.com/us/podcast/ingl%C3%A9s-pa-mi-gente/id1676999510",
 	},
 	{
 		id: "coffee-break-english",
@@ -112,7 +113,7 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "beginner",
 		country: "GB",
-		url: "https://coffeebreaklanguages.com/coffeebreakenglish/",
+		url: "https://podcasts.apple.com/us/podcast/learn-english-with-coffee-break-english/id1500388439",
 	},
 	{
 		id: "easy-english",
@@ -125,7 +126,7 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "beginner",
 		country: null,
-		url: "https://www.easy-english.org/",
+		url: "https://podcasts.apple.com/us/podcast/easy-english-learn-english-with-everyday-conversations/id1647991952",
 	},
 	{
 		id: "6-minute-english",
@@ -151,7 +152,7 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "US",
-		url: "https://plainenglish.com/",
+		url: "https://podcasts.apple.com/us/podcast/plain-english/id1327149893",
 	},
 	{
 		id: "culips-everyday-english",
@@ -164,7 +165,7 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "CA",
-		url: "https://www.culips.com/",
+		url: "https://podcasts.apple.com/us/podcast/culips-everyday-english-podcast/id279999557",
 	},
 	{
 		id: "thinking-in-english",
@@ -190,7 +191,7 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "GB",
-		url: "https://www.leonardoenglish.com/podcasts",
+		url: "https://podcasts.apple.com/us/podcast/english-learning-for-curious-minds-a-more/id1489301603",
 	},
 	{
 		id: "speak-english-with-tiffani",
@@ -216,7 +217,7 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "advanced",
 		country: "US",
-		url: "https://www.allearsenglish.com/",
+		url: "https://podcasts.apple.com/us/podcast/all-ears-english-podcast/id751574016",
 	},
 	{
 		id: "lukes-english-podcast",

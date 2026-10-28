@@ -14,7 +14,7 @@
 		"podcasts": {
 			"title": "Podcasts",
 			"body": "Lessons, conversations and long-form stories, from beginner shows to Radio Ambulante.",
-			"lead": "Shows to learn Spanish and English by ear. Open one and it plays on the show's own site.",
+			"lead": "Shows to learn Spanish and English by ear. Each opens straight onto its episodes: on the show's site when it plays there, otherwise on Apple Podcasts, which plays in the browser without an account.",
 			"count_one": "{{count}} show",
 			"count_other": "{{count}} shows",
 			"imageAlt": "A radio announcer reading a script at a studio desk with a gooseneck microphone, 1930s"

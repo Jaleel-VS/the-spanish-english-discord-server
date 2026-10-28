@@ -14,7 +14,7 @@
 		"podcasts": {
 			"title": "Pódcasts",
 			"body": "Lecciones, conversaciones e historias largas, desde programas para principiantes hasta Radio Ambulante.",
-			"lead": "Programas para aprender español e inglés de oído. Abre uno y se reproduce en su propia web.",
+			"lead": "Programas para aprender español e inglés de oído. Cada uno se abre directamente en sus episodios: en la web del programa cuando se puede escuchar allí y, si no, en Apple Podcasts, que se reproduce en el navegador sin cuenta.",
 			"count_one": "{{count}} programa",
 			"count_other": "{{count}} programas",
 			"imageAlt": "Un locutor de radio lee un guion en la mesa de un estudio con un micrófono de cuello flexible, años treinta"
