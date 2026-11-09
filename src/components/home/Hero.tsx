@@ -15,14 +15,16 @@ export function Hero({ community }: { community: Community | null }) {
 
 	return (
 		<section aria-labelledby="hero-title">
-			<figure className="mx-margin h-[42svh] min-h-64 overflow-clip bg-[#8ec8f6] lg:h-[46svh]">
+			{/* The server's own artwork, shown whole: full width on phones, height-capped and centred on wide screens. */}
+			<figure className="mx-margin">
 				<img
 					src="/images/splash.jpg"
 					alt={t("hero.imageAlt")}
-					width={1920}
-					height={1080}
+					width={2048}
+					height={1152}
 					fetchPriority="high"
-					className="drift h-full w-full object-cover object-[50%_18%]"
+					className="mx-auto block aspect-video w-full bg-[#8ec8f6] object-contain lg:h-[52svh] lg:w-auto"
+					data-load
 				/>
 			</figure>
 

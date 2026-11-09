@@ -289,9 +289,6 @@
 		opacity: 1;
 		transform: none;
 	}
-	.drift {
-		animation: drift 24s var(--ease-in-out) infinite alternate;
-	}
 }
 
 @keyframes line-up {
@@ -303,13 +300,5 @@
 	to {
 		opacity: 1;
 		transform: none;
-	}
-}
-@keyframes drift {
-	from {
-		transform: scale(1.06) translate3d(-1.5%, 0, 0);
-	}
-	to {
-		transform: scale(1.06) translate3d(1.5%, -1%, 0);
 	}
 }
