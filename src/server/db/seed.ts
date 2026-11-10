@@ -11,9 +11,14 @@ import { resources } from "./schema";
 import type { SeedEntry } from "./seed/entry";
 import { movies } from "./seed/movies";
 import { podcasts } from "./seed/podcasts";
+import { youtube } from "./seed/youtube";
 
 /** One seed file per kind that has entries; kinds without a file start empty. */
-const seeds: Partial<Record<ResourceKind, SeedEntry[]>> = { podcasts, movies };
+const seeds: Partial<Record<ResourceKind, SeedEntry[]>> = {
+	podcasts,
+	youtube,
+	movies,
+};
 
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 
