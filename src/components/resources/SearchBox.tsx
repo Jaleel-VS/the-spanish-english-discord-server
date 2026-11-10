@@ -19,26 +19,37 @@ export function SearchBox({
 	const navigate = useNavigate();
 	const [value, setValue] = useState(current ?? "");
 	const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+	/** Queries this box has put in the URL that the route has not caught up with yet, oldest first. */
+	const pending = useRef<(string | undefined)[]>([]);
 
-	// Follow the URL when it changes from elsewhere (Clear filters, back button).
+	// Our own updates arrive late, so they must not undo newer typing: drop
+	// them (and any older ones) from the queue. Anything else came from
+	// elsewhere (Clear filters, back button), so the box follows the URL.
 	useEffect(() => {
-		setValue((typed) =>
-			typed.trim() === (current ?? "") ? typed : (current ?? ""),
-		);
+		const own = pending.current.indexOf(current);
+		if (own === -1) {
+			pending.current = [];
+			setValue(current ?? "");
+		} else {
+			pending.current = pending.current.slice(own + 1);
+		}
 	}, [current]);
 	useEffect(() => () => clearTimeout(timer.current), []);
 
-	const go = (q: string) =>
-		navigate({
+	const go = (typed: string) => {
+		const q = typed.trim() || undefined;
+		pending.current.push(q);
+		return navigate({
 			to: ".",
 			search: (prev: Record<string, unknown>) => ({
 				...prev,
-				q: q.trim() || undefined,
+				q,
 				page: undefined,
 			}),
 			replace: true,
 			resetScroll: false,
 		});
+	};
 
 	return (
 		<search>

@@ -48,8 +48,9 @@ if (missing.length) console.log(`No picture for: ${missing.join(", ")}`);
 
 /**
  * On conflict, overwrite every column with the incoming row's value except the
- * key and the creation time. Drizzle's `set` is keyed by property name
- * (`descriptionEn`), so derive it from the table rather than listing SQL names.
+ * key and the creation time, and keep a stored picture when this run's lookup
+ * failed. Drizzle's `set` is keyed by property name (`descriptionEn`), so
+ * derive it from the table rather than listing SQL names.
  */
 const {
 	id: _id,
@@ -61,7 +62,11 @@ const set = Object.fromEntries(
 		property,
 		property === "updatedAt"
 			? sql`now()`
-			: sql.raw(`excluded."${column.name}"`),
+			: property === "imageUrl"
+				? sql.raw(
+						`coalesce(excluded."${column.name}", "resources"."${column.name}")`,
+					)
+				: sql.raw(`excluded."${column.name}"`),
 	]),
 );
 
