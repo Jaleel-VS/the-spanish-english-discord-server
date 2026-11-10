@@ -25,7 +25,6 @@ export function pageMeta({
 		{ name: "description", content: description },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
-		{ property: "og:url", content: `${SITE_URL}${path}` },
 		// Index routes report `/guides/`; links are shared without the slash.
 		{
 			property: "og:url",
