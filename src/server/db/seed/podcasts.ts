@@ -11,6 +11,8 @@ export const podcasts: SeedEntry[] = [
 		language: "es",
 		level: "beginner",
 		country: "MX",
+		topics: ["lessons"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/learn-spanish-spanishpod101-com/id270572701",
 	},
 	{
@@ -23,6 +25,8 @@ export const podcasts: SeedEntry[] = [
 		language: "es",
 		level: "beginner",
 		country: "ES",
+		topics: ["lessons"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/coffee-break-spanish/id201598403",
 	},
 	{
@@ -36,6 +40,8 @@ export const podcasts: SeedEntry[] = [
 		language: "both",
 		level: "intermediate",
 		country: "ES",
+		topics: ["conversation", "culture"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/deep-spanish-by-notes-in-spanish/id1691491112",
 	},
 	{
@@ -48,6 +54,9 @@ export const podcasts: SeedEntry[] = [
 		language: "both",
 		level: "intermediate",
 		country: "CO",
+		topics: ["grammar", "culture", "conversation"],
+		audience: "learners",
+		appleId: "1166015603",
 		url: "https://espanolistos.com/",
 	},
 	{
@@ -60,6 +69,9 @@ export const podcasts: SeedEntry[] = [
 		language: "both",
 		level: "intermediate",
 		country: null,
+		topics: ["stories"],
+		audience: "learners",
+		appleId: "1317493077",
 		url: "https://podcast.duolingo.com/spanish",
 	},
 	{
@@ -72,6 +84,9 @@ export const podcasts: SeedEntry[] = [
 		language: "es",
 		level: "advanced",
 		country: null,
+		topics: ["stories", "culture", "history"],
+		audience: "native",
+		appleId: "527614348",
 		url: "https://radioambulante.org/",
 	},
 
@@ -87,6 +102,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "beginner",
 		country: "GB",
+		topics: ["conversation"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/learning-easy-english/id1742967932",
 	},
 	{
@@ -100,6 +117,8 @@ export const podcasts: SeedEntry[] = [
 		language: "both",
 		level: "beginner",
 		country: "US",
+		topics: ["lessons"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/ingl%C3%A9s-pa-mi-gente/id1676999510",
 	},
 	{
@@ -113,6 +132,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "beginner",
 		country: "GB",
+		topics: ["lessons"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/learn-english-with-coffee-break-english/id1500388439",
 	},
 	{
@@ -126,6 +147,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "beginner",
 		country: null,
+		topics: ["conversation"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/easy-english-learn-english-with-everyday-conversations/id1647991952",
 	},
 	{
@@ -139,6 +162,9 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "GB",
+		topics: ["lessons", "news"],
+		audience: "learners",
+		appleId: "262026947",
 		url: "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english",
 	},
 	{
@@ -152,6 +178,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "US",
+		topics: ["news"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/plain-english/id1327149893",
 	},
 	{
@@ -165,6 +193,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "CA",
+		topics: ["conversation"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/culips-everyday-english-podcast/id279999557",
 	},
 	{
@@ -178,6 +208,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "GB",
+		topics: ["news", "culture"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/thinking-in-english/id1535401964",
 	},
 	{
@@ -191,6 +223,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "intermediate",
 		country: "GB",
+		topics: ["stories", "history", "science", "culture"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/english-learning-for-curious-minds-a-more/id1489301603",
 	},
 	{
@@ -204,6 +238,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "advanced",
 		country: "US",
+		topics: ["conversation", "lessons"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/speak-english-with-tiffani-podcast/id1314073750",
 	},
 	{
@@ -217,6 +253,8 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "advanced",
 		country: "US",
+		topics: ["conversation", "culture"],
+		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/all-ears-english-podcast/id751574016",
 	},
 	{
@@ -230,6 +268,9 @@ export const podcasts: SeedEntry[] = [
 		language: "en",
 		level: "advanced",
 		country: "GB",
+		topics: ["conversation", "culture"],
+		audience: "learners",
+		appleId: "312059190",
 		url: "https://teacherluke.co.uk/",
 	},
 ];

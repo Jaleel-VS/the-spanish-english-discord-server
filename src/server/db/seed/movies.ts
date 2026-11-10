@@ -12,6 +12,7 @@ export const movies: SeedEntry[] = [
 		country: "US",
 		genre: "drama",
 		releaseYear: 1994,
+		audience: "native",
 		url: "https://www.imdb.com/title/tt0111161/",
 	},
 	{
@@ -25,6 +26,7 @@ export const movies: SeedEntry[] = [
 		country: "US",
 		genre: "sci-fi",
 		releaseYear: 2010,
+		audience: "native",
 		url: "https://www.imdb.com/title/tt1375666/",
 	},
 	{
@@ -38,6 +40,7 @@ export const movies: SeedEntry[] = [
 		country: "GB",
 		genre: "drama",
 		releaseYear: 2010,
+		audience: "native",
 		url: "https://www.imdb.com/title/tt1504320/",
 	},
 	{
@@ -51,6 +54,7 @@ export const movies: SeedEntry[] = [
 		country: "ES",
 		genre: "fantasy",
 		releaseYear: 2006,
+		audience: "native",
 		url: "https://www.imdb.com/title/tt0457430/",
 	},
 	{
@@ -64,6 +68,7 @@ export const movies: SeedEntry[] = [
 		country: "MX",
 		genre: "drama",
 		releaseYear: 2018,
+		audience: "native",
 		url: "https://www.imdb.com/title/tt6155172/",
 	},
 	{
@@ -77,6 +82,7 @@ export const movies: SeedEntry[] = [
 		country: "AR",
 		genre: "thriller",
 		releaseYear: 2009,
+		audience: "native",
 		url: "https://www.imdb.com/title/tt1305806/",
 	},
 ];

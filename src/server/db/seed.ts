@@ -9,6 +9,7 @@ import type { ResourceKind } from "@/lib/resource-kinds";
 import { closeDb, db } from "./client.server";
 import { resources } from "./schema";
 import type { SeedEntry } from "./seed/entry";
+import { lookUpImage } from "./seed/images";
 import { movies } from "./seed/movies";
 import { podcasts } from "./seed/podcasts";
 import { youtube } from "./seed/youtube";
@@ -22,19 +23,28 @@ const seeds: Partial<Record<ResourceKind, SeedEntry[]>> = {
 
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 
-const rows = Object.entries(seeds).flatMap(([kind, entries]) =>
-	(entries ?? []).map(({ description, ...entry }) => ({
+const entries = Object.entries(seeds).flatMap(([kind, list]) =>
+	(list ?? []).map((entry) => ({ kind: kind as ResourceKind, entry })),
+);
+
+const rows = await Promise.all(
+	entries.map(async ({ kind, entry: { description, appleId, ...entry } }) => ({
 		creator: null,
 		level: null,
 		country: null,
 		genre: null,
 		releaseYear: null,
+		topics: [],
+		audience: null,
 		...entry,
-		kind: kind as ResourceKind,
+		imageUrl: entry.imageUrl ?? (await lookUpImage(entry.url, appleId)),
+		kind,
 		descriptionEn: description.en,
 		descriptionEs: description.es,
 	})),
 );
+const missing = rows.filter((row) => !row.imageUrl).map((row) => row.id);
+if (missing.length) console.log(`No picture for: ${missing.join(", ")}`);
 
 /**
  * On conflict, overwrite every column with the incoming row's value except the

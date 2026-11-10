@@ -1,5 +1,9 @@
 import type { SeedEntry } from "./entry";
 
+/**
+ * `imageUrl` is the channel's avatar (its page's og:image, at 176px). Copy it
+ * by hand when adding a channel: YouTube rate-limits scripted page fetches.
+ */
 export const youtube: SeedEntry[] = [
 	{
 		id: "pupina-plomer",
@@ -12,6 +16,10 @@ export const youtube: SeedEntry[] = [
 		language: "es",
 		level: "advanced",
 		country: "AR",
+		topics: ["history", "culture"],
+		audience: "native",
+		imageUrl:
+			"https://yt3.googleusercontent.com/QiZgzQ7tY6x_9kplokH79HUSYUS0h_MDYdS99UCCMxajC2L9cCn0RSWrK3cNbhpZx7kmyxzlFQ=s176-c-k-c0x00ffffff-no-rj",
 		url: "https://www.youtube.com/@pupinaplomer/videos",
 	},
 ];

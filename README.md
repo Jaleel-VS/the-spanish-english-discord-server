@@ -56,11 +56,11 @@ src/
 
 **Backend.** Everything that used to live in the separate Rust API now runs inside this app as [server functions](https://tanstack.com/start/latest/docs/framework/react/guide/server-functions):
 
-- `listResources` returns one page of a resource kind, with that kind's filters applied. Its input is the same Zod schema the route uses to validate URL search params.
+- `listResources` returns one page of a resource kind, with that kind's filters and the search box applied, plus a count for every option of every filter the kind offers. Each filter's counts apply all the other active filters but not its own, so the dropdowns show what picking each option would leave. Its input is the same Zod schema the route uses to validate URL search params.
 - `listCollection` and `readDocument` serve the guides and bot pages.
 - `getCommunity` reads the live member and online counts from Discord's public invite endpoint. It caches them for five minutes per server instance, so visitors never reach Discord's rate limit. If Discord has never answered, it returns `null` and the page leaves the numbers out.
 
-The catalogue lives in Neon Postgres, in one `resources` table with a `kind` column; columns only some kinds use (level, genre, release year, creator) are nullable. The database is connected to the Vercel project for production, preview and development. `src/server/db/client.server.ts` creates one connection pool per server instance on first use; `attachDatabasePool` from `@vercel/functions` lets Vercel Fluid compute close idle connections before an instance suspends, which is the connection pattern [Neon recommends for Vercel](https://neon.com/docs/guides/vercel-connection-methods). `src/server/catalog.server.ts` holds the queries.
+The catalogue lives in Neon Postgres, in one `resources` table with a `kind` column; columns only some kinds use (level, genre, release year, creator, audience) are nullable, and `topics` is a text array with a GIN index. The accent filter has no column: `regionCountries` in `src/lib/catalog.ts` maps each region to ISO country codes, and any other country (or none) counts as "Other". Search is a case-insensitive substring match on title, creator and both descriptions. Filters and search are plain links and a GET form, so they work before the page hydrates. The database is connected to the Vercel project for production, preview and development. `src/server/db/client.server.ts` creates one connection pool per server instance on first use; `attachDatabasePool` from `@vercel/functions` lets Vercel Fluid compute close idle connections before an instance suspends, which is the connection pattern [Neon recommends for Vercel](https://neon.com/docs/guides/vercel-connection-methods). `src/server/catalog.server.ts` holds the queries.
 
 **Guides and bot pages** are Markdown with YAML front matter (`title`, `summary`, `order`, and optionally `updated`, plus `prefix` and `repository` for bots). Vite bundles them into the server build, so they need no database and deploy with the code. A page shows the visitor's language when that file exists and otherwise the other one, with a note saying so.
 
@@ -72,13 +72,15 @@ The catalogue lives in Neon Postgres, in one `resources` table with a `kind` col
 
 ## Adding a resource
 
-Add an entry to the seed file for its kind in `src/server/db/seed/` (create `<kind>.ts` and add it to `seeds` in `src/server/db/seed.ts` if the kind has none yet), then run `pnpm db:seed`. TypeScript checks the shape. Write descriptions in both languages and use ISO country codes. The seed matches rows by id, so running it again updates entries instead of duplicating them, and it never deletes anything. A new film genre goes in `genres` in `src/lib/catalog.ts`, with its label in `locales/*/resources.json`, followed by `pnpm db:generate` and `pnpm db:migrate`.
+Add an entry to the seed file for its kind in `src/server/db/seed/` (create `<kind>.ts` and add it to `seeds` in `src/server/db/seed.ts` if the kind has none yet), then run `pnpm db:seed`. TypeScript checks the shape. Write descriptions in both languages and use ISO country codes. Give it `topics` from the fixed list in `src/lib/catalog.ts` and an `audience` (`learners` or `native`). The seed matches rows by id, so running it again updates entries instead of duplicating them, and it never deletes anything. A new film genre or topic goes in `genres` or `topics` in `src/lib/catalog.ts`, with its label in `locales/*/resources.json`; genres, being an enum, also need `pnpm db:generate` and `pnpm db:migrate`.
+
+Pictures: a podcast's cover is looked up from Apple Podcasts on every seed, by the id in its URL, or by `appleId` when the URL is the show's own site. A YouTube channel's avatar goes in `imageUrl` by hand (the `og:image` of its page, with `=s900-` changed to `=s176-`), because YouTube blocks scripted page fetches. Entries without a picture show their initials.
 
 ## Adding a kind of resource
 
 The `resources` table's `kind` enum, the `/resources/$kind` pages, the resources page, the home page band and the footer are all built from `resourceKinds` in `src/lib/resource-kinds.ts`. To add a kind:
 
-1. Add an entry to `resourceKinds`: its id, an archival picture listed in `src/lib/credits.ts`, and which filters its page offers (`language`, `level`, `genre`).
+1. Add an entry to `resourceKinds`: its id, an archival picture listed in `src/lib/credits.ts`, and which filters its page offers (`language`, `level`, `region`, `topic`, `audience`, `genre`). Search is always offered.
 2. Add its copy under `kinds.<id>` in `src/locales/{en,es}/resources.json`. TypeScript reports anything missing.
 3. Run `pnpm db:generate` and `pnpm db:migrate`; the `kind` enum gains the new value.
 

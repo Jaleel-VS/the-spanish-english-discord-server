@@ -1,20 +1,20 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { FilterGroup } from "@/components/resources/FilterGroup";
+import { FilterMenu } from "@/components/resources/FilterMenu";
 import { ResourcePage } from "@/components/resources/ResourcePage";
+import { ResourceRow } from "@/components/resources/ResourceRow";
+import { SearchBox } from "@/components/resources/SearchBox";
 import { resources } from "@/i18n";
 import {
+	audiences,
 	genres,
 	levels,
-	type Resource,
+	regions,
 	resourceLanguages,
 	resourceSearchSchema,
+	topics,
 } from "@/lib/catalog";
-import { stagger } from "@/lib/motion";
-import {
-	findResourceKind,
-	type ResourceKindConfig,
-} from "@/lib/resource-kinds";
+import { findResourceKind, type ResourceFilter } from "@/lib/resource-kinds";
 import { INVITE_URL } from "@/lib/site";
 import { listResources } from "@/server/catalog.functions";
 
@@ -41,68 +41,82 @@ export const Route = createFileRoute("/resources/$kind")({
 	component: ResourceKindPage,
 });
 
+/** Each filter's options, in display order; labels live under the same key in the copy. */
+const filterOptions: Record<ResourceFilter, readonly string[]> = {
+	language: resourceLanguages,
+	level: levels,
+	region: regions,
+	topic: topics,
+	audience: audiences,
+	genre: genres,
+};
+
 function ResourceKindPage() {
 	const { t, i18n } = useTranslation("resources");
 	const language = i18n.language === "es" ? "es" : "en";
 	const { kind } = Route.useRouteContext();
 	const listing = Route.useLoaderData();
 	const search = Route.useSearch();
-	const offers = (filter: ResourceKindConfig["filters"][number]) =>
-		(kind.filters as readonly string[]).includes(filter);
-	const filtered = Boolean(
-		(offers("language") && search.language) ||
-			(offers("level") && search.level) ||
-			(offers("genre") && search.genre),
-	);
-	const all = { value: undefined, label: t("filter.all") };
+	const offered: readonly ResourceFilter[] = kind.filters;
+	const active = offered.filter((filter) => search[filter]);
+	const filtered = active.length > 0 || Boolean(search.q);
+	const label = (filter: ResourceFilter, value: string) =>
+		// Keys are `${filter}.${value}` for every filter, checked by the copy's types.
+		t(`${filter}.${value}` as "level.beginner");
 
 	return (
 		<ResourcePage
 			kind={kind.id}
 			lead={t(`kinds.${kind.id}.lead`)}
 			filters={
-				listing.totalCount > 0 || filtered ? (
+				listing.kindCount > 0 ? (
 					<>
-						{offers("language") && (
-							<FilterGroup
-								label={t("filter.language")}
-								param="language"
-								current={search.language}
-								options={[
-									all,
-									...resourceLanguages.map((value) => ({
+						<SearchBox
+							current={search.q}
+							keep={Object.fromEntries(
+								active.map((filter) => [filter, search[filter]]),
+							)}
+						/>
+						<nav
+							aria-label={t("filter.label")}
+							className="grid grid-cols-2 gap-3 lg:grid-cols-5"
+						>
+							{offered.map((filter) => (
+								<FilterMenu
+									key={filter}
+									label={t(`filter.${filter}`)}
+									param={filter}
+									current={search[filter]}
+									allLabel={t("filter.all")}
+									options={filterOptions[filter].map((value) => ({
 										value,
-										label: t(`language.${value}`),
-									})),
-								]}
-							/>
-						)}
-						{offers("level") && (
-							<FilterGroup
-								label={t("filter.level")}
-								param="level"
-								current={search.level}
-								options={[
-									all,
-									...levels.map((value) => ({
-										value,
-										label: t(`level.${value}`),
-									})),
-								]}
-							/>
-						)}
-						{offers("genre") && (
-							<FilterGroup
-								label={t("filter.genre")}
-								param="genre"
-								current={search.genre}
-								options={[
-									all,
-									...genres
-										.filter((value) => listing.genres.includes(value))
-										.map((value) => ({ value, label: t(`genre.${value}`) })),
-								]}
-							/>
+										label: label(filter, value),
+										count: listing.facets[filter]?.[value] ?? 0,
+									}))}
+								/>
+							))}
+						</nav>
+						{filtered && (
+							<p className="flex flex-wrap items-center gap-2">
+								{search.q && (
+									<Chip label={`“${search.q}”`} remove={{ q: undefined }} />
+								)}
+								{active.map((filter) => (
+									<Chip
+										key={filter}
+										label={label(filter, search[filter] as string)}
+										remove={{ [filter]: undefined }}
+									/>
+								))}
+								<Link
+									to="."
+									search={{}}
+									resetScroll={false}
+									className="link ml-2"
+								>
+									{t("filter.clear")}
+								</Link>
+							</p>
 						)}
 					</>
 				) : undefined
@@ -127,13 +141,28 @@ function ResourceKindPage() {
 					)}
 				</p>
 			) : (
-				<ol className="col-span-12 grid grid-cols-1 gap-x-gutter gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-					{listing.items.map((item, index) => (
-						<li key={item.id} style={stagger(index % 3)} data-reveal>
-							<Entry item={item} language={language} />
-						</li>
-					))}
-				</ol>
+				<>
+					<p
+						className="col-span-12 mb-4 text-muted tabular-nums"
+						aria-live="polite"
+					>
+						{t("showing", {
+							shown: listing.totalCount,
+							count: listing.kindCount,
+						})}
+					</p>
+					<ol className="col-span-12">
+						{listing.items.map((item, index) => (
+							<li key={item.id}>
+								<ResourceRow
+									item={item}
+									language={language}
+									striped={index % 2 === 0}
+								/>
+							</li>
+						))}
+					</ol>
+				</>
 			)}
 
 			{listing.totalPages > 1 && (
@@ -174,50 +203,29 @@ function ResourceKindPage() {
 	);
 }
 
-/** One entry: a small line of facts, the title as the link, the description, then language and level. */
-function Entry({ item, language }: { item: Resource; language: "en" | "es" }) {
+/** An active filter; the link drops it. */
+function Chip({
+	label,
+	remove,
+}: {
+	label: string;
+	remove: Record<string, undefined>;
+}) {
 	const { t } = useTranslation("resources");
-	const regions = new Intl.DisplayNames([language], { type: "region" });
-	const facts = [
-		item.releaseYear,
-		item.country ? regions.of(item.country) : null,
-		item.creator,
-	].filter(Boolean);
-	const tags = [
-		t(`language.${item.language}`),
-		item.level ? t(`level.${item.level}`) : null,
-		item.genre ? t(`genre.${item.genre}`) : null,
-	].filter(Boolean);
-
 	return (
-		<a
-			href={item.url}
-			target="_blank"
-			rel="noopener noreferrer"
-			className="group block"
+		<Link
+			to="."
+			search={(prev: Record<string, unknown>) => ({
+				...prev,
+				...remove,
+				page: undefined,
+			})}
+			resetScroll={false}
+			aria-label={t("filter.remove", { label })}
+			className="inline-flex items-center gap-1.5 bg-ink px-2 py-0.5 text-ground hover:bg-ink/85"
 		>
-			{facts.length > 0 && (
-				<span className="block text-small text-muted tabular-nums">
-					{facts.join(" · ")}
-				</span>
-			)}
-			<span
-				className="mt-2 block text-lead font-semibold leading-tight tracking-[-0.02em] group-hover:underline"
-				lang={item.language === "both" ? undefined : item.language}
-			>
-				{item.title}
-				<span
-					aria-hidden="true"
-					className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1"
-				>
-					↗
-				</span>
-			</span>
-			<span className="sr-only"> ({t("opens")})</span>
-			<span className="mt-3 block max-w-[46ch]">
-				{item.description[language]}
-			</span>
-			<span className="mt-3 block text-muted">{tags.join(" · ")}</span>
-		</a>
+			{label}
+			<span aria-hidden="true">×</span>
+		</Link>
 	);
 }

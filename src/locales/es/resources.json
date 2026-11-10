@@ -63,9 +63,49 @@
 	"filter": {
 		"language": "Idioma",
 		"level": "Nivel",
+		"region": "Acento",
+		"topic": "Tema",
+		"audience": "Hecho para",
 		"genre": "Género",
 		"all": "Todos",
-		"clear": "Quitar filtros"
+		"clear": "Quitar filtros",
+		"remove": "Quitar filtro: {{label}}",
+		"label": "Filtros"
+	},
+	"search": {
+		"label": "Buscar",
+		"placeholder": "Busca por nombre o descripción",
+		"submit": "Buscar"
+	},
+	"showing": "Mostrando {{shown}} de {{count}}",
+	"region": {
+		"spain": "España",
+		"mexico-central-america": "México y Centroamérica",
+		"caribbean": "Caribe",
+		"andes": "Andes",
+		"river-plate": "Río de la Plata",
+		"us": "EE. UU.",
+		"uk-ireland": "Reino Unido e Irlanda",
+		"other": "Otros"
+	},
+	"topic": {
+		"lessons": "Clases",
+		"grammar": "Gramática",
+		"pronunciation": "Pronunciación",
+		"conversation": "Conversación",
+		"stories": "Historias",
+		"culture": "Cultura",
+		"history": "Historia",
+		"science": "Ciencia",
+		"news": "Noticias",
+		"cooking": "Cocina",
+		"travel": "Viajes",
+		"vlogs": "Vlogs",
+		"interviews": "Entrevistas"
+	},
+	"audience": {
+		"learners": "Para estudiantes",
+		"native": "Para nativos"
 	},
 	"language": {
 		"es": "Español",
@@ -84,7 +124,7 @@
 		"advanced": "Avanzado"
 	},
 	"empty": {
-		"filtered": "Nada coincide con estos filtros.",
+		"filtered": "Nada coincide.",
 		"none": "Aún no hay nada aquí. La comunidad sigue eligiendo.",
 		"suggest": "Propón el primero en el servidor."
 	},

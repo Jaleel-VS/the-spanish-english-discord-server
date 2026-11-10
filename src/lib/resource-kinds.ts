@@ -2,8 +2,14 @@ import type { photoCredits } from "./credits";
 
 type PhotoSlug = (typeof photoCredits)[number]["slug"];
 
-/** Filters a kind's page can offer; each maps to a column of the `resources` table. */
-export type ResourceFilter = "language" | "level" | "genre";
+/** Filters a kind's page can offer, in display order. `q` (search) is always offered. */
+export type ResourceFilter =
+	| "language"
+	| "level"
+	| "region"
+	| "topic"
+	| "audience"
+	| "genre";
 
 /**
  * Every kind of resource the site lists, in display order. The `resources`
@@ -18,12 +24,24 @@ export type ResourceFilter = "language" | "level" | "genre";
  * TypeScript flags any copy that is missing after step 1.
  */
 export const resourceKinds = [
-	{ id: "podcasts", image: "radio", filters: ["language", "level"] },
-	{ id: "youtube", image: "television", filters: ["language", "level"] },
-	{ id: "movies", image: "cinema", filters: ["language", "genre"] },
-	{ id: "books", image: "library", filters: ["language", "level"] },
+	{
+		id: "podcasts",
+		image: "radio",
+		filters: ["language", "level", "region", "topic", "audience"],
+	},
+	{
+		id: "youtube",
+		image: "television",
+		filters: ["language", "level", "region", "topic", "audience"],
+	},
+	{ id: "movies", image: "cinema", filters: ["language", "region", "genre"] },
+	{
+		id: "books",
+		image: "library",
+		filters: ["language", "level", "region", "topic"],
+	},
 	{ id: "workbooks", image: "classroom", filters: ["language", "level"] },
-	{ id: "musicians", image: "musicians", filters: ["language"] },
+	{ id: "musicians", image: "musicians", filters: ["language", "region"] },
 ] as const satisfies readonly {
 	id: string;
 	image: PhotoSlug;

@@ -51,14 +51,16 @@ export function ResourcePage({
 				</p>
 				{filters && (
 					<div
-						className="col-span-12 mt-14 flex flex-col gap-3 [--d:560ms] lg:col-start-6 lg:col-span-7"
+						className="relative z-10 col-span-12 mt-14 flex flex-col gap-3 [--d:560ms]"
 						data-load
 					>
 						{filters}
 					</div>
 				)}
 			</div>
-			<div className="frame mt-16 md:mt-20">{children}</div>
+			<div className={`frame ${filters ? "mt-10" : "mt-16 md:mt-20"}`}>
+				{children}
+			</div>
 			<p className="frame mt-20">
 				<Link
 					to="/resources"
