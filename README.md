@@ -64,6 +64,8 @@ The catalogue lives in Neon Postgres, in one `resources` table with a `kind` col
 
 **Guides and bot pages** are Markdown with YAML front matter (`title`, `summary`, `order`, and optionally `updated`, plus `prefix` and `repository` for bots). Vite bundles them into the server build, so they need no database and deploy with the code. A page shows the visitor's language when that file exists and otherwise the other one, with a note saying so.
 
+**Link previews.** When a link to the site is pasted into Discord, WhatsApp, Slack or similar, the card shows the server's splash art with the page's own title and description, from Open Graph tags. The root route sets the site-wide ones (site name, image, card type). Each page adds its own title, description and URL through `pageMeta` in `src/lib/seo.ts`; the deepest route's tag wins. Crawlers send no language cookie, so previews are in English unless the crawler asks for Spanish.
+
 **Schema changes.** Edit `src/server/db/schema.ts`, run `pnpm db:generate`, review the SQL it writes into `drizzle/`, commit it, then run `pnpm db:migrate`. The enum types come from the constants in `src/lib/catalog.ts`, so a new language, level or genre is added in one place, and then migrated.
 
 **Languages.** On the server, the language comes from the `language` cookie, then the browser's `Accept-Language` header, then English. Every request gets its own i18next instance, so concurrent requests in different languages never share state. The language switch sets the cookie and re-runs the route loaders, with no page reload. Catalogue entries carry their descriptions in both languages, and country names come from ISO codes through `Intl.DisplayNames`.

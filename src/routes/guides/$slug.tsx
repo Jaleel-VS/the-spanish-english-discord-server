@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { DocumentPage } from "@/components/documents/DocumentPage";
 import { resources } from "@/i18n";
+import { pageMeta } from "@/lib/seo";
 import { readDocument } from "@/server/documents.functions";
 
 export const Route = createFileRoute("/guides/$slug")({
@@ -16,12 +17,12 @@ export const Route = createFileRoute("/guides/$slug")({
 		return document;
 	},
 	head: ({ match, loaderData }) => ({
-		meta: [
-			{
-				title: `${loaderData?.title} · ${resources[match.context.language].guides.meta.suffix}`,
-			},
-			{ name: "description", content: loaderData?.summary },
-		],
+		meta: pageMeta({
+			title: loaderData?.title ?? "",
+			documentTitle: `${loaderData?.title} · ${resources[match.context.language].guides.meta.suffix}`,
+			description: loaderData?.summary,
+			path: match.pathname,
+		}),
 	}),
 	component: () => (
 		<DocumentPage collection="guides" document={Route.useLoaderData()} />

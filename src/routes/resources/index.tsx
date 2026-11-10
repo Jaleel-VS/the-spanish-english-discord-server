@@ -4,14 +4,23 @@ import { ResourceKindTile } from "@/components/resources/ResourceKindTile";
 import { resources } from "@/i18n";
 import { stagger } from "@/lib/motion";
 import { resourceKinds } from "@/lib/resource-kinds";
+import { pageMeta } from "@/lib/seo";
 import { INVITE_URL } from "@/lib/site";
 import { getCatalogueCounts } from "@/server/catalog.functions";
 
 export const Route = createFileRoute("/resources/")({
 	loader: () => getCatalogueCounts(),
-	head: ({ match }) => ({
-		meta: [{ title: resources[match.context.language].resources.meta.index }],
-	}),
+	head: ({ match }) => {
+		const copy = resources[match.context.language].resources;
+		return {
+			meta: pageMeta({
+				title: copy.index.title,
+				documentTitle: copy.meta.index,
+				description: copy.index.lead,
+				path: match.pathname,
+			}),
+		};
+	},
 	component: ResourcesIndex,
 });
 

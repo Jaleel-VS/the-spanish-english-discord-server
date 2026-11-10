@@ -15,6 +15,7 @@ import {
 	topics,
 } from "@/lib/catalog";
 import { findResourceKind, type ResourceFilter } from "@/lib/resource-kinds";
+import { pageMeta } from "@/lib/seo";
 import { INVITE_URL } from "@/lib/site";
 import { listResources } from "@/server/catalog.functions";
 
@@ -30,12 +31,14 @@ export const Route = createFileRoute("/resources/$kind")({
 		listResources({ data: { kind: context.kind.id, search: deps } }),
 	head: ({ match }) => {
 		const copy = resources[match.context.language].resources;
+		const kind = copy.kinds[match.context.kind.id];
 		return {
-			meta: [
-				{
-					title: `${copy.kinds[match.context.kind.id].title} · ${copy.meta.suffix}`,
-				},
-			],
+			meta: pageMeta({
+				title: kind.title,
+				documentTitle: `${kind.title} · ${copy.meta.suffix}`,
+				description: kind.lead,
+				path: match.pathname,
+			}),
 		};
 	},
 	component: ResourceKindPage,

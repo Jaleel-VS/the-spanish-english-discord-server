@@ -12,10 +12,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createI18n, resources } from "@/i18n";
 import { resolveLanguage } from "@/i18n/language";
+import { SITE_URL } from "@/lib/seo";
 import { getCommunity } from "@/server/community.functions";
 import appCss from "@/styles.css?url";
-
-const SITE_URL = "https://the-spanish-english-discord-server.vercel.app";
 
 export const Route = createRootRoute({
 	beforeLoad: () => ({ language: resolveLanguage() }),
@@ -37,10 +36,17 @@ export const Route = createRootRoute({
 				{ name: "description", content: description },
 				{ name: "theme-color", content: "#0f1e3d" },
 				{ property: "og:type", content: "website" },
+				{ property: "og:site_name", content: copy.title },
 				{ property: "og:url", content: `${SITE_URL}/` },
 				{ property: "og:title", content: copy.title },
 				{ property: "og:description", content: description },
 				{ property: "og:image", content: `${SITE_URL}/images/splash.jpg` },
+				{ property: "og:image:width", content: "2048" },
+				{ property: "og:image:height", content: "1152" },
+				{
+					property: "og:image:alt",
+					content: resources[match.context.language].home.hero.imageAlt,
+				},
 				{ name: "twitter:card", content: "summary_large_image" },
 			],
 			links: [
