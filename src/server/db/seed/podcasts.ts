@@ -1,5 +1,9 @@
 import type { SeedEntry } from "./entry";
 
+/**
+ * Apple rates some of these shows explicit, nearly always for strong language;
+ * that alone does not keep a show off the list.
+ */
 export const podcasts: SeedEntry[] = [
 	{
 		id: "spanishpod101",
@@ -276,6 +280,36 @@ export const podcasts: SeedEntry[] = [
 
 	// Made for learners of Spanish. Checked on Apple Podcasts, November 2026.
 	{
+		id: "espanol-con-juan-podcast",
+		title: "Español con Juan",
+		creator: "Juan Fernández",
+		description: {
+			en: "Spanish teacher Juan Fernández uses personal stories and expressions in context to help learners practise Spanish. Transcripts are available on his website.",
+			es: "El profesor Juan Fernández cuenta anécdotas y presenta expresiones en contexto para practicar español. Las transcripciones están en su web.",
+		},
+		language: "es",
+		level: "intermediate",
+		country: "ES",
+		topics: ["stories", "lessons"],
+		audience: "learners",
+		url: "https://podcasts.apple.com/us/podcast/espa%C3%B1ol-con-juan/id976549237",
+	},
+	{
+		id: "hoy-hablamos",
+		title: "Hoy Hablamos",
+		creator: "Roi Bolás and Paco",
+		description: {
+			en: "Weekday Spanish practice with varied topics, expressions, news and conversations between Roi and Paco. The full archive and transcripts require a premium subscription.",
+			es: "Práctica de español entre semana con temas variados, expresiones, noticias y charlas entre Roi y Paco. El archivo completo y las transcripciones requieren suscripción.",
+		},
+		language: "es",
+		level: "intermediate",
+		country: "ES",
+		topics: ["conversation", "culture", "news"],
+		audience: "learners",
+		url: "https://podcasts.apple.com/us/podcast/hoy-hablamos-podcast-diario-para-aprender-espa%C3%B1ol-learn/id1201483158",
+	},
+	{
 		id: "charlas-hispanas",
 		title: "Charlas Hispanas",
 		description: {
@@ -364,6 +398,21 @@ export const podcasts: SeedEntry[] = [
 		url: "https://podcasts.apple.com/us/podcast/how-to-spanish-podcast/id1458420685",
 	},
 	{
+		id: "learn-spanish-and-go",
+		title: "Learn Spanish and Go",
+		creator: "Jim and May",
+		description: {
+			en: "Mexican teacher May and Jim share travel stories, cultural conversations and interviews in natural Spanish for intermediate and advanced learners.",
+			es: "May, profesora mexicana, y Jim comparten viajes, charlas culturales y entrevistas en español natural para niveles intermedio y avanzado.",
+		},
+		language: "es",
+		level: "intermediate",
+		country: "MX",
+		topics: ["travel", "culture", "interviews"],
+		audience: "learners",
+		url: "https://podcasts.apple.com/us/podcast/learn-spanish-and-go/id1510277822",
+	},
+	{
 		id: "andalusian-spanish-to-go",
 		title: "Andalusian Spanish to Go",
 		creator: "Antonio / Spanish with Antonio",
@@ -409,6 +458,21 @@ export const podcasts: SeedEntry[] = [
 		url: "https://podcasts.apple.com/us/podcast/simple-stories-in-spanish/id1497441201",
 	},
 	{
+		id: "chilean-spanish-podcast",
+		title: "Chilean Spanish Podcast",
+		creator: "Natalia Fontalva",
+		description: {
+			en: "Natalia Fontalva explores Chilean culture in comprehensible Spanish for intermediate learners aiming higher.",
+			es: "Natalia Fontalva explora la cultura chilena en español comprensible para estudiantes intermedios que quieren avanzar.",
+		},
+		language: "es",
+		level: "intermediate",
+		country: "CL",
+		topics: ["culture", "stories"],
+		audience: "learners",
+		url: "https://podcasts.apple.com/us/podcast/chilean-spanish-podcast/id1609135413",
+	},
+	{
 		id: "pocket-spanish-podcast",
 		title: "Pocket Spanish Podcast",
 		creator: "Nicolás",
@@ -438,8 +502,38 @@ export const podcasts: SeedEntry[] = [
 		audience: "learners",
 		url: "https://podcasts.apple.com/us/podcast/cu%C3%A9ntame-learn-spanish-with-comprehensible-input/id1571791000",
 	},
+	{
+		id: "advanced-spanish-podcast",
+		title: "Advanced Spanish Podcast",
+		creator: "César / Spanish Language Coach",
+		description: {
+			en: "César hosts real-speed Spanish conversations for advanced learners, with free transcripts and vocabulary flashcards.",
+			es: "César presenta conversaciones a velocidad real para estudiantes avanzados, con transcripciones y tarjetas de vocabulario gratuitas.",
+		},
+		language: "es",
+		level: "advanced",
+		country: "ES",
+		topics: ["conversation", "culture", "interviews"],
+		audience: "learners",
+		url: "https://podcasts.apple.com/us/podcast/advanced-spanish-podcast-espa%C3%B1ol-avanzado/id1632291264",
+	},
 
 	// Native Spanish. Checked on Apple Podcasts, November 2026.
+	{
+		id: "el-hilo",
+		title: "El hilo",
+		creator: "Eliezer Budasoff y Silvia Viñas / Radio Ambulante Studios",
+		description: {
+			en: "Weekly reporting on Latin American news with interviews and context beyond the headlines. Spanish transcripts are available.",
+			es: "Reportajes semanales sobre la actualidad latinoamericana, con entrevistas y contexto. Hay transcripciones en español.",
+		},
+		language: "es",
+		level: "advanced",
+		country: null,
+		topics: ["news", "interviews"],
+		audience: "native",
+		url: "https://podcasts.apple.com/us/podcast/el-hilo/id1504713161",
+	},
 	{
 		id: "hoy-en-el-pais",
 		title: "Hoy en EL PAÍS",
@@ -454,6 +548,21 @@ export const podcasts: SeedEntry[] = [
 		topics: ["news", "interviews"],
 		audience: "native",
 		url: "https://podcasts.apple.com/us/podcast/hoy-en-el-pa%C3%ADs/id1376446768",
+	},
+	{
+		id: "nadie-sabe-nada",
+		title: "Nadie Sabe Nada",
+		creator: "Andreu Buenafuente y Berto Romero",
+		description: {
+			en: "Andreu Buenafuente and Berto Romero improvise comedy together on Cadena SER, in episodes of about an hour.",
+			es: "Andreu Buenafuente y Berto Romero improvisan humor en Cadena SER, en episodios de alrededor de una hora.",
+		},
+		language: "es",
+		level: "advanced",
+		country: "ES",
+		topics: ["conversation", "culture"],
+		audience: "native",
+		url: "https://podcasts.apple.com/us/podcast/nadie-sabe-nada/id665143133",
 	},
 	{
 		id: "memorias-de-un-tambor",
@@ -514,6 +623,21 @@ export const podcasts: SeedEntry[] = [
 		topics: ["science", "stories"],
 		audience: "native",
 		url: "https://podcasts.apple.com/us/podcast/la-ciencia-pop/id1499411102",
+	},
+	{
+		id: "asi-como-suena",
+		title: "Así como suena",
+		creator: "Así Como Suena",
+		description: {
+			en: "Reported audio stories about Mexican life, politics and social issues, often around 30–45 minutes long.",
+			es: "Historias periodísticas sobre la vida en México, la política y los problemas sociales, a menudo de 30–45 minutos.",
+		},
+		language: "es",
+		level: "advanced",
+		country: "MX",
+		topics: ["stories", "culture", "news"],
+		audience: "native",
+		url: "https://podcasts.apple.com/us/podcast/as%C3%AD-como-suena/id1167641648",
 	},
 	{
 		id: "historia-en-podcast",
@@ -849,6 +973,36 @@ export const podcasts: SeedEntry[] = [
 
 	// Native English. Checked on Apple Podcasts, November 2026.
 	{
+		id: "this-american-life",
+		title: "This American Life",
+		creator: "Ira Glass / WBEZ Chicago",
+		description: {
+			en: "Ira Glass presents themed collections of personal and reported stories, usually around an hour.",
+			es: "Ira Glass presenta historias personales y reportajes unidos por un tema, normalmente de alrededor de una hora.",
+		},
+		language: "en",
+		level: "advanced",
+		country: "US",
+		topics: ["stories", "culture", "news"],
+		audience: "native",
+		url: "https://podcasts.apple.com/us/podcast/this-american-life/id201671138",
+	},
+	{
+		id: "the-moth",
+		title: "The Moth",
+		creator: "The Moth",
+		description: {
+			en: "True personal stories told live without notes, with speakers from varied backgrounds. The feed includes shorter stories and radio hours.",
+			es: "Historias personales reales contadas en directo y sin notas, por personas de distintos orígenes. Hay relatos breves y programas de una hora.",
+		},
+		language: "en",
+		level: "advanced",
+		country: null,
+		topics: ["stories", "culture"],
+		audience: "native",
+		url: "https://podcasts.apple.com/us/podcast/the-moth/id275699983",
+	},
+	{
 		id: "99-percent-invisible",
 		title: "99% Invisible",
 		creator: "Roman Mars",
@@ -982,6 +1136,21 @@ export const podcasts: SeedEntry[] = [
 		topics: ["science", "interviews"],
 		audience: "native",
 		url: "https://podcasts.apple.com/us/podcast/all-in-the-mind/id73330911",
+	},
+	{
+		id: "conversations-abc",
+		title: "Conversations",
+		creator: "ABC Australia / Richard Fidler and Sarah Kanowski",
+		description: {
+			en: "Richard Fidler and Sarah Kanowski interview guests about their life stories for ABC Australia, usually around 50 minutes.",
+			es: "Richard Fidler y Sarah Kanowski entrevistan a invitados sobre su vida para ABC Australia, normalmente durante unos 50 minutos.",
+		},
+		language: "en",
+		level: "advanced",
+		country: "AU",
+		topics: ["interviews", "stories", "culture"],
+		audience: "native",
+		url: "https://podcasts.apple.com/us/podcast/conversations/id94688506",
 	},
 	{
 		id: "quirks-and-quarks",
