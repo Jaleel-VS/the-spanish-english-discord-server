@@ -174,7 +174,7 @@ function ResourceKindPage() {
 						page: listing.page,
 						total: listing.totalPages,
 					})}
-					className="col-span-12 mt-16 flex items-baseline gap-8 lg:col-start-6"
+					className="col-span-12 mt-16 flex items-baseline gap-8 lg:col-span-7 lg:col-start-6"
 				>
 					{listing.page > 1 && (
 						<Link
