@@ -107,8 +107,8 @@ function cssColour(name: string): Rgb {
 const mix = (a: Rgb, b: Rgb, k: number): Rgb =>
 	a.map((v, i) => v + (b[i] - v) * k) as Rgb;
 
-/** The sky blue of the server's splash art, so the illustration sits in the same sky. */
-const ART_SKY: Rgb = [0x8e / 255, 0xc8 / 255, 0xf6 / 255];
+/** The sky blue of the server's splash art (sampled from splash.jpg), so the cut-out's edges meet the same blue. */
+const ART_SKY: Rgb = [148 / 255, 204 / 255, 255 / 255];
 
 /**
  * Four tones from open sky (0) to cloud (3), plus the sun. Day: the art's sky
