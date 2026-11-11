@@ -161,23 +161,6 @@ export const youtube: SeedEntry[] = [
 		url: "https://www.youtube.com/@TuescueladeespanolEs",
 	},
 	{
-		id: "espanolistos-youtube",
-		title: "Españolistos",
-		creator: "Andrea and Nate Alger",
-		description: {
-			en: "Colombian teacher Andrea and her American husband Nate discuss travel, culture and general-interest topics in Spanish. Conversations and interviews suit upper-intermediate learners and beyond.",
-			es: "La profesora colombiana Andrea y su esposo estadounidense Nate conversan en español sobre viajes, cultura y temas variados. Charlas y entrevistas para niveles intermedios altos y avanzados.",
-		},
-		language: "es",
-		level: "advanced",
-		country: "CO",
-		topics: ["conversation", "culture", "interviews"],
-		audience: "learners",
-		imageUrl:
-			"https://yt3.googleusercontent.com/eHQRp39xXartlSulik9S_D_ixYSl77wJ9XbIgDCTXA53AVrgxV1axOoYAuH-_CR0ufEeGJ8Xjw=s176-c-k-c0x00ffffff-no-rj",
-		url: "https://www.youtube.com/@espanolistos4917",
-	},
-	{
 		id: "spring-spanish",
 		title: "Spring Spanish",
 		description: {
@@ -451,7 +434,6 @@ export const youtube: SeedEntry[] = [
 	{
 		id: "paulina-cocina",
 		title: "Paulina Cocina",
-		creator: "Carolina (Paulina Cocina)",
 		description: {
 			en: "An Argentine home cook teaches easy recipes with an informal, humorous style. The cooking demonstrations give context for everyday vocabulary.",
 			es: "Una cocinera argentina enseña recetas sencillas con un estilo informal y humorístico. Las preparaciones dan contexto al vocabulario cotidiano.",
@@ -468,7 +450,7 @@ export const youtube: SeedEntry[] = [
 	{
 		id: "jauja-cocina-mexicana",
 		title: "Jauja Cocina Mexicana",
-		creator: "Janet Kushner",
+		creator: "Janet and Jack",
 		description: {
 			en: "Janet, from Mexico City, demonstrates Mexican home recipes step by step while her husband Jack films. Ingredients and actions give concrete listening context.",
 			es: "Janet, de Ciudad de México, muestra recetas caseras mexicanas paso a paso mientras su esposo Jack graba. Los ingredientes y las acciones dan contexto a la escucha.",
