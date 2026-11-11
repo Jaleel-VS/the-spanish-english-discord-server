@@ -109,4 +109,4 @@ The Vercel project deploys `main`. Nitro detects Vercel during the build and wri
 
 ## Credits
 
-The splash illustration is by Belle, for the server. The archival photographs come from Wikimedia Commons; their sources and licences are listed in `src/lib/credits.ts` and credited in the site footer.
+The splash illustration is by Belle, for the server. The homepage shows it without its sky (`public/images/splash-cutout.webp`, cut from `splash.jpg`), standing in a dithered pixel sky drawn by `src/components/PixelSky.tsx` in the art's own blue; Belle's signature is a separate layer (`splash-signature.png`) so it stays legible in dark mode. Link previews still use the full `splash.jpg`. The archival photographs come from Wikimedia Commons; their sources and licences are listed in `src/lib/credits.ts` and credited in the site footer.
