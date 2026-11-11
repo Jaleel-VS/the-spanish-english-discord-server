@@ -82,7 +82,8 @@ void main() {
 	float d = distance(uv, sunAt);
 	float r = uSunR;
 	if (r > 0.0 && d < r * 2.6) {
-		bool inFront = smoothstep(0.42, 0.56, cloud) > threshold;
+		// A hard edge: only cells the cloud's outline crosses change, never a dithered band.
+		bool inFront = cloud > 0.5;
 		if (inFront) {
 			float lit = smoothstep(r * 2.6, r * 0.8, d) * 0.6;
 			float litLevel = clamp(b + lit, 0.0, 1.0) * 3.0;
