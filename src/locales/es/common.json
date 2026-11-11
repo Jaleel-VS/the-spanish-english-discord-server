@@ -15,7 +15,8 @@
 		"skip": "Saltar al contenido",
 		"main": "Principal",
 		"menu": "Menú",
-		"close": "Cerrar"
+		"close": "Cerrar",
+		"dark": "Modo oscuro"
 	},
 	"footer": {
 		"server": "Servidor",

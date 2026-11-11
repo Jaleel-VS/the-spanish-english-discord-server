@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { createI18n, resources } from "@/i18n";
 import { resolveLanguage } from "@/i18n/language";
 import { SITE_URL } from "@/lib/seo";
+import { themeScript } from "@/lib/theme";
 import { getCommunity } from "@/server/community.functions";
 import appCss from "@/styles.css?url";
 
@@ -70,6 +71,9 @@ function RootDocument({ children }: { children: ReactNode }) {
 			<head>
 				{/* Gates entrance animations, so content stays visible without JavaScript. */}
 				<script>document.documentElement.classList.add("js")</script>
+				{/* Sets <html data-theme> before the body paints, so a dark page never flashes light. */}
+				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: a constant from src/lib/theme.ts, no input. */}
+				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 				<HeadContent />
 			</head>
 			<body>

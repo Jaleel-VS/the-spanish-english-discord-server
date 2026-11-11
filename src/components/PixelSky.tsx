@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { currentTheme, onThemeChange } from "@/lib/theme";
 
 /**
  * A dithered pixel sky: slow value-noise clouds, quantised to four tones with
@@ -203,14 +204,14 @@ export function PixelSky({
 		gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
 		const u = (name: string) => gl.getUniformLocation(program, name);
 
-		const scheme = matchMedia("(prefers-color-scheme: dark)");
 		const still = matchMedia("(prefers-reduced-motion: reduce)");
 		const applyPalette = () => {
-			const { tones, sun } = palette(scheme.matches);
+			const dark = currentTheme() === "dark";
+			const { tones, sun } = palette(dark);
 			for (const [i, rgb] of tones.entries())
 				gl.uniform3fv(u(`uTone${i}`), rgb);
 			gl.uniform3fv(u("uSun"), sun);
-			gl.uniform1f(u("uDark"), scheme.matches ? 1 : 0);
+			gl.uniform1f(u("uDark"), dark ? 1 : 0);
 		};
 		applyPalette();
 		gl.uniform2f(u("uSunAt"), sunX, sunY);
@@ -273,11 +274,10 @@ export function PixelSky({
 			run();
 		});
 		seen.observe(canvas);
-		const onScheme = () => {
+		const stopTheme = onThemeChange(() => {
 			applyPalette();
 			draw();
-		};
-		scheme.addEventListener("change", onScheme);
+		});
 		still.addEventListener("change", onStill);
 		document.addEventListener("visibilitychange", run);
 		run();
@@ -287,7 +287,7 @@ export function PixelSky({
 			runRef.current = undefined;
 			sizes.disconnect();
 			seen.disconnect();
-			scheme.removeEventListener("change", onScheme);
+			stopTheme();
 			still.removeEventListener("change", onStill);
 			document.removeEventListener("visibilitychange", run);
 		};

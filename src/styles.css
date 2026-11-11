@@ -2,12 +2,29 @@
 @import "@fontsource-variable/bricolage-grotesque/opsz.css";
 
 /*
+ * Dark mode follows <html data-theme> (set before first paint by the script in
+ * src/lib/theme.ts), and the device's setting when the attribute is absent
+ * (no JavaScript). The palette below and Tailwind's `dark:` utilities both use
+ * this variant, so they always agree.
+ */
+@custom-variant dark {
+	&:where([data-theme="dark"], [data-theme="dark"] *) {
+		@slot;
+	}
+	@media (prefers-color-scheme: dark) {
+		&:where(:root:not([data-theme]), :root:not([data-theme]) *) {
+			@slot;
+		}
+	}
+}
+
+/*
  * Two-colour print: paper, one ink and one accent. The ink is the deep blue of
  * the Union flag, the accent the yellow of the Spanish one; both are the
  * server's own colours (its icon, its sign, its splash art).
  */
 :root {
-	color-scheme: light dark;
+	color-scheme: light;
 
 	--ground: #f5f5f3;
 	--surface: #e8e8e4;
@@ -37,8 +54,9 @@
 	--t-hover: 180ms;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
+:root {
+	@variant dark {
+		color-scheme: dark;
 		--ground: #0d1730;
 		--surface: #16234a;
 		--ink: #f2f2f0;
