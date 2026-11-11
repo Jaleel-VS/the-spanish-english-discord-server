@@ -5,7 +5,9 @@
 		"imageAlt": "Illustrated shopfront under a Spanish and British flag sign, with a Welcome banner and a group of members holding flags from many countries",
 		"sentence": "A free Discord server where Spanish and English speakers help each other learn, every day since {{year}}.",
 		"members": "{{members}} members",
-		"online": "{{online}} online now"
+		"online": "{{online}} online now",
+		"skyPause": "Pause the sky",
+		"skyPlay": "Play the sky"
 	},
 	"intro": {
 		"title": "One server, two languages",

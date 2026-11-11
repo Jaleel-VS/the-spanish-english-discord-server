@@ -5,7 +5,9 @@
 		"imageAlt": "Ilustración de una tienda bajo un letrero con las banderas de España y del Reino Unido, con un cartel de bienvenida y un grupo de miembros con banderas de muchos países",
 		"sentence": "Un servidor de Discord gratuito donde hablantes de español e inglés se ayudan a aprender, todos los días desde {{year}}.",
 		"members": "{{members}} miembros",
-		"online": "{{online}} conectados ahora"
+		"online": "{{online}} conectados ahora",
+		"skyPause": "Pausar el cielo",
+		"skyPlay": "Reanudar el cielo"
 	},
 	"intro": {
 		"title": "Un servidor, dos idiomas",
