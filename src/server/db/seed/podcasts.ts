@@ -276,36 +276,6 @@ export const podcasts: SeedEntry[] = [
 
 	// Made for learners of Spanish. Checked on Apple Podcasts, November 2026.
 	{
-		id: "espanol-con-juan-podcast",
-		title: "Español con Juan",
-		creator: "Juan Fernández",
-		description: {
-			en: "Spanish teacher Juan Fernández uses personal stories and expressions in context to help learners practise Spanish. Transcripts are available on his website.",
-			es: "El profesor Juan Fernández cuenta anécdotas y presenta expresiones en contexto para practicar español. Las transcripciones están en su web.",
-		},
-		language: "es",
-		level: "intermediate",
-		country: "ES",
-		topics: ["stories", "lessons"],
-		audience: "learners",
-		url: "https://podcasts.apple.com/us/podcast/espa%C3%B1ol-con-juan/id976549237",
-	},
-	{
-		id: "hoy-hablamos",
-		title: "Hoy Hablamos",
-		creator: "Roi Bolás and Paco",
-		description: {
-			en: "Weekday Spanish practice with varied topics, expressions, news and conversations between Roi and Paco. The full archive and transcripts require a premium subscription.",
-			es: "Práctica de español entre semana con temas variados, expresiones, noticias y charlas entre Roi y Paco. El archivo completo y las transcripciones requieren suscripción.",
-		},
-		language: "es",
-		level: "intermediate",
-		country: "ES",
-		topics: ["conversation", "culture", "news"],
-		audience: "learners",
-		url: "https://podcasts.apple.com/us/podcast/hoy-hablamos-podcast-diario-para-aprender-espa%C3%B1ol-learn/id1201483158",
-	},
-	{
 		id: "charlas-hispanas",
 		title: "Charlas Hispanas",
 		description: {
