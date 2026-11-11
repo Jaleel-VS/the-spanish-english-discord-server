@@ -75,16 +75,24 @@ void main() {
 		if (h > 0.9965 && cloud < 0.15 && fade < 0.5 && sin(t * 0.8 + h * 900.0) > -0.4) colour = uTone2;
 	}
 
-	// The sun (or moon) sits behind the clouds: a disc and a dithered halo
-	// that thins outwards, both hidden where a cloud is thick.
+	// The sun (or moon) is a fixed shape: a disc and a halo of dots in a set
+	// pattern. Clouds pass in front of it with a crisp edge, so it is the
+	// cloud that is seen moving; near the disc they are lit by it.
 	vec2 sunAt = vec2(uSunAt.x * uRes.x / uRes.y, uSunAt.y);
 	float d = distance(uv, sunAt);
 	float r = uSunR;
-	float hidden = smoothstep(0.55, 0.9, cloud);
-	if (d < r && hidden < threshold) colour = uSun;
-	else if (d < r * 2.2) {
-		float halo = (1.0 - (d - r) / (r * 1.2)) * mix(0.4, 0.22, uDark) * (1.0 - hidden);
-		if (halo > threshold) colour = uSun;
+	if (r > 0.0 && d < r * 2.6) {
+		bool inFront = smoothstep(0.42, 0.56, cloud) > threshold;
+		if (inFront) {
+			float lit = smoothstep(r * 2.6, r * 0.8, d) * 0.6;
+			float litLevel = clamp(b + lit, 0.0, 1.0) * 3.0;
+			colour = tone(clamp(floor(litLevel) + step(threshold, fract(litLevel)), 0.0, 3.0));
+		} else if (d < r) {
+			colour = uSun;
+		} else if (d < r * 2.2) {
+			float halo = (1.0 - (d - r) / (r * 1.2)) * mix(0.4, 0.22, uDark);
+			if (halo > threshold) colour = uSun;
+		}
 	}
 
 	gl_FragColor = vec4(colour, 1.0);
