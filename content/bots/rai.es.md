@@ -3,7 +3,7 @@ title: Rai
 summary: El bot de moderación. Registros, el captcha de entrada, silencios y expulsiones con duración, antispam y la cola de preguntas.
 order: 2
 prefix: ";"
-repository: https://github.com/Jaleel-VS/Rai
+repository: https://github.com/r-hensley/Rai
 ---
 
 Rai es el bot en el que se apoyan los moderadores. Registra entradas, salidas, ediciones y borrados, revisa las cuentas nuevas, gestiona silencios y expulsiones con duración, y lleva la cola de preguntas para que una pregunta difícil no se pierda en el canal.

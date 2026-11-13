@@ -1,9 +1,8 @@
 import type { BotCommands } from "@/lib/bot-commands";
 
 /**
- * Rai's commands for members, read from its source in November 2026: the
- * upstream github.com/ryry013/Rai, which has `;ul` (the Jaleel-VS fork linked
- * from the page does not yet). Moderator commands are not listed.
+ * Rai's commands for members, read from its source (github.com/r-hensley/Rai)
+ * in November 2026. Moderator commands are not listed.
  */
 export const rai: BotCommands = {
 	categories: [
