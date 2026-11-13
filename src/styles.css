@@ -94,6 +94,11 @@
 }
 
 @layer base {
+	/* A modal dialog (a bot command) holds the page still behind it. */
+	html:has(dialog:modal) {
+		overflow: hidden;
+	}
+
 	html {
 		background: var(--ground);
 		color: var(--ink);

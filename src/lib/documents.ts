@@ -1,4 +1,5 @@
 import type { Language } from "@/i18n";
+import type { CommandReference } from "./bot-commands";
 
 /** The two Markdown collections: how-tos about the server, and one page per bot. */
 export const collections = ["guides", "bots"] as const;
@@ -21,4 +22,6 @@ export interface DocumentSummary {
 export interface Document extends DocumentSummary {
 	/** Rendered Markdown. Written by maintainers, so it is trusted HTML. */
 	html: string;
+	/** Bots only, when content/bots/<slug>.commands.ts exists: the command reference in the visitor's language. */
+	commands: CommandReference | null;
 }

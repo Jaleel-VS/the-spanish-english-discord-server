@@ -2,7 +2,10 @@ import { marked } from "marked";
 import { parse as parseYaml } from "yaml";
 import { z } from "zod";
 import type { Language } from "@/i18n";
+import type { BotCommands, CommandReference } from "@/lib/bot-commands";
 import type { Collection, Document, DocumentSummary } from "@/lib/documents";
+import { hablemos } from "../../content/bots/hablemos.commands";
+import { rai } from "../../content/bots/rai.commands";
 
 /**
  * Markdown documents under content/<collection>/<slug>.<lang>.md, bundled into
@@ -81,6 +84,56 @@ export function listDocuments(
 		.sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 }
 
+/** Each bot's command config, by page slug. */
+const botCommands: Record<string, BotCommands> = { hablemos, rai };
+
+// A typo in a config fails at startup, not as a command missing from its page.
+for (const [slug, config] of Object.entries(botCommands)) {
+	const categories = new Set(config.categories.map((c) => c.id));
+	const ids = new Set<string>();
+	for (const command of config.commands) {
+		if (!categories.has(command.category))
+			throw new Error(
+				`${slug}: ${command.id} has unknown category ${command.category}`,
+			);
+		if (ids.has(command.id))
+			throw new Error(`${slug}: duplicate command id ${command.id}`);
+		ids.add(command.id);
+	}
+}
+
+/** A bot's commands in one language, with their details rendered. Commands are always bilingual, so this follows the visitor, not the page file. */
+async function commandReference(
+	slug: string,
+	language: Language,
+): Promise<CommandReference | null> {
+	const config = botCommands[slug];
+	if (!config) return null;
+	return {
+		categories: config.categories.map((c) => ({
+			id: c.id,
+			label: c.label[language],
+		})),
+		commands: await Promise.all(
+			config.commands.map(async (c) => ({
+				id: c.id,
+				name: c.name,
+				aliases: c.aliases ?? [],
+				category: c.category,
+				who: c.who,
+				summary: c.summary[language],
+				usage: (c.usage ?? []).map((u) => ({
+					syntax: u.syntax,
+					does: u.does[language],
+				})),
+				detailsHtml: c.details
+					? await marked.parse(c.details[language], { gfm: true })
+					: null,
+			})),
+		),
+	};
+}
+
 /** One document rendered to HTML, or null when the slug does not exist. */
 export async function getDocument(
 	collection: Collection,
@@ -92,5 +145,7 @@ export async function getDocument(
 	return {
 		...source.summary,
 		html: await marked.parse(source.body, { gfm: true }),
+		commands:
+			collection === "bots" ? await commandReference(slug, language) : null,
 	};
 }

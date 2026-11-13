@@ -105,6 +105,8 @@ updated: 2026-11-01
 
 The rest of the file is ordinary Markdown, tables included. Bot pages go in `content/bots/` and may also set `prefix` and `repository`. Slugs are lowercase letters, digits and hyphens.
 
+A bot page lists its commands from `content/bots/<slug>.commands.ts` (typed by `BotCommands` in `src/lib/bot-commands.ts`, registered in `botCommands` in `src/server/documents.server.ts`). Each command has its name, aliases, category, who can use it, a one-line summary in both languages, and optionally usage examples and Markdown `details` for its dialog. The page shows them with a search box and category tabs; `?cmd=<id>` opens a command, so it can be linked to. A typo in a category fails at startup. Only member commands are listed, not moderator ones.
+
 ## Deploying
 
 The Vercel project deploys `main`. Nitro detects Vercel during the build and writes Vercel's Build Output, so no `vercel.json` is needed. Node 24 is pinned in `package.json` `engines`. Migrations are not run during the build: apply them with `pnpm db:migrate` before merging a change that needs them. Preview deployments use the same database as production.

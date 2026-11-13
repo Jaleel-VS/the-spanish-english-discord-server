@@ -17,5 +17,24 @@
 		"updated": "Actualizado el {{date}}"
 	},
 	"onlyIn": "Esta página solo está disponible en {{language}} por ahora.",
-	"back": "Todos los bots"
+	"back": "Todos los bots",
+	"commands": {
+		"heading": "Comandos",
+		"search": "Busca un comando",
+		"all": "Todos",
+		"who": {
+			"everyone": "Todos",
+			"learners": "Estudiantes"
+		},
+		"whoLong": {
+			"everyone": "Todos",
+			"learners": "Miembros con un rol de aprendizaje"
+		},
+		"alias": "o {{alias}}",
+		"use": "Cómo usarlo",
+		"details": "Detalles",
+		"close": "Cerrar",
+		"empty": "Ningún comando coincide.",
+		"modsLeftOut": "Los comandos de moderación no aparecen aquí."
+	}
 }

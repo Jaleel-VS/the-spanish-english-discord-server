@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import type { Collection, Document } from "@/lib/documents";
+import { CommandReference } from "./CommandReference";
 
 /**
  * One guide or bot page: title and summary on the axis, the rendered Markdown
@@ -88,6 +89,7 @@ export function DocumentPage({
 					dangerouslySetInnerHTML={{ __html: document.html }}
 				/>
 			</div>
+			{document.commands && <CommandReference reference={document.commands} />}
 		</article>
 	);
 }

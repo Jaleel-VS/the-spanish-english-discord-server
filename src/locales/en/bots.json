@@ -17,5 +17,24 @@
 		"updated": "Updated {{date}}"
 	},
 	"onlyIn": "This page is only available in {{language}} for now.",
-	"back": "All bots"
+	"back": "All bots",
+	"commands": {
+		"heading": "Commands",
+		"search": "Search commands",
+		"all": "All",
+		"who": {
+			"everyone": "Everyone",
+			"learners": "Learners"
+		},
+		"whoLong": {
+			"everyone": "Everyone",
+			"learners": "Members with a learning role"
+		},
+		"alias": "or {{alias}}",
+		"use": "Use it",
+		"details": "Details",
+		"close": "Close",
+		"empty": "No command matches.",
+		"modsLeftOut": "Moderator commands aren't listed."
+	}
 }
