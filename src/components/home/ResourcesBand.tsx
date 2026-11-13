@@ -28,7 +28,7 @@ export function ResourcesBand({ counts }: { counts: CatalogueCounts }) {
 						</Link>
 					</p>
 				</div>
-				<ul className="col-span-12 grid gap-gutter sm:grid-cols-2 lg:col-start-6 lg:col-span-7">
+				<ul className="col-span-12 grid gap-gutter sm:grid-cols-2 lg:col-start-6 lg:col-span-7 lg:grid-cols-1 xl:grid-cols-2">
 					{resourceKinds.map((kind, index) => (
 						<li key={kind.id} data-reveal style={stagger(index + 2)}>
 							<ResourceKindTile

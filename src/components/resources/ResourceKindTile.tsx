@@ -32,7 +32,7 @@ export function ResourceKindTile({
 					: "bg-surface hover:bg-[color-mix(in_oklab,var(--surface)_85%,var(--ink))]"
 			}`}
 		>
-			<span className="aspect-[4/3] w-28 shrink-0 overflow-clip md:w-36">
+			<span className="aspect-[4/3] w-28 shrink-0 overflow-clip md:w-36 xl:w-32 2xl:w-36">
 				<img
 					src={`/images/${kind.image}.jpg`}
 					alt={t(`kinds.${kind.id}.imageAlt`)}
