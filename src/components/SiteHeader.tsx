@@ -59,11 +59,7 @@ export function SiteHeader() {
 				<ThemeToggle className="-mx-3" />
 				<LanguageSwitch />
 				{/* Narrower padding below xl, where the action group shares the row with the links. */}
-				<a
-					href={INVITE_URL}
-					className="button lg:max-xl:px-4"
-					rel="noopener"
-				>
+				<a href={INVITE_URL} className="button lg:max-xl:px-4" rel="noopener">
 					{t("nav.join")}
 				</a>
 			</div>
