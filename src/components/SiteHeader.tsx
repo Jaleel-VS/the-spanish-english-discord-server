@@ -50,15 +50,20 @@ export function SiteHeader() {
 
 			<nav
 				aria-label={t("nav.main")}
-				className="hidden gap-7 lg:col-span-4 lg:col-start-6 lg:flex"
+				className="hidden gap-5 lg:col-span-3 lg:col-start-6 lg:flex xl:gap-7"
 			>
 				{links}
 			</nav>
 
-			<div className="hidden items-center justify-end gap-6 lg:col-span-3 lg:col-start-10 lg:flex">
+			<div className="hidden items-center justify-end gap-4 lg:col-span-4 lg:col-start-9 lg:flex xl:gap-6">
 				<ThemeToggle className="-mx-3" />
 				<LanguageSwitch />
-				<a href={INVITE_URL} className="button" rel="noopener">
+				{/* Narrower padding below xl, where the action group shares the row with the links. */}
+				<a
+					href={INVITE_URL}
+					className="button lg:max-xl:px-4"
+					rel="noopener"
+				>
 					{t("nav.join")}
 				</a>
 			</div>
